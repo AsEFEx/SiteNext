@@ -1,0 +1,184 @@
+form{
+    margin:10px auto;
+    padding: 10px 5%;    
+}
+
+.box{
+    margin: 2px;
+    padding: 5px;
+}
+.logos{
+    align-content: center;
+    text-align: center;
+    background-color: white;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.logos a{
+    color: #262626;
+}
+.logos img{
+    max-width: 70px;
+    max-height: 70px;
+}
+.caption{
+    line-height: 80px;
+}
+.imginicial{
+    max-width: 600px;
+    padding: auto;
+}
+.imglateral{
+    margin-bottom: 30px;
+    text-align: center;
+    color: #3a3939;
+}
+.imglateral img{
+    margin: 20px 30% 10px 30%;
+}
+.lista{
+    font-weight: bold;
+}
+ul a{
+    color:#025310;
+    font-size: 15px;
+}
+ul a:hover{
+    color:#16912a;
+}
+ul li{
+    margin: 10px;
+}
+.card{
+    font-size: 15px;
+    padding: 20px;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 10px;
+    border-color: #025310;
+    color: #262626;
+    width: auto;
+    text-align: center;
+    height: auto;
+}
+.card a{
+    color: #262626;
+}
+.card a:hover{
+    color: black;
+}
+.card img{
+    max-width: 150px;
+}
+.card strong{
+    color: #025310;
+}
+.contraste .card {
+    border-color: yellow;
+    background-color: black;
+    color: white;
+}
+.contraste .card a{
+    color: white;
+}
+.contraste .card a:hover{
+    color: yellow;
+}
+.contraste .card strong{
+    color: yellow;
+}
+.cabecalho{
+    padding:10px;
+}
+
+.titulo-box{
+    color: #025310;
+    font-size: large;
+}
+
+button{
+    padding:5px 10px;
+    background-color: #025310;
+    color:white;
+}
+
+button:hover {
+    background-color: #16912a;
+    color:white;
+}
+
+input, textarea{
+    width: 100%;
+}
+.noAlert1{
+    display: none;
+}
+.noAlert2{
+    display: none;
+}
+.icones{
+    margin:2px;
+    opacity:.85;
+    -moz-opacity:.85;
+    filter:alpha(opacity=85);
+    padding: 5px;
+}
+.icones li{
+    margin:0 0 0 6px
+}
+.icones a{
+    color:#025310
+}
+.icones a i{
+    font-size:2.30em;
+    margin-top:5px;
+    -webkit-text-stroke-width:.4px;
+    -webkit-text-stroke-color:#025310;
+    -webkit-font-smoothing:antialiased
+}
+.icones a i.icon-youtube{
+    -webkit-text-stroke-width:0!important;
+    -webkit-text-stroke-color:#16912a!important;
+    -webkit-font-smoothing:antialiased!important
+}
+.icones a:hover{
+    color:#16912a;
+    -webkit-text-stroke-width:.4px;
+    -webkit-text-stroke-color:#16912a;
+    -webkit-font-smoothing:antialiased
+}
+.icones span{
+    margin: 2px;
+}
+.contraste .icones a{
+    color:yellow
+}
+.contraste .icones a:hover{
+    color:white
+}
+.contraste select{
+    background-color: #262626;
+    color: white;
+}
+.contraste textarea{
+    background-color: #262626;
+    color: white;
+} 
+.contraste ul a{
+    color:yellow;
+}
+.contraste ul a:hover{
+    color:white;
+}
+.contraste .logos{
+    background-color: #262626;
+}
+.contraste .logos a{
+    color: white;
+}
+.contraste .logos a:hover{
+    color: yellow;
+}
