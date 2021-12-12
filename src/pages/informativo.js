@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from '../components/header/header'
-import Menu from '../components/menu/menu'
+import Header from '../components/header'
+import Menu from '../components/menu'
 
 function Informativo() {
     return (
         <div>
             <Header />
-            <Menun />
+            <Menu />
 
             <div id="content" className="internas span9">
                 <section id="content-section">
