@@ -69,8 +69,8 @@ export default function Home() {
         </header>
 
         <main>
-          <div class="container">
-            <div class="row-fluid">
+          <div className="container">
+            <div className="row-fluid">
               <Menu />
               <div id="content" className="internas span9">
                 <section id="content-section">

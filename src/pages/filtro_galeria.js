@@ -678,16 +678,16 @@ function Filtro() {
     }
 
     return (
-        <div class="container">
-            <div class="row-fluid">
-                <div class="span9 module module-box-01">
-                    <div class="header">
-                        <h2 class="titulo-box"><strong>Filtro</strong></h2>
+        <div className="container">
+            <div className="row-fluid">
+                <div className="span9 module module-box-01">
+                    <div className="header">
+                        <h2 className="titulo-box"><strong>Filtro</strong></h2>
                     </div>
                     <form>
-                        <div class="form-group span5">
+                        <div className="form-group span5">
                             <label for="decada">Década:</label>
-                            <select class="form-control" id="decada" onChange={mudarDecada}>
+                            <select className="form-control" id="decada" onChange={mudarDecada}>
                                 <option selected value="escolha">Escolha uma década....</option>
                                 <option value="1920">1920</option>
                                 <option value="1930">1930</option>
@@ -702,9 +702,9 @@ function Filtro() {
                                 <option value="2020">2020</option>
                             </select>
                         </div>
-                        <div class="form-group span5">
+                        <div className="form-group span5">
                             <label for="ano">Ano:</label>
-                            <select class="form-control" id="ano" onChange={mudarAno}>
+                            <select className="form-control" id="ano" onChange={mudarAno}>
                                 <option selected value="escolha">Escolha um ano....</option>
                                 <option value="0">0</option>
                                 <option value="1">1</option>

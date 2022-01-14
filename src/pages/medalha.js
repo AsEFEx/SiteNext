@@ -49,9 +49,9 @@ export default function Home() {
         <link rel="stylesheet" href="css/css_adicional.css" type='text/css' />
       </Head>
 
-      <a class="hide" id="topo" href="#accessibility">Ir direto para menu de acessibilidade.</a>
+      <a className="hide" id="topo" href="#accessibility">Ir direto para menu de acessibilidade.</a>
       <noscript>
-        <div class="error minor-font">
+        <div className="error minor-font">
           Seu navegador de internet está sem suporte à JavaScript. Por esse motivo algumas funcionalidades do site
           podem não estar acessíveis.
         </div>
@@ -63,14 +63,14 @@ export default function Home() {
           Governo Brasileiro</a>
       </div>
 
-      <div class="layout">
+      <div className="layout">
         <header>
           <Header />
         </header>
 
         <main>
-          <div class="container">
-            <div class="row-fluid">
+          <div className="container">
+            <div className="row-fluid">
               <Menu />
               <div id="content" className="internas span9">
                 <section id="content-section">
