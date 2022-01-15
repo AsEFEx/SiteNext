@@ -197,7 +197,11 @@ export default function Home() {
                                  <Link href="/seja-associado">
                                     <a><img src="images/associar.png" alt="Associe-se" style={{ maxWidth: 345, maxHeight: 204, height: 'auto', width: 'auto' }} /></a>
                                  </Link>
-                                 <h2><a href="/seja-associado"><strong>Associe-se</strong></a></h2>
+                                 <h2>
+                                    <Link href="/seja-associado">
+                                       <a><strong>Associe-se</strong></a>
+                                    </Link>
+                                 </h2>
                                  <p>Preenchimento da ficha de inscrição.</p>
                               </div>
                            </div>

@@ -22,7 +22,9 @@ function Footer() {
                            </Link>
                         </li>
                         <li>
-                           <a href="/institucional" title="Institucional">»Institucional</a>
+                           <Link href="/institucional">
+                              <a title="Institucional">»Institucional</a>
+                           </Link>
                         </li>
                         <li>
                            <Link href="/diretoria-executiva">
