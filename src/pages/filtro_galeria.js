@@ -686,7 +686,7 @@ function Filtro() {
                     </div>
                     <form>
                         <div className="form-group span5">
-                            <label htmlfor="decada">Década:</label>
+                            <label htmlFor="decada">Década:</label>
                             <select className="form-control" id="decada" onChange={mudarDecada}>
                                 <option selected value="escolha">Escolha uma década....</option>
                                 <option value="1920">1920</option>
@@ -703,7 +703,7 @@ function Filtro() {
                             </select>
                         </div>
                         <div className="form-group span5">
-                            <label htmlfor="ano">Ano:</label>
+                            <label htmlFor="ano">Ano:</label>
                             <select className="form-control" id="ano" onChange={mudarAno}>
                                 <option selected value="escolha">Escolha um ano....</option>
                                 <option value="0">0</option>
