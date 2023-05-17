@@ -6,19 +6,19 @@ import { useEffect, useState } from 'react'
 function Header() {
   const [contraste, setContraste] = useState(false);
 
-  // Verifica localStorage pra ver se contraste armazenado == true
+  // Verifica localStorage ao carregar a pagina pra ver se contraste armazenado == true
   useEffect(() => {
     var storedContraste = JSON.parse(localStorage.getItem('contraste'))
     if (storedContraste == true) {
-      document.querySelector(".layout").classList.add("contraste")
+      document.querySelector("body").classList.add("contraste")
       setContraste(true)
     }
   }, [])
 
   function handleContraste(contraste) {
-    var element = document.querySelector(".layout")
-    if (contraste == false) element.classList.add("contraste")
-    else element.classList.remove("contraste")
+    var bodyComponent = document.querySelector("body")
+    if (contraste == false) bodyComponent.classList.add("contraste")
+    else bodyComponent.classList.remove("contraste")
     window.localStorage.setItem('contraste', !contraste)
     setContraste(!contraste)
   }

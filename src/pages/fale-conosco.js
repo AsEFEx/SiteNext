@@ -105,11 +105,11 @@ export default function Home() {
 
           <div className="singleItem">
             <label htmlFor="assunto">Assunto:</label>
-            <select name="assunto" id="assunto" className="custom-select" defaultValue="escolha" onChange={mudarAssunto}>
-              <option defaultValue="escolha">Escolha uma opção....</option>
-              <option value="Dúvida">Dúvida</option>
-              <option value="Pagamento">Pagamento</option>
-              <option value="Proposta de Amigo">Proposta de Amigo</option>
+            <select name="assunto" id="assunto" className="custom-select" value={state.assunto} onChange={mudarAssunto}>
+              <option>Escolha uma opção....</option>
+              <option>Dúvida</option>
+              <option>Pagamento</option>
+              <option>Proposta de Amigo</option>
             </select>
           </div>
 
