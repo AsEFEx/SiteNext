@@ -1,17 +1,16 @@
 import Head from 'next/head'
 import Script from 'next/script'
-import Image from 'next/image'
-import Header from '../components/header'
-import Menu from '../components/menu'
-import Footer from '../components/footer'
-import styles from '../styles/Home.module.css'
+import Header from '../modules/header'
+import Menu from '../modules/menu'
+import Footer from '../modules/footer'
+import BarraGov from '@/components/BarraGov'
 
 export default function Home() {
   return (
     <div>
       <Head>
         <meta charset="utf-8" />
-        <title>Associação dos Ex-Alunos e dos Amigos da Escola de Educação Física do Exército - Página Inicial</title>
+        <title>Associação dos Ex-Alunos e dos Amigos da Escola de Educação Física do Exército - Página das Perguntas Frequentes</title>
         {/*<base href="" />*/}
         <meta name="keywords" content="" />
         <meta name="author" content="IME Júnior" />
@@ -49,7 +48,6 @@ export default function Home() {
         <link rel="stylesheet" href="css/css_adicional.css" type='text/css' />
       </Head>
 
-      <a className="hide" id="topo" href="#accessibility">Ir direto para menu de acessibilidade.</a>
       <noscript>
         <div className="error minor-font">
           Seu navegador de internet está sem suporte à JavaScript. Por esse motivo algumas funcionalidades do site
@@ -57,13 +55,8 @@ export default function Home() {
         </div>
       </noscript>
 
-      <div id="barra-brasil">
-        <a href="http://brasil.gov.br"
-          title="Acesse para conhecer todos os serviços e informações do Governo Brasileiro na Internet.">Portal do
-          Governo Brasileiro</a>
-      </div>
-
       <div className="layout">
+        <BarraGov />
         <header>
           <Header />
         </header>
@@ -94,8 +87,6 @@ export default function Home() {
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"
       />
-      <Script src="http://barra.brasil.gov.br/barra.js?cor=verde" type="text/javascript" /><noscript>&nbsp;
-      </noscript>
     </div>
   )
 }

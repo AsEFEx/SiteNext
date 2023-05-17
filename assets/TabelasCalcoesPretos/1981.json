@@ -1,0 +1,403 @@
+{
+    "Tabela": [
+        {
+            "NrCP": 4881,
+            "Curso": "MONITOR",
+            "Posto": "2º SARGENTO",
+            "Nome": "CESAR VIEIRA DE MESQUITA",
+            "Arma": "PMCE"
+        },
+        {
+            "NrCP": 4882,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "JOÃO CARLOS DE OLIVEIRA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 4883,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "JORGE GUARACI VIEIRA DA SILVA",
+            "Arma": "ARTILHARIA"
+        },
+        {
+            "NrCP": 4884,
+            "Curso": "MONITOR",
+            "Posto": "1º SARGENTO",
+            "Nome": "KEITH ARLINGTON FRENCH",
+            "Arma": "GUIANA"
+        },
+        {
+            "NrCP": 4885,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "LUIZ MARIO MARTINS MOREIRA",
+            "Arma": "PMPR"
+        },
+        {
+            "NrCP": 4886,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "PEDRITO DOMINGOS DOS SANTOS",
+            "Arma": "CAVALARIA"
+        },
+        {
+            "NrCP": 4887,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "RONALDO DE ANDRADE MOREIRA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 4888,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "ROQUE OLDERS",
+            "Arma": "ENGENHARIA"
+        },
+        {
+            "NrCP": 4889,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "ALCINO BATISTA DA SILVA",
+            "Arma": "PMMA"
+        },
+        {
+            "NrCP": 4890,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "ANTONIO RITA DO NASCIMENTO LEITE",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 4891,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "ARY VIRGILIO FALCÃO",
+            "Arma": "PMPE"
+        },
+        {
+            "NrCP": 4892,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "CARLOS HENRIQUE DA SILVA RIBEIRO",
+            "Arma": "CAVALARIA"
+        },
+        {
+            "NrCP": 4893,
+            "Curso": "INSTRUTOR",
+            "Posto": "2º TENENTE",
+            "Nome": "CELSO BENEDITO PINHEIRO FERREIRA",
+            "Arma": "PMMT"
+        },
+        {
+            "NrCP": 4894,
+            "Curso": "INSTRUTOR",
+            "Posto": "2º TENENTE",
+            "Nome": "CÍCERO TAVARES COSTA",
+            "Arma": "PMAL"
+        },
+        {
+            "NrCP": 4895,
+            "Curso": "INSTRUTOR",
+            "Posto": "CAPITÃO",
+            "Nome": "EDGARD RAMON PEDRAZA RODRIGUEZ",
+            "Arma": "COLÔMBIA"
+        },
+        {
+            "NrCP": 4896,
+            "Curso": "INSTRUTOR",
+            "Posto": "CAPITÃO",
+            "Nome": "HAROLD ENRIQUE CERTUCHE CAICEDO",
+            "Arma": "COLÔMBIA"
+        },
+        {
+            "NrCP": 4897,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "JAIRO ARRAIS DE SOUZA",
+            "Arma": "ARTILHARIA"
+        },
+        {
+            "NrCP": 4898,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "JAMIL MEGID JUNIOR",
+            "Arma": "ENGENHARIA"
+        },
+        {
+            "NrCP": 4899,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "JESUS ALFONSO GONZALEZ GONZÁLEZ",
+            "Arma": "VENEZUELA"
+        },
+        {
+            "NrCP": 4900,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "JOÃO NEVES JUNIOR",
+            "Arma": "MATERIAL BÉLICO"
+        },
+        {
+            "NrCP": 4901,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "JORGE LUIZ SANTANA",
+            "Arma": "ARTILHARIA"
+        },
+        {
+            "NrCP": 4902,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "JOSÉ ANTONIO MENDONÇA DA CRUZ",
+            "Arma": "ENGENHARIA"
+        },
+        {
+            "NrCP": 4903,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "JOSÉ DA SILVA",
+            "Arma": "BMERJ"
+        },
+        {
+            "NrCP": 4904,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "JOSUÉ MORISSON DE MORAES",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 4905,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "LUIZ AFONSO GOMES DE SOUZA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 4906,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "LUIZ EDUARDO DIOGO POMPEU",
+            "Arma": "ENGENHARIA"
+        },
+        {
+            "NrCP": 4907,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "MARCO ANTONIO REITSTEIN MENDES DA SILVA",
+            "Arma": "ARTILHARIA"
+        },
+        {
+            "NrCP": 4908,
+            "Curso": "INSTRUTOR",
+            "Posto": "2º TENENTE",
+            "Nome": "MAURO JOSÉ DE SOUZA E SILVA",
+            "Arma": "PMERJ"
+        },
+        {
+            "NrCP": 4909,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "MOZART CANUTO DA SILVA",
+            "Arma": "ARTILHARIA"
+        },
+        {
+            "NrCP": 4910,
+            "Curso": "INSTRUTOR",
+            "Posto": "2º TENENTE",
+            "Nome": "NELSON MARIO RODRIGUES GONZÁLEZ",
+            "Arma": "URUGUAI"
+        },
+        {
+            "NrCP": 4911,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "OSCAR PORTELA CHARBEL",
+            "Arma": "CAVALARIA"
+        },
+        {
+            "NrCP": 4912,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "PAULO GILBERTO OLIVEIRA DA SILVA",
+            "Arma": "CAVALARIA"
+        },
+        {
+            "NrCP": 4913,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "PAULO ROBERTO LEITE XAVIER",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 4914,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "PAULO ROBERTO ZANELA LIMA",
+            "Arma": "COMUNICAÇÕES"
+        },
+        {
+            "NrCP": 4915,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "RAUMARIO MOURÃO E SILVA",
+            "Arma": "PMPI"
+        },
+        {
+            "NrCP": 4916,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "RENATO DE ARAUJO CARDOSO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 4917,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "ROBERTO SEBASTIÃO PETERNELLI JUNIOR",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 4918,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "RODOLFO DE BARROS BITENCOURT NETO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 4919,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "ROGÉRIO RODRIGUES DIAS",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 4920,
+            "Curso": "INSTRUTOR",
+            "Posto": "2º TENENTE",
+            "Nome": "RUBIO PAULINO COELHO",
+            "Arma": "PMMG"
+        },
+        {
+            "NrCP": 4921,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "SERGIO JOSÉ PEREIRA",
+            "Arma": "ARTILHARIA"
+        },
+        {
+            "NrCP": 4922,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "SILVIO DADIA SAMPAIO",
+            "Arma": "PMRS"
+        },
+        {
+            "NrCP": 4923,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "THADEU MARQUES DE MACEDO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 4924,
+            "Curso": "INSTRUTOR",
+            "Posto": "CAPITÃO",
+            "Nome": "VIBART IAN FRASER",
+            "Arma": "GUIANA"
+        },
+        {
+            "NrCP": 4925,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "VIRGILIO ENRIQUE LAMEDA HERNANDES",
+            "Arma": "VENEZUELA"
+        },
+        {
+            "NrCP": 4926,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "WALDO MANUEL DE OLIVEIRA AIRES",
+            "Arma": "ARTILHARIA"
+        },
+        {
+            "NrCP": 4927,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "WALTER SOUZA BRAGA NETTO",
+            "Arma": "CAVALARIA"
+        },
+        {
+            "NrCP": 4928,
+            "Curso": "MESTRE D'ARMAS",
+            "Posto": "2º TENENTE",
+            "Nome": "ELIAS FERREIRA GOMES",
+            "Arma": "MATERIAL BÉLICO"
+        },
+        {
+            "NrCP": 4929,
+            "Curso": "MESTRE D'ARMAS",
+            "Posto": "CIVIL",
+            "Nome": "EUGÊNIO CARLOS BELAVARY",
+            "Arma": "───-"
+        },
+        {
+            "NrCP": 4930,
+            "Curso": "MESTRE D'ARMAS",
+            "Posto": "1º TENENTE",
+            "Nome": "JORGE WASHINGTON ROSALES SOSA",
+            "Arma": "URUGUAI"
+        },
+        {
+            "NrCP": 4931,
+            "Curso": "MESTRE D'ARMAS",
+            "Posto": "1º TENENTE",
+            "Nome": "MARCELO AUGUSTO DE FELIPPES",
+            "Arma": "INTENDÊNCIA"
+        },
+        {
+            "NrCP": 4932,
+            "Curso": "MESTRE D'ARMAS",
+            "Posto": "1º TENENTE",
+            "Nome": "PAULO EMILIO PEREIRA SILVA",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4933,
+            "Curso": "MESTRE D'ARMAS",
+            "Posto": "CIVIL",
+            "Nome": "RICARDO PACHECO MACHADO",
+            "Arma": "───-"
+        },
+        {
+            "NrCP": 4934,
+            "Curso": "MEDICINA ESPORTIVA",
+            "Posto": "1º TENENTE",
+            "Nome": "CARLOS JULIO COLISTRO OLAIZOLA",
+            "Arma": "URUGUAI"
+        },
+        {
+            "NrCP": 4935,
+            "Curso": "MEDICINA ESPORTIVA",
+            "Posto": "1º TENENTE",
+            "Nome": "JOSÉ BRAULIO PINTO RIBEIRO JUNIOR",
+            "Arma": "MÉDICO"
+        },
+        {
+            "NrCP": 4936,
+            "Curso": "MEDICINA ESPORTIVA",
+            "Posto": "1º TENENTE",
+            "Nome": "PAULO SERGIO CERQUEIRA DEL VALLE",
+            "Arma": "MÉDICO"
+        },
+        {
+            "NrCP": 4937,
+            "Curso": "MEDICINA ESPORTIVA",
+            "Posto": "1º TENENTE",
+            "Nome": "RICARDO FERNANDO MENDELSOHN DE CARVALHO",
+            "Arma": "MÉDICO"
+        }
+    ]
+}

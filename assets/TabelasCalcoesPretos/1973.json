@@ -1,0 +1,620 @@
+{
+    "Tabela": [
+        {
+            "NrCP": 4281,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "ALAILSON ABDON DINIZ",
+            "Arma": "PMPA"
+        },
+        {
+            "NrCP": 4282,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "ALBERTO CARLOS REBOUÇAS",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4283,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "ANGENOR BOHNERT",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4284,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "ANTÔNIO CARLOS DUARTE BITARELO",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4285,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "ANTONIO JOSÉ BARBOSA DA SILVA",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4286,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "ANTONIO ROBERTO AGUIAR DE ARAUJO",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4287,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "BENEDITO SILVA SANTOS",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4288,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "CLOVIS ANJOS DA CRUZ",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4289,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "CLÓVIS UBIRAJARA LACORTE",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4290,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "CUSTODIO LUIZ DE PAULA",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4291,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "EGÍDIO DE MOURA FAITÃO",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4292,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "ELOIR MEDEIROS GONÇALVES",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4293,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "ELPIDIO SANTOS PICCININ",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4294,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "ELSON JOSÉ DE SOUZA",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4295,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "ERNESTO HANDEL",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4296,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "EURÍPIDES CLAUDINO LEAL",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4297,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "FRANCISCO ANTONIO DE SOUZA NETO",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4298,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "FRANCISCO ELIZIO DE SANT'ANNA",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4299,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "GELSON LUIZ FRACALOSSI",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4300,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "HELCIO DA SILVA BARRAL VIDAL",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4301,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "HENRIQUE RIBEIRO DA SILVA",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4302,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "JANDIR ACOSTA PACHE",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4303,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "JOÃO ÁLVARO ROCHA RIBEIRO",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4304,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "JOÃO RODRIGUES",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4305,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "JOARES ADENILSON MAY",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4306,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "JOÉ JORGE VIANNA",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4307,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "JOSÉ CARLOS DA SILVA",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4308,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "JOSÉ DE ALENCAR MACÁRIO DA COSTA",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4309,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "JOSÉ GOMES DA SILVA",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4310,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "JOSÉ LUIZ ANDRADE",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4311,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "JÚLIO CESAR LOPES ZARZA",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4312,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "LUIZ ALBERTO MARINS",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4313,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "LUTÉRCIO DE OLIVEIRA SANTOS",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4314,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "MARCOS DANILO ESPINOSA DE OLIVEIRA",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4315,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "MIGUEL ARCANJO DOS SANTOS BITENCOURT",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4316,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "MILTON FIRMINO",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4317,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "NELSON MASSETO",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4318,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "PAULO COSTA",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4319,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "PEDRO BRAZ FRAGA",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4320,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "POMPÍLIO NUNES DOS SANTOS",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4321,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "REJES D'AVILA FERNANDES",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4322,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "RICARDO OLIVEIRA BARBOSA",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4323,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "ROBERTO DE MORAES",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4324,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "ROBERTO MARTINS SANTOS",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4325,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "VITOR VIEIRA LOPES",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4326,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "WALTER MOGRABI PINTO",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 4327,
+            "Curso": "EXTENSÃO",
+            "Posto": "3º SARGENTO",
+            "Nome": "WILSON DE OLIVEIRA",
+            "Arma": "MARINHA"
+        },
+        {
+            "NrCP": 4328,
+            "Curso": "INSTRUTOR",
+            "Posto": "CAPITÃO",
+            "Nome": "ADILSON PEREIRA LEITE",
+            "Arma": "ARTILHARIA"
+        },
+        {
+            "NrCP": 4329,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "ALFREDO FERREIRA PEREIRA",
+            "Arma": "PMES"
+        },
+        {
+            "NrCP": 4330,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "AMARO BUZON FERNANDES",
+            "Arma": "CAVALARIA"
+        },
+        {
+            "NrCP": 4331,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "AMIR MIGUEL FILHO",
+            "Arma": "CAVALARIA"
+        },
+        {
+            "NrCP": 4332,
+            "Curso": "INSTRUTOR",
+            "Posto": "CAPITÃO",
+            "Nome": "ANTONIO ADELINO MARTINS",
+            "Arma": "PORTUGAL"
+        },
+        {
+            "NrCP": 4333,
+            "Curso": "INSTRUTOR",
+            "Posto": "CAPITÃO",
+            "Nome": "ANTONIO MANOEL OLIVEIRA DE FIGUEIREDO",
+            "Arma": "PORTUGAL"
+        },
+        {
+            "NrCP": 4334,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "ARNO SCHNEIDER FILHO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 4335,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "ARTURO EDUARDO CARRASCO ORELLANA",
+            "Arma": "CHILE"
+        },
+        {
+            "NrCP": 4336,
+            "Curso": "INSTRUTOR",
+            "Posto": "2º TENENTE",
+            "Nome": "BRENO MÁRIO AIRES DA SILVA",
+            "Arma": "PMGO"
+        },
+        {
+            "NrCP": 4337,
+            "Curso": "INSTRUTOR",
+            "Posto": "CIVIL",
+            "Nome": "CARLOS ANTONIO TARSO CAVALCANTI",
+            "Arma": "───-"
+        },
+        {
+            "NrCP": 4338,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "CELSO DELLA NINA DA SILVA",
+            "Arma": "COMUNICAÇÕES"
+        },
+        {
+            "NrCP": 4339,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "EDMILSON JOSÉ AMARANTE BOTELHO",
+            "Arma": "MATERIAL BÉLICO"
+        },
+        {
+            "NrCP": 4340,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "GERALDO INTO",
+            "Arma": "CAVALARIA"
+        },
+        {
+            "NrCP": 4341,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "GERALDO OLIVEIRA DE ALMEIDA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 4342,
+            "Curso": "INSTRUTOR",
+            "Posto": "CIVIL",
+            "Nome": "GIL ROBERTO MEDEIROS DE CARVALHO",
+            "Arma": "───-"
+        },
+        {
+            "NrCP": 4343,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "GUILHERME VELOSO CAVALCANTI",
+            "Arma": "ARTILHARIA"
+        },
+        {
+            "NrCP": 4344,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "HUMBERTO SOARES SILVA",
+            "Arma": "MATERIAL BÉLICO"
+        },
+        {
+            "NrCP": 4345,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "JOSÉ FERREIRA DE MESQUITA",
+            "Arma": "PMDF"
+        },
+        {
+            "NrCP": 4346,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "JOSÉ RIBAMAR MATOS",
+            "Arma": "PMPA"
+        },
+        {
+            "NrCP": 4347,
+            "Curso": "INSTRUTOR",
+            "Posto": "CIVIL",
+            "Nome": "JOSÉ SYLVIO FIOLO",
+            "Arma": "───-"
+        },
+        {
+            "NrCP": 4348,
+            "Curso": "INSTRUTOR",
+            "Posto": "CAPITÃO",
+            "Nome": "LAURO LUCK DE CASTRO E SOUZA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 4349,
+            "Curso": "INSTRUTOR",
+            "Posto": "TENENTE",
+            "Nome": "LUIZ FERNANDO TAPIA LOMBEYDA",
+            "Arma": "EQUADOR"
+        },
+        {
+            "NrCP": 4350,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "MÁRIO D'ÁVILA FERNANDES",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 4351,
+            "Curso": "INSTRUTOR",
+            "Posto": "CAPITÃO",
+            "Nome": "MARIO MIQUELINO CUNHA FILHO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 4352,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "MOACIR GONÇALVES MEIRELLES",
+            "Arma": "COMUNICAÇÕES"
+        },
+        {
+            "NrCP": 4353,
+            "Curso": "INSTRUTOR",
+            "Posto": "2º TENENTE",
+            "Nome": "MOISES FRANCISCO CARDOSO RIVAS",
+            "Arma": "URUGUAI"
+        },
+        {
+            "NrCP": 4354,
+            "Curso": "INSTRUTOR",
+            "Posto": "CIVIL",
+            "Nome": "PAULO ROBERTO DE FREITAS",
+            "Arma": "───-"
+        },
+        {
+            "NrCP": 4355,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "PAULO ROBERTO VILARINHO PORTELA",
+            "Arma": "CAVALARIA"
+        },
+        {
+            "NrCP": 4356,
+            "Curso": "INSTRUTOR",
+            "Posto": "CAPITÃO",
+            "Nome": "PEDRO SILVEIRA LUND",
+            "Arma": "CAVALARIA"
+        },
+        {
+            "NrCP": 4357,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "RICARDO JOSÉ DE SOUZA",
+            "Arma": "ARTILHARIA"
+        },
+        {
+            "NrCP": 4358,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "RONALD SILVA MARQUES",
+            "Arma": "CAVALARIA"
+        },
+        {
+            "NrCP": 4359,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "SÉRGIO MACIEL COELHO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 4360,
+            "Curso": "INSTRUTOR",
+            "Posto": "CIVIL",
+            "Nome": "TADEU GUIZZO CORRÊA",
+            "Arma": "───-"
+        },
+        {
+            "NrCP": 4361,
+            "Curso": "MEDICINA ESPECIALIZADA",
+            "Posto": "1º TENENTE",
+            "Nome": "ALINOR ANTONIO DA COSTA",
+            "Arma": "MÉDICO"
+        },
+        {
+            "NrCP": 4362,
+            "Curso": "MEDICINA ESPECIALIZADA",
+            "Posto": "1º TENENTE",
+            "Nome": "ARY SERGIO DIB DIAS",
+            "Arma": "MARINHA"
+        },
+        {
+            "NrCP": 4363,
+            "Curso": "MEDICINA ESPECIALIZADA",
+            "Posto": "CAPITÃO",
+            "Nome": "AUGUSTO DE MATTOS",
+            "Arma": "MÉDICO"
+        },
+        {
+            "NrCP": 4364,
+            "Curso": "MEDICINA ESPECIALIZADA",
+            "Posto": "2º TENENTE",
+            "Nome": "AZUILO MELLO",
+            "Arma": "AERONÁUTICA"
+        },
+        {
+            "NrCP": 4365,
+            "Curso": "MEDICINA ESPECIALIZADA",
+            "Posto": "CAPITÃO",
+            "Nome": "FRANCISCO OZEAS CARVALHO COELHO",
+            "Arma": "MÉDICO"
+        },
+        {
+            "NrCP": 4366,
+            "Curso": "MEDICINA ESPECIALIZADA",
+            "Posto": "CAPITÃO",
+            "Nome": "HÉLIO SOARES DA ROCHA",
+            "Arma": "MÉDICO"
+        },
+        {
+            "NrCP": 4367,
+            "Curso": "MEDICINA ESPECIALIZADA",
+            "Posto": "CIVIL",
+            "Nome": "PAULO VIANNA DA SILVA",
+            "Arma": "───-"
+        },
+        {
+            "NrCP": 4368,
+            "Curso": "MEDICINA ESPECIALIZADA",
+            "Posto": "1º TENENTE",
+            "Nome": "ROBERTO RIBEIRO DOS ANJOS",
+            "Arma": "MÉDICO"
+        }
+    ]
+}

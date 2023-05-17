@@ -1,0 +1,9 @@
+.title{
+    cursor: pointer;
+}
+
+@media (min-width: 979px){
+    .title{
+        cursor: default;
+    }
+}

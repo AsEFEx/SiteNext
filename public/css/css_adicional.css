@@ -62,7 +62,6 @@ ul li{
     color: #262626;
     width: auto;
     text-align: center;
-    height: auto;
 }
 .card a{
     color: #262626;
@@ -101,7 +100,7 @@ ul li{
 
 button{
     padding:5px 10px;
-    background-color: #025310;
+    background-color: #227330;
     color:white;
 }
 

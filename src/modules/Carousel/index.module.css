@@ -1,0 +1,11 @@
+.exemplo {
+  background-color: rgba(120, 40, 240, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 0 12px 0;
+  margin: 10px 100px 10px 100px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 20px;
+  border-radius: 10px;
+}

@@ -1,0 +1,732 @@
+{
+    "Tabela": [
+        {
+            "NrCP": 850,
+            "Curso": "MONITOR",
+            "Posto": "2º SARGENTO",
+            "Nome": "ADELAR ALMEIDA ANDRETTA",
+            "Arma": "BMRGS"
+        },
+        {
+            "NrCP": 851,
+            "Curso": "MONITOR",
+            "Posto": "2º SARGENTO",
+            "Nome": "AFFONSO CAMARA FILHO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 852,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "ALADINO MARQUES DA SILVEIRA",
+            "Arma": "CAVALARIA"
+        },
+        {
+            "NrCP": 853,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "ALCEBIADES BASTOS",
+            "Arma": "ARTILHARIA"
+        },
+        {
+            "NrCP": 854,
+            "Curso": "MONITOR",
+            "Posto": "2º SARGENTO",
+            "Nome": "ALFREDO PONTES FERNANDES VIEIRA",
+            "Arma": "MARINHA"
+        },
+        {
+            "NrCP": 855,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "ANTONIO CALVALCANTI DE LIMA",
+            "Arma": "AERONÁUTICA"
+        },
+        {
+            "NrCP": 856,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "ANTONIO EUCLYDES DE ALENCASTRO",
+            "Arma": "BMRGS"
+        },
+        {
+            "NrCP": 857,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "ANTÔNIO FERREIRA VAZ",
+            "Arma": "FPPA"
+        },
+        {
+            "NrCP": 858,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "ANTONIO MAMEDE SOBRINHO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 859,
+            "Curso": "MONITOR",
+            "Posto": "",
+            "Nome": "ANTÔNIO RODRIGUES DE OLIVEIRA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 860,
+            "Curso": "MONITOR",
+            "Posto": "2º SARGENTO",
+            "Nome": "ANTONIO TAVARES DAMASCENO",
+            "Arma": "ARTILHARIA"
+        },
+        {
+            "NrCP": 861,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "ARISTER DA COSTA AMARAL",
+            "Arma": "CAVALARIA"
+        },
+        {
+            "NrCP": 862,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "ARISTON DE OLIVEIRA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 863,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "ARMANDO FERNANDES GUEDES",
+            "Arma": "FPSC"
+        },
+        {
+            "NrCP": 864,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "BENEDICTO ALVES DE ALMEIDA",
+            "Arma": "ARTILHARIA"
+        },
+        {
+            "NrCP": 865,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "BENEDICTO VIEIRA DA COSTA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 866,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "CARLOS BENTO XAVIER",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 867,
+            "Curso": "MONITOR",
+            "Posto": "",
+            "Nome": "CARLOS KURT VON LIBIG",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 868,
+            "Curso": "MONITOR",
+            "Posto": "",
+            "Nome": "CLODOALDO PASSOS FIALHO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 869,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "DAGMAR PESSOA DE ALBUQUERQUE",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 870,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "DARCY INDA PEREIRA",
+            "Arma": "CAVALARIA"
+        },
+        {
+            "NrCP": 871,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "DARIO RUFINO DOS SANTOS",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 872,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "DIRCEU DOS SANTOS",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 873,
+            "Curso": "MONITOR",
+            "Posto": "",
+            "Nome": "DOMINGOS SOARES DE SOUZA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 874,
+            "Curso": "MONITOR",
+            "Posto": "",
+            "Nome": "DORGIVAL DE OLIVEIRA GALINDO FILHO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 875,
+            "Curso": "MONITOR",
+            "Posto": "",
+            "Nome": "EDGARD GUEDES CHAGAS",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 876,
+            "Curso": "MONITOR",
+            "Posto": "",
+            "Nome": "ENÉAS DE OLIVEIRA LINS",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 877,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "ERICO LESINA",
+            "Arma": "CAVALARIA"
+        },
+        {
+            "NrCP": 878,
+            "Curso": "MONITOR",
+            "Posto": "",
+            "Nome": "EUGÊNIO PEREIRA DE MÉLO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 879,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "FENELLON DA ROCHA VASCONCELLOS",
+            "Arma": "ENGENHARIA"
+        },
+        {
+            "NrCP": 880,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "FRANCISCO COELHO FONTENELLE",
+            "Arma": "CAVALARIA"
+        },
+        {
+            "NrCP": 881,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "GASPAR FAGUNDES DA SILVA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 882,
+            "Curso": "MONITOR",
+            "Posto": "2º SARGENTO",
+            "Nome": "GEMINAUÁ NERY DE MEDEIROS",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 883,
+            "Curso": "MONITOR",
+            "Posto": "",
+            "Nome": "GILIAT DUARTE",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 884,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "GONÇALO ROBERTO DA SILVA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 885,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "ISAURO ASSIS DE SOUZA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 886,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "ITAGYBA LOPES CORREA",
+            "Arma": "ARTILHARIA"
+        },
+        {
+            "NrCP": 887,
+            "Curso": "MONITOR",
+            "Posto": "",
+            "Nome": "ITHAMAR BRANDÃO DE LIMA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 888,
+            "Curso": "MONITOR",
+            "Posto": "",
+            "Nome": "JACINTO LÔBO DE MEDEIROS",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 889,
+            "Curso": "MONITOR",
+            "Posto": "",
+            "Nome": "JAIME MARQUES DE FIGUEIRÊDO FILHO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 890,
+            "Curso": "MONITOR",
+            "Posto": "2º SARGENTO",
+            "Nome": "JAIR CORREA DE ALMEIDA",
+            "Arma": "ARTILHARIA"
+        },
+        {
+            "NrCP": 891,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "JOÃO BAPTISTA DE DEUS NETTO",
+            "Arma": "QI"
+        },
+        {
+            "NrCP": 892,
+            "Curso": "MONITOR",
+            "Posto": "2º SARGENTO",
+            "Nome": "JOÃO BAPTISTA MARTINS COIMBRA",
+            "Arma": "BMRGS"
+        },
+        {
+            "NrCP": 893,
+            "Curso": "MONITOR",
+            "Posto": "",
+            "Nome": "JOÃO BATISTA TEIXEIRA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 894,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "JOÃO DE SALVI",
+            "Arma": "ARTILHARIA"
+        },
+        {
+            "NrCP": 895,
+            "Curso": "MONITOR",
+            "Posto": "",
+            "Nome": "JOÃO LEITE DE GÓIS",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 896,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "JOÃO MEIRELLES FILHO",
+            "Arma": "ARTILHARIA"
+        },
+        {
+            "NrCP": 897,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "JOÃO MONTEIRO DE MAGALHÃES",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 898,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "JOEL FARIA DOS SANTOS",
+            "Arma": "AERONÁUTICA"
+        },
+        {
+            "NrCP": 899,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "JOSÉ ARECO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 900,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "JOSÉ CARLOS DUTTON DA SILVA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 901,
+            "Curso": "MONITOR",
+            "Posto": "",
+            "Nome": "JOSÉ CORRÊA DE MÉLO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 902,
+            "Curso": "MONITOR",
+            "Posto": "2º SARGENTO",
+            "Nome": "JOSÉ DE SOUZA ANTUNES",
+            "Arma": "BMRGS"
+        },
+        {
+            "NrCP": 903,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "JOSÉ LELIS MACHADO",
+            "Arma": "CAVALARIA"
+        },
+        {
+            "NrCP": 904,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "JOSÉ PINTO DE MAGALHÃES",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 905,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "JOSÉ REZENDE LEITE",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 906,
+            "Curso": "MONITOR",
+            "Posto": "",
+            "Nome": "JOSIAS MOURA DE ARAÚJO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 907,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "LAURO WALTZ",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 908,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "LUIZ DA SILVA LEITE",
+            "Arma": "EXÉRCITO"
+        },
+        {
+            "NrCP": 909,
+            "Curso": "MONITOR",
+            "Posto": "",
+            "Nome": "LUIZ MARIANO DO NASCIMENTO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 910,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "MANOEL CAETANO DE SIQUEIRA",
+            "Arma": "MARINHA"
+        },
+        {
+            "NrCP": 911,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "MARCIAL DE OLIVEIRA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 912,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "MARIO RAMOS DE FREITAS",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 913,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "MAXIMO PEREIRA BARBOSA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 914,
+            "Curso": "MONITOR",
+            "Posto": "SARGENTO AJUDANTE",
+            "Nome": "MILTON SOARES BOTELHO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 915,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "NAPOLEÃO DE NORONHA PICADO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 916,
+            "Curso": "MONITOR",
+            "Posto": "2º SARGENTO",
+            "Nome": "OLÍMPIO DE SOUZA FERRAZ",
+            "Arma": "FPPE"
+        },
+        {
+            "NrCP": 917,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "ORIVAL JOAQUIM SANTOS",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 918,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "ORLANDO LEITE VIANNA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 919,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "RAYMUNDO CANDIDO TEIXEIRA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 920,
+            "Curso": "MONITOR",
+            "Posto": "",
+            "Nome": "ROBERTO MANGUEIRA DINIZ",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 921,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "ROQUE RODRIGUES DIAS",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 922,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "RUY BARRA DE SOUZA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 923,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "SEBASTIAO BERQUO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 924,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "SERVULO SEBASTIÃO PEIXOTO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 925,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "SEVERINO RAMOS DA SILVA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 926,
+            "Curso": "MONITOR",
+            "Posto": "3º SARGENTO",
+            "Nome": "WILSON DA SILVEIRA WASCONCELOS",
+            "Arma": "FPPA"
+        },
+        {
+            "NrCP": 927,
+            "Curso": "MONITOR",
+            "Posto": "2º SARGENTO",
+            "Nome": "WILSON LIMA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 928,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "ADEMAR DOS SANTOS PIMENTEL",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 929,
+            "Curso": "INSTRUTOR",
+            "Posto": "ASPIRANTE",
+            "Nome": "ALCIDES JOSÉ DA COSTA",
+            "Arma": "PMDF"
+        },
+        {
+            "NrCP": 930,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "ARALDO LOPES FONTENELLE BEZERRIL",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 931,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "ARGENS DO MONTE LIMA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 932,
+            "Curso": "INSTRUTOR",
+            "Posto": "2º TENENTE",
+            "Nome": "AUGUSTO DE MOURA DINIZ",
+            "Arma": "MARINHA"
+        },
+        {
+            "NrCP": 933,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "AYRTON SALGUEIRO DE FREITAS",
+            "Arma": "ARTILHARIA"
+        },
+        {
+            "NrCP": 934,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "CRESO MOUTINHO DA COSTA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 935,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "DANILLO DA CUNHA NUNES",
+            "Arma": "CAVALARIA"
+        },
+        {
+            "NrCP": 936,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "ILTON DA FONTOURA",
+            "Arma": "ARTILHARIA"
+        },
+        {
+            "NrCP": 937,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "IVO AUGUSTO MACEDO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 938,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "JAGUARÉ TEIXEIRA",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 939,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "JOÃO ALBERTO DALE COUTINHO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 940,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "LEONTINO NUNES DE ANDRADE",
+            "Arma": "ARTILHARIA"
+        },
+        {
+            "NrCP": 941,
+            "Curso": "INSTRUTOR",
+            "Posto": "2º TENENTE",
+            "Nome": "MAXIMILIANO HANKE",
+            "Arma": "BMRGS"
+        },
+        {
+            "NrCP": 942,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "MILTON FERNANDES DE MELLO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 943,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "MOYSES PORFIRIO SAMPAIO",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 944,
+            "Curso": "INSTRUTOR",
+            "Posto": "2º TENENTE",
+            "Nome": "NELSON FUTURO ROCHA",
+            "Arma": "BMRGS"
+        },
+        {
+            "NrCP": 945,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "ROBERTO GONÇALVES",
+            "Arma": "CAVALARIA"
+        },
+        {
+            "NrCP": 946,
+            "Curso": "INSTRUTOR",
+            "Posto": "CIVIL",
+            "Nome": "SILAS RIBEIRO MORAES",
+            "Arma": "───-"
+        },
+        {
+            "NrCP": 947,
+            "Curso": "INSTRUTOR",
+            "Posto": "1º TENENTE",
+            "Nome": "WALTER DE MENEZES PAES",
+            "Arma": "INFANTARIA"
+        },
+        {
+            "NrCP": 948,
+            "Curso": "ESPECIALIZAÇÃO",
+            "Posto": "CIVIL",
+            "Nome": "AFFONSO MOUTINHO RIBEIRO DA COSTA",
+            "Arma": "───-"
+        },
+        {
+            "NrCP": 949,
+            "Curso": "ESPECIALIZAÇÃO",
+            "Posto": "1º TENENTE",
+            "Nome": "ANTONIO PAULINO TEIXEIRA DE FREITAS",
+            "Arma": "MÉDICO"
+        },
+        {
+            "NrCP": 950,
+            "Curso": "ESPECIALIZAÇÃO",
+            "Posto": "1º TENENTE",
+            "Nome": "ARMANDO BERGAMINI",
+            "Arma": "FPSP"
+        },
+        {
+            "NrCP": 951,
+            "Curso": "ESPECIALIZAÇÃO",
+            "Posto": "1º TENENTE",
+            "Nome": "JOSÉ PIO DA ROCHA",
+            "Arma": "MÉDICO"
+        },
+        {
+            "NrCP": 952,
+            "Curso": "ESPECIALIZAÇÃO",
+            "Posto": "1º TENENTE",
+            "Nome": "ORIOT BENITES DE CARVALHO LIMA",
+            "Arma": "MÉDICO"
+        },
+        {
+            "NrCP": 953,
+            "Curso": "ESPECIALIZAÇÃO",
+            "Posto": "CIVIL",
+            "Nome": "SERAPHIM PAULO WERNER",
+            "Arma": "───-"
+        }
+    ]
+}
