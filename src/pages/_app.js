@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }) {
       <script src="js/jquery.min.js" type="text/javascript" async/>
       <Script src="/js/template.js" type="text/javascript" />
       <Script src="js/jquery-noconflict.js" type="text/javascript" />
-      <Script src="http://barra.brasil.gov.br/barra.js?cor=verde" type="text/javascript" />
+      <Script src="https://barra.brasil.gov.br/barra.js?cor=verde" type="text/javascript" />
     </div>
   </>
 }
