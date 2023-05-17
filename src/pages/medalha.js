@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image'
 
 export default function Home() {
   return <>
@@ -10,7 +11,7 @@ export default function Home() {
       <span className="hide">Início do conteúdo da página</span>
       <h1 className="documentFirstHeading">MEDALHA MÉRITO DESPORTIVO AsEFEx</h1>
       <div className="imglateral">
-        <img src="images/medalha.png" />
+        <Image src="/images/medalha.png" alt="Medalha Mérito Desportivo AsEFEx" style={{minWidth: 160, height: 'auto', width: 'auto'}} width={500} height={500}/>
       </div>
 
       <p>A Medalha Mérito Desportivo AsEFEx, é a manifestação de apreço e de gratidão

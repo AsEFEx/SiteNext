@@ -1,3 +1,4 @@
+import Image from "next/image"
 import Link from "next/link"
 import { Carousel } from "react-bootstrap"
 
@@ -7,7 +8,7 @@ export default function Garbage() {
       <Carousel>
          <Carousel.Item>
             <Link target="_blank" href="https://pt.calameo.com/read/006435344567665a09633?authid=e15gBQsiCu7E">
-               <img alt="Informativo AsEFEx" src="images/carrossel0.png" />
+               <Image alt="Informativo AsEFEx" src="/images/carrossel0.png" width={1000} height={1000}/>
             </Link>
             <div className="galleria-info">
                <div className="galleria-info-text">
@@ -23,7 +24,7 @@ export default function Garbage() {
 
          <Carousel.Item>
             <Link target="_blank" href="https://asefex.com.br/diretoria-executiva">
-               <img alt="Diretoria Executiva AsEFEx" src="images/carrossel1.png" />
+               <Image alt="Diretoria Executiva AsEFEx" src="/images/carrossel1.png" width={1000} height={1000}/>
             </Link>
             <div className="galleria-info">
                <div className="galleria-info-text">
@@ -39,7 +40,7 @@ export default function Garbage() {
 
          <Carousel.Item>
             <Link target="_blank" href="http://www.esefex.eb.mil.br/ultimas-noticias/294-esefex-100-anos">
-               <img alt="Encontro Nacional dos Calções Pretos 2022" src="images/carrossel2.png" />
+               <Image alt="Encontro Nacional dos Calções Pretos 2022" src="/images/carrossel2.png" width={1000} height={1000}/>
             </Link>
             <div className="galleria-info">
                <div className="galleria-info-text">
@@ -55,7 +56,7 @@ export default function Garbage() {
 
          <Carousel.Item>
             <Link target="_blank" href="https://pt.calameo.com/read/006435344e3ff145ebcc5?authid=IcwOmLTWn2AD">
-               <img alt="Revista AsEFEx 115" src="images/carrossel3.png" />
+               <Image alt="Revista AsEFEx 115" src="/images/carrossel3.png" width={1000} height={1000}/>
             </Link>
             <div className="galleria-info">
                <div className="galleria-info-text">
@@ -71,7 +72,7 @@ export default function Garbage() {
 
          <Carousel.Item>
             <Link target="_blank" href="https://pt.calameo.com/read/006435344f848ad6cf41a?authid=s9AUDEJk0ONc">
-               <img alt="Informativo AsEFEx" src="images/carrossel4.png" />
+               <Image alt="Informativo AsEFEx" src="/images/carrossel4.png" width={1000} height={1000}/>
             </Link>
             <div className="galleria-info">
                <div className="galleria-info-text">

@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Home() {
@@ -12,7 +13,8 @@ export default function Home() {
       <h1 className="documentFirstHeading">CORONEL NOALDO: UM GUERREIRO, UM EXEMPLO</h1>
 
       <div className="imglateral">
-        <img src="images/coronel-noaldo.png" />
+        <Image src="/images/coronel-noaldo.png" alt="Foto do Coronel Noaldo" style={{width: 'auto', height: 'auto'}} width={275} height={300}/>
+        <br></br>
         <em>Coronel Noaldo</em>
       </div>
 
@@ -50,7 +52,8 @@ export default function Home() {
       <p>Cel Noaldo, receba nossa melhor continência: “AsEFEx Sentido! Apresentar Armas!”</p>
 
       <div className="imglateral">
-        <img src="images/noaldoebolsonaro.png" />
+        <Image src="/images/noaldoebolsonaro.png" alt="Coronel Noaldo com o então Presidente Jair Bolsonaro" style={{width: 'auto', height: 'auto'}} width={320} height={320}/>
+        <br></br>
         <em>Cel Noaldo condecorou o recém-eleito Presidente Jair Bolsonaro com a Medalha do Mérito AsEFEx, durante o Encontro dos Calções Pretos, em 2018. </em>
       </div>
 

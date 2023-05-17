@@ -23,10 +23,10 @@ export default function Home() {
       <h2>Edições 2022</h2>
       <div className="container">
         <div className="row">
-          <Card title="Nr 117" image="images/ed117.jpg" description="Janeiro a Março de 2022"
+          <Card title="Nr 117" image="/images/ed117.jpg" alt="Revista Edição 117" description="Janeiro a Março de 2022"
             route="https://pt.calameo.com/read/006435344567665a09633?authid=e15gBQsiCu7E" />
 
-          {/* <Card title="Nr ___" image="images/______.jpg" description="____ a ____ de 2022"
+          {/* <Card title="Nr ___" image="/images/______.jpg" alt="Revista Edição ___ " description="____ a ____ de 2022"
                         route="https://______.com"/> */}
         </div>
       </div>
@@ -34,18 +34,18 @@ export default function Home() {
       <h2>Edições 2021</h2>
       <div className="container">
         <div className="row">
-          <Card title="Nr 116" image="images/ed116.jpg" description="Outubro a Dezembro de 2021"
+          <Card title="Nr 116" image="/images/ed116.jpg" alt="Revista Edição 116" description="Outubro a Dezembro de 2021"
             route="https://pt.calameo.com/read/006435344e3ff145ebcc5?authid=IcwOmLTWn2AD" />
 
-          <Card title="Nr 115" image="images/ed115.jpg" description="Julho a Setembro de 2021"
+          <Card title="Nr 115" image="/images/ed115.jpg" alt="Revista Edição 115" description="Julho a Setembro de 2021"
             route="https://pt.calameo.com/read/006435344f848ad6cf41a?authid=s9AUDEJk0ONc" />
         </div>
 
         <div className="row">
-          <Card title="Nr 114" image="images/ed114.jpg" description="Abril a Junho de 2021"
+          <Card title="Nr 114" image="/images/ed114.jpg" alt="Revista Edição 114" description="Abril a Junho de 2021"
             route="https://pt.calameo.com/read/006435344d3a13a215c69?authid=G7WRiQYJICNf" />
 
-          <Card title="Nr 113" image="images/ed113.jpg" description="Dezembro de 2020"
+          <Card title="Nr 113" image="/images/ed113.jpg" alt="Revista Edição 113" description="Dezembro de 2020"
             route="https://pt.calameo.com/read/006435344df915ae2ecbd?authid=PiQe6zOM9Ccw" />
         </div>
       </div>
@@ -54,19 +54,19 @@ export default function Home() {
       <h2>Edições 2020</h2>
       <div className="container">
         <div className="row">
-          <Card title="Nr 112" image="images/ed112.jpg" description="Novembro a Dezembro de 2020"
+          <Card title="Nr 112" image="/images/ed112.jpg" alt="Revista Edição 112" description="Novembro a Dezembro de 2020"
             route="https://pt.calameo.com/read/00643534419b2d0f41807?authid=4GXev9E6EqlB" />
 
-          <Card title="Nr 111" image="images/ed111.jpg" description="Setembro a Outubro de 2020"
+          <Card title="Nr 111" image="/images/ed111.jpg" alt="Revista Edição 111" description="Setembro a Outubro de 2020"
             route="https://pt.calameo.com/read/006435344e04bab2bf544?authid=lZcaNNaCa7AH" />
         </div>
 
 
         <div className="row">
-          <Card title="Nr 110" image="images/ed110.jpg" description="Julho a Agosto de 2020"
+          <Card title="Nr 110" image="/images/ed110.jpg" alt="Revista Edição 110" description="Julho a Agosto de 2020"
             route="https://pt.calameo.com/read/0064353445b120d4cc41d?authid=y3M87gniA4Ak" />
 
-          <Card title="Nr 109" image="images/ed109.jpg" description="Dezembro de 2019 a Junho de 2020"
+          <Card title="Nr 109" image="/images/ed109.jpg" alt="Revista Edição 109" description="Dezembro de 2019 a Junho de 2020"
             route="https://pt.calameo.com/read/006435344f44950abb34f?authid=y35kiMz3yHMJ" />
         </div>
 

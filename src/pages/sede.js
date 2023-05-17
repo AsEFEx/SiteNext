@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Home() {
@@ -18,7 +19,7 @@ export default function Home() {
               <p>A sede da AsEFEx - Associação dos Ex-Alunos e dos Amigos da Escola de Educação Física do Exército fica na Fortaleza de São João, no bairro das Urca, no Rio de Janeiro-RJ, em dependências sob cessão do Centro de Capacitação Física do Exército Brasileiro.</p>
               <p>Para saber mais sobre a localização da AsEFEx, <Link target="_blank" style={{ color: '#0088CC' }} href="https://goo.gl/maps/N53Y6ugWhxis7Lmm7">clique aqui </Link>.</p>
             </div>
-            <div className="span8"><object width={480} height={246}> <img src="images/local.png" /></object></div>
+            <div className="span8"><object width={480} height={246}> <Image src="/images/local.png" alt="Mapa do local da sede da AsEFEx" width={500} height={500}/></object></div>
           </section>
         </div>
 

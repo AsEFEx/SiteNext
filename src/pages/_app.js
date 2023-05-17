@@ -42,6 +42,9 @@ function MyApp({ Component, pageProps }) {
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"
       />
+      <script src="js/jquery.min.js" type="text/javascript" async/>
+      <Script src="/js/template.js" type="text/javascript" />
+      <Script src="js/jquery-noconflict.js" type="text/javascript" />
       <Script src="http://barra.brasil.gov.br/barra.js?cor=verde" type="text/javascript" />
     </div>
   </>

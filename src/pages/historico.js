@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Home() {
@@ -10,7 +11,7 @@ export default function Home() {
     <section id="content-section">
       <span className="hide">Início do conteúdo da página</span>
       <h1 className="documentFirstHeading">Breve Histórico Sobre a Criação da AsEFEx</h1>
-      <img src="images/historico.png" />
+      <Image src="/images/historico.png" alt="Primeira Edição Histórica do AsEFEx Notícias" width={1000} height={200}/>
       <span className="caption"><em>Reprodução da Primeira Edição Histórica do AsEFEx
         Notícias</em></span>
       <p>

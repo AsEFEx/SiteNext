@@ -15,9 +15,9 @@ export default function Home() {
       <p>Siga-nos nas redes sociais:</p>
       <div className="container">
         <div className="row">
-          <Card title="Facebook" image="images/facebook.png"
+          <Card title="Facebook" image="/images/facebook.png" alt="Facebook"
             route="https://www.facebook.com/asefex1990_desportoexercito-103120284947772/" />
-          <Card title="Instagram" image="images/instagram.png"
+          <Card title="Instagram" image="/images/instagram.png" alt=""
             route="https://www.instagram.com/asefex1990_desportoexercito/" />
         </div>
       </div>
