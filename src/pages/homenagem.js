@@ -57,7 +57,7 @@ export default function Home() {
         <em>Cel Noaldo condecorou o recém-eleito Presidente Jair Bolsonaro com a Medalha do Mérito AsEFEx, durante o Encontro dos Calções Pretos, em 2018. </em>
       </div>
 
-      <p>Confira essa e outras matérias na <Link style={{ color: '#0088CC' }} href="https://pt.calameo.com/read/006435344df915ae2ecbd?authid=PiQe6zOM9Ccw">Revista no 113 da AsEFEx</Link></p>
+      <p>Confira essa e outras matérias na <Link target="_blank" style={{ color: '#0088CC' }} href="https://pt.calameo.com/read/006435344df915ae2ecbd?authid=PiQe6zOM9Ccw">Revista no 113 da AsEFEx</Link></p>
 
       <span className="hide">Fim do conteúdo da página</span>
     </section>

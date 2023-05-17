@@ -11,7 +11,7 @@ export default function Home() {
       <span className="hide">Início do conteúdo da página</span>
       <h1 className="documentFirstHeading">DOWNLOADS</h1>
       <ul className="lista">
-        <li><Link target="_blank" href="documentos/regimento-interno.pdf">Estatuto</Link></li>
+        <li><Link target="_blank" href="/documentos/regimento-interno.pdf">Estatuto</Link></li>
       </ul>
       <span className="hide">Fim do conteúdo da página</span>
     </section>

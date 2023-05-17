@@ -46,7 +46,7 @@ export default function Home() {
         dos Desportos, da Medicina Esportiva, do Lazer e do Patrimônio Histórico, Artístico
         e Cultural.</p>
       <p>&nbsp; VII – Promover atividades esportivas, recreativas e sociais.</p>
-      <p><em>Para ler o restante do estatuto, clique <Link style={{ color: '#0088CC' }} href="documentos/estatuto.pdf">aqui</Link>.</em></p>
+      <p><em>Para ler o restante do estatuto, clique <Link target="_blank" style={{ color: '#0088CC' }} href="/documentos/estatuto.pdf">aqui</Link>.</em></p>
       <h1>Regimento Interno</h1>
       <h3>Capítulo-I Da Finalidade, do Objetivo, do Foro, da Obediência</h3>
       <h4>Secão I- Da Finalidade</h4>
@@ -72,7 +72,7 @@ export default function Home() {
         associados, todos e quaisquer praticantes de qualquer religião, credo político e
         preferência de clubes. Não havendo qualquer tipo de discriminação de religião, raça,
         credo político ou desportivo. </p>
-      <p><em>Para conferir o restante do regimento interno clique <Link style={{ color: '#0088CC' }} href="documentos/regimento-interno.pdf">aqui</Link>.</em></p>
+      <p><em>Para conferir o restante do regimento interno clique <Link target="_blank" style={{ color: '#0088CC' }} href="/documentos/regimento-interno.pdf">aqui</Link>.</em></p>
       <span className="hide">Fim do conteúdo da página</span>
     </section>
   </>

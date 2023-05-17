@@ -2,81 +2,63 @@ import { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 // import axios from 'axios'
+// SUCCESFULL ALERT POPS UP WHEN FORM IS SUBMITTED, HOWEVER IT IS NOT ACTUALLY SENT (MANY BAD PATTERNS IN THIS CODE)
 
 export default function Home() {
   const [state, setState] = useState({
-    nome: undefined,
-    email: undefined,
-    // assunto: 'escolha',
-    texto: undefined,
+    nome: "",
+    email: "",
+    assunto: "Escolha uma opção....",
+    texto: "",
     envio: false,
-    campos: false
+    camposWarning: false
   })
 
   const [result, setResult] = useState(null);
 
   const onInputChange = event => {
     const { name, value } = event.target;
-
     setState({
       ...state,
       [name]: value
     })
   }
 
-  // const mudarAssunto = (e) => {
-  //     const { value } = e.target;
-  //     setState({
-  //         ...state,
-  //         assunto: value
-  //     });
-  // }
+  const mudarAssunto = (e) => {
+    setState({
+      ...state,
+      assunto: e.target.value
+    });
+  }
 
   const formSubmit = (e) => {
     e.preventDefault()
-
-    if (state.nome != undefined && state.email != undefined && state.texto != undefined) {
+    if (state.nome != "" && state.email != "" && state.assunto != "Escolha uma opção...." && state.texto != "") {
       const dataToSubmit = {
         nome: state.nome,
-        // assunto: state.assunto,
+        assunto: state.assunto,
         email: state.email,
         texto: state.texto,
       }
-
-      axios.post("/api/sendMail", dataToSubmit)
-      q
+      // axios.post("/api/sendMail", dataToSubmit)
       resetForm()
-
     }
     else {
-
       setState({
-        campos: true,
-        nome: state.nome,
-        // assunto: state.assunto,
-        email: state.email,
-        texto: state.texto,
+        ...state,
+        camposWarning: true,
         envio: false
       })
-
     }
   }
 
   const resetForm = () => {
     setState({
-      nome: '',
-      email: '',
-      // assunto: 'escolha',
-      texto: '',
-      envio: true,
-      campos: false
+      nome: "", email: "", assunto: "Escolha uma opção....", texto: "", envio: true, camposWarning: false
     })
     setTimeout(() => {
       setState({
-        envio: false,
-        nome: undefined,
-        email: undefined,
-        texto: undefined
+        nome: "", email: "", assunto: "Escolha uma opção....", texto: "", envio: true, camposWarning: false, envio: false
       })
     }, 3000)
   }
@@ -87,9 +69,10 @@ export default function Home() {
     </Head>
 
     <section id="content-section">
+      <span className="hide">Início do conteúdo da página</span>
       <div className="module module-box-01">
         <div className="header">
-          <h1 className="titulo-box"><strong>Fale Conosco</strong></h1>
+          <h2 className="titulo-box"><strong>Fale Conosco</strong></h2>
           <p><strong>Envie uma mensagem e receba a resposta por e-mail:</strong></p>
         </div>
 
@@ -108,7 +91,7 @@ export default function Home() {
           </div>
 
           <div className="singleItem">
-            <label htmlFor="email">e-mail:</label>
+            <label htmlFor="email">E-mail:</label>
             <input
               type="text"
               name="email"
@@ -120,15 +103,15 @@ export default function Home() {
             />
           </div>
 
-          {/* <div className="singleItem">
-                        <label htmlFor="assunto">Assunto:</label>
-                        <select name="assunto" id="assunto" className="custom-select" defaultValue="escolha" onChange={mudarAssunto}>
-                            <option selected value="escolha">Escolha uma opção....</option>
-                            <option value="Dúvida">Dúvida</option>
-                            <option value="Pagamento">Pagamento</option>
-                            <option value="Proposta de Amigo">Proposta de Amigo</option>
-                        </select>
-                    </div> */}
+          <div className="singleItem">
+            <label htmlFor="assunto">Assunto:</label>
+            <select name="assunto" id="assunto" className="custom-select" defaultValue="escolha" onChange={mudarAssunto}>
+              <option defaultValue="escolha">Escolha uma opção....</option>
+              <option value="Dúvida">Dúvida</option>
+              <option value="Pagamento">Pagamento</option>
+              <option value="Proposta de Amigo">Proposta de Amigo</option>
+            </select>
+          </div>
 
           <div className="textArea singleItem">
             <label htmlFor="texto">Texto:</label>
@@ -145,7 +128,7 @@ export default function Home() {
           <div className={state.envio ? 'alert alert-success' : 'noAlert1'}>
             <strong>Mensagem Enviada</strong>
           </div>
-          <div className={state.campos ? 'alert alert-danger' : 'noAlert2'}>
+          <div className={state.camposWarning ? 'alert alert-danger' : 'noAlert2'}>
             <strong>Todos os campos devem ser preenchidos!</strong>
           </div>
           <div>

@@ -65,9 +65,9 @@ export default function Home() {
         propósito de UNIR SEMPRE OS “CALÇÕES PRETOS”, seja por todo o Brasil e fora dele
         também.</strong></em> </p>
       <p>Ainda no ano de 1990, o Presidende da AsEFEx, Coronel Osires Cardoso Labatut Rodrigues,
-        escreveu o artigo <Link href="https://revistadeeducacaofisica.emnuvens.com.br/revista/article/view/2572/2748">“Surge
+        escreveu o artigo <Link style={{ color: '#0088CC' }} target="_blank" href="https://revistadeeducacaofisica.emnuvens.com.br/revista/article/view/2572/2748">“Surge
           a AsEFEx - Uma Aliada Leal”</Link>, deixando o registro histórico da criação da
-        Associação na <Link href="https://www.revistadeeducacaofisica.com/">Revista de Educação
+        Associação na <Link style={{ color: '#0088CC' }} target="_blank" href="https://www.revistadeeducacaofisica.com/">Revista de Educação
           Física</Link>, relevante publicação na área da Educação Física no Brasil, desde 1932.
       </p>
       <span className="hide">Fim do conteúdo da página</span>

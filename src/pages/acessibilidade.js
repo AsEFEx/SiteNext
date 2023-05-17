@@ -40,11 +40,11 @@ export default function Acessibilidade() {
       </h2>
 
       <ul>
-        <li><Link href="http://www.planalto.gov.br/ccivil_03/_Ato2004-2006/2004/Decreto/D5296.htm" target="_self" title="">Decreto nº 5.296 de 02 de dezembro de 2004 </Link>(link externo)</li>
-        <li><Link href="http://www.planalto.gov.br/ccivil_03/_ato2007-2010/2009/decreto/d6949.htm" target="_self" title="">Decreto nº 6.949, de 25 de agosto de 2009</Link> (link externo) - Promulga a Convenção Internacional sobre os Direitos das Pessoas com Deficiência e seu Protocolo Facultativo, assinados em Nova York, em 30 de março de 2007.</li>
-        <li><Link href="http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/Decreto/D7724.htm" target="_self" title="">Decreto nº 7.724, de 16 de Maio de 2012</Link> (link externo) - Regulamenta a Lei No 12.527, que dispõe sobre o acesso a informações.</li>
-        <li><Link href="http://www.governoeletronico.gov.br/acoes-e-projetos/e-MAG" target="_self" title="">Modelo de Acessibilidade de Governo Eletrônico</Link> (link externo) </li>
-        <li><Link href="http://www.governoeletronico.gov.br/biblioteca/arquivos/portaria-no-03-de-07-05-2007" target="_self" title="">Portaria nº 03, de 07 de Maio de 2007 - formato .pdf (35,5Kb)</Link> (link externo) - Institucionaliza o Modelo de Acessibilidade em Governo Eletrônico – e-MAG.</li>
+        <li><Link target="_blank" href="http://www.planalto.gov.br/ccivil_03/_Ato2004-2006/2004/Decreto/D5296.htm" title="">Decreto nº 5.296 de 02 de dezembro de 2004 </Link>(link externo)</li>
+        <li><Link target="_blank" href="http://www.planalto.gov.br/ccivil_03/_ato2007-2010/2009/decreto/d6949.htm" title="">Decreto nº 6.949, de 25 de agosto de 2009</Link> (link externo) - Promulga a Convenção Internacional sobre os Direitos das Pessoas com Deficiência e seu Protocolo Facultativo, assinados em Nova York, em 30 de março de 2007.</li>
+        <li><Link target="_blank" href="http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/Decreto/D7724.htm" title="">Decreto nº 7.724, de 16 de Maio de 2012</Link> (link externo) - Regulamenta a Lei No 12.527, que dispõe sobre o acesso a informações.</li>
+        <li><Link target="_blank" href="http://www.governoeletronico.gov.br/acoes-e-projetos/e-MAG" title="">Modelo de Acessibilidade de Governo Eletrônico</Link> (link externo) </li>
+        <li><Link target="_blank" href="http://www.governoeletronico.gov.br/biblioteca/arquivos/portaria-no-03-de-07-05-2007" title="">Portaria nº 03, de 07 de Maio de 2007 - formato .pdf (35,5Kb)</Link> (link externo) - Institucionaliza o Modelo de Acessibilidade em Governo Eletrônico – e-MAG.</li>
       </ul>
       <h2>Dúvidas, sugestões e críticas:</h2>
       <p>
@@ -52,8 +52,8 @@ export default function Acessibilidade() {
       </p>
       <h2>Dicas, links e recursos úteis: </h2>
       <ul>
-        <li><Link href="http://acessibilidadelegal.com/" target="_self" title="">Acessibilidade Legal</Link> (link externo)</li>
-        <li><Link href="http://acessodigital.net/links.html" target="_self" title="">Acesso Digital</Link> (link externo)</li>
+        <li><Link target="_blank" href="http://acessibilidadelegal.com/" title="">Acessibilidade Legal</Link> (link externo)</li>
+        <li><Link target="_blank" href="http://acessodigital.net/links.html" title="">Acesso Digital</Link> (link externo)</li>
       </ul>
       <span className="hide">Fim do conteúdo da página</span>
     </section>
