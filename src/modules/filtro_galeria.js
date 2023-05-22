@@ -6,8 +6,8 @@ function Filtro() {
   const [showTabela, setShowTabela] = useState(false)
   const [table, setTable] = useState()
   const [state, setState] = useState({
-    decada: "escolha",
-    ano: "escolha",
+    decada: "Escolha uma década....",
+    ano: "Escolha um ano....",
     existeDados: true,
     preenchido: true
   });
@@ -25,7 +25,7 @@ function Filtro() {
   const handleSearch = () => {
     const anoSelecionado = Number(state.decada) + Number(state.ano)
 
-    if ((state.ano == "escolha") || (state.decada == "escolha")) {
+    if ((state.ano == "Escolha um ano....") || (state.decada == "Escolha uma década....")) {
       setState({ ...state, existeDados: true, preenchido: false })
     }
     else if (!AnosNaGaleria.Anos.includes(anoSelecionado)) {
@@ -56,7 +56,7 @@ function Filtro() {
                 <div style={{ width: "auto" }} className="form-group span5">
                   <label htmlFor="decada">Década:</label>
                   <select className="form-control" id="decada" onChange={updateDecada}>
-                    <option defaultValue="escolha">Escolha uma década....</option>
+                    <option defaultValue="Escolha uma década....">Escolha uma década....</option>
                     <option value="1920">1920</option>
                     <option value="1930">1930</option>
                     <option value="1940">1940</option>
@@ -73,7 +73,7 @@ function Filtro() {
                 <div style={{ width: "auto" }} className="form-group span5">
                   <label htmlFor="ano">Ano:</label>
                   <select className="form-control" id="ano" onChange={updateAno}>
-                    <option defaultValue="escolha">Escolha um ano....</option>
+                    <option defaultValue="Escolha um ano....">Escolha um ano....</option>
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
