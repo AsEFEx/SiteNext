@@ -8,7 +8,7 @@ export default function Garbage() {
       <Carousel>
          <Carousel.Item>
             <Link target="_blank" href="https://www.asefex.com.br/">
-               <Image alt="Confraternização AsEFEx" src="/images/carrossel0.png" width={1000} height={1000} priority={true}/>
+               <Image alt="Confraternização AsEFEx" src="/images/carrossel0.jpg" width={1000} height={1000} priority={true}/>
             </Link>
             <div className="galleria-info">
                <div className="galleria-info-text">
