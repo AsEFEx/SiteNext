@@ -8,14 +8,14 @@ export default function Garbage() {
       <Carousel>
          <Carousel.Item>
             <Link target="_blank" href="https://www.asefex.com.br/">
-               <Image alt="IConfraternização AsEFEx" src="/images/carrossel0.png" width={1000} height={1000} priority={true}/>
+               <Image alt="Confraternização AsEFEx" src="/images/carrossel0.png" width={1000} height={1000} priority={true}/>
             </Link>
             <div className="galleria-info">
                <div className="galleria-info-text">
                   <div className="galleria-info-title">
                      <h3><Link target="_blank" href="https://www.asefex.com.br/">Confraternização AsEFEx - 1o SET 2023</Link></h3>
                   </div>
-                  <div className="galleria-info-description">Venha se confraternizar com a cominudade do Calção Preto!!</div>
+                  <div className="galleria-info-description">Venha se confraternizar com a comunidade do Calção Preto!!</div>
                   {/* <div data-index={0} style={{ display: 'block' }} className="rights">
                      Nome do autor da imagem</div> */}
                </div>
