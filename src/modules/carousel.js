@@ -7,15 +7,15 @@ export default function Garbage() {
    return <div className="carousel-inner">
       <Carousel>
          <Carousel.Item>
-            <Link target="_blank" href="http://www.esefex.eb.mil.br/ultimas-noticias/383-2-aulao-desportivo-da-esefex">
-               <Image alt="2º Aulão Desportivo da EsEFEx - 2023" src="/images/carrossel0.png" width={1000} height={1000} priority={true}/>
+            <Link target="_blank" href="https://www.asefex.com.br/">
+               <Image alt="Confraternização AsEFEx" src="/images/carrossel0.jpg" width={1000} height={1000} priority={true}/>
             </Link>
             <div className="galleria-info">
                <div className="galleria-info-text">
                   <div className="galleria-info-title">
-                     <h3><Link target="_blank" href="http://www.esefex.eb.mil.br/ultimas-noticias/383-2-aulao-desportivo-da-esefex">2º Aulão Desportivo da EsEFEx - 2023</Link></h3>
+                     <h3><Link target="_blank" href="https://www.asefex.com.br/">Confraternização AsEFEx - 1o SET 2023</Link></h3>
                   </div>
-                  <div className="galleria-info-description">Venha se divertir com a família no 2º Aulão Desportivo da EsEFEx - 5 de julho de 2023</div>
+                  <div className="galleria-info-description">Venha se confraternizar com a comunidade do Calção Preto!!</div>
                   {/* <div data-index={0} style={{ display: 'block' }} className="rights">
                      Nome do autor da imagem</div> */}
                </div>
@@ -24,7 +24,7 @@ export default function Garbage() {
 
          <Carousel.Item>
             <Link target="_blank" href="https://www.calameo.com/read/00643534438982bb28291">
-               <Image alt="Diretoria Executiva AsEFEx" src="/images/carrossel1.png" width={1000} height={1000} priority={true}/>
+               <Image alt="Revista AsEFEx 121" src="/images/carrossel1.png" width={1000} height={1000} priority={true}/>
             </Link>
             <div className="galleria-info">
                <div className="galleria-info-text">
@@ -40,7 +40,7 @@ export default function Garbage() {
 
          <Carousel.Item>
             <Link target="_blank" href="https://fpcs.edu.br/especializacao-em-educacao-fisica-e-saude-da-promocao-de-saude-a-internacao/">
-               <Image alt="Informativo AsEFEx" src="/images/carrossel2.png" width={1000} height={1000} priority={true}/>
+               <Image alt="Curso Ed Física e Saúde FPCS 2023" src="/images/carrossel2.png" width={1000} height={1000} priority={true}/>
             </Link>
             <div className="galleria-info">
                <div className="galleria-info-text">
@@ -56,7 +56,7 @@ export default function Garbage() {
          
          <Carousel.Item>
             <Link target="_blank" href="https://pt.calameo.com/read/006435344e3ff145ebcc5?authid=IcwOmLTWn2AD">
-               <Image alt="Revista AsEFEx 115" src="/images/carrossel3.png" width={1000} height={1000} priority={true}/>
+               <Image alt="Revista AsEFEx 116" src="/images/carrossel3.png" width={1000} height={1000} priority={true}/>
             </Link>
             <div className="galleria-info">
                <div className="galleria-info-text">
@@ -72,7 +72,7 @@ export default function Garbage() {
 
          <Carousel.Item>
             <Link target="_blank" href="https://asefex.com.br/diretoria-executiva">
-               <Image alt="Informativo AsEFEx" src="/images/carrossel4.png" width={1000} height={1000} priority={true}/>
+               <Image alt="Diretoria AsEFEx 2022 - 2023" src="/images/carrossel4.png" width={1000} height={1000} priority={true}/>
             </Link>
             <div className="galleria-info">
                <div className="galleria-info-text">
