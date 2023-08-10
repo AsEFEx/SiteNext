@@ -7,15 +7,15 @@ export default function Garbage() {
    return <div className="carousel-inner">
       <Carousel>
          <Carousel.Item>
-            <Link target="_blank" href="http://www.esefex.eb.mil.br/ultimas-noticias/383-2-aulao-desportivo-da-esefex">
-               <Image alt="2º Aulão Desportivo da EsEFEx - 2023" src="/images/carrossel0.png" width={1000} height={1000} priority={true}/>
+            <Link target="_blank" href="http://www.asefex.com.br">
+               <Image alt="Currasco de confraternização AsEFEx - 1o SET 2023" src="/images/carrossel0.png" width={1000} height={1000} priority={true}/>
             </Link>
             <div className="galleria-info">
                <div className="galleria-info-text">
                   <div className="galleria-info-title">
-                     <h3><Link target="_blank" href="http://www.esefex.eb.mil.br/ultimas-noticias/383-2-aulao-desportivo-da-esefex">2º Aulão Desportivo da EsEFEx - 2023</Link></h3>
+                     <h3><Link target="_blank" href="http://www.asefex.com.br">Currasco de confraternização AsEFEx - 1o SET 2023</Link></h3>
                   </div>
-                  <div className="galleria-info-description">Venha se divertir com a família no 2º Aulão Desportivo da EsEFEx - 5 de julho de 2023</div>
+                  <div className="galleria-info-description">Venha se confraternizar com a Comunidade do Calção Preto - 1o SET 2023</div>
                   {/* <div data-index={0} style={{ display: 'block' }} className="rights">
                      Nome do autor da imagem</div> */}
                </div>
