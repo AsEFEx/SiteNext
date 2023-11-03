@@ -1,0 +1,36 @@
+.chevron {
+	border-radius: 50%;
+	width: 24px;
+	height: 24px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.chevron:hover {
+	border-radius: 50%;
+	background: #e0e0e0;
+	box-shadow: inset 16px 16px 38px #d5d5d5, inset -16px -16px 38px #ebebeb;
+	cursor: pointer;
+}
+.dadoRow {
+	height: "100px";
+	max-width: "70vw";
+	display: none;
+}
+
+.dado {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.input {
+	display: flex;
+	justify-content: flex-start;
+	margin-top: 6px;
+	width: 30%;
+	font-size: 14px;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	border-radius: 4px;
+	padding: 2px;
+}

@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import TabelaCalcaoPreto from '@/components/TabelaCalcaoPreto'
-import AnosNaGaleria from '../../assets/AnosGaleria.json'
 
 function Filtro() {
   const [showTabela, setShowTabela] = useState(false)
@@ -28,9 +27,6 @@ function Filtro() {
     if ((state.ano == "Escolha um ano....") || (state.decada == "Escolha uma década....")) {
       setState({ ...state, existeDados: true, preenchido: false })
     }
-    else if (!AnosNaGaleria.Anos.includes(anoSelecionado)) {
-      setState({ ...state, existeDados: false, preenchido: true })
-    }
     else {
       setState({ ...state, existeDados: true, preenchido: true })
       getTableFromAPI(anoSelecionado)
@@ -38,20 +34,22 @@ function Filtro() {
   }
 
   async function getTableFromAPI(ano) {
-    let response = await fetch("/api/galeria-ano/" + ano)
+    let response = await fetch("/api/consultaBD/" + ano)
     let data = await response.json();
-    setTable(JSON.parse(data))
+    if(data.length === 0){
+      setState({ ...state, existeDados: false, preenchido: true })
+      return
+    }
+    setTable(data)
     setShowTabela(true)
   }
 
-  return (
-    <div id="conteudo">
+  return <div id="conteudo">
       {showTabela == false ?
         <div className="container">
           <div className="row-fluid">
             <div className="span9 module module-box-01" style={{ paddingBottom: "2em" }}>
               <div className="header"><h2 className="titulo-box"><strong>Filtro</strong></h2></div>
-
               <form>
                 <div style={{ width: "auto" }} className="form-group span5">
                   <label htmlFor="decada">Década:</label>
@@ -110,6 +108,5 @@ function Filtro() {
         />
       }
     </div>
-  )
 }
 export default Filtro

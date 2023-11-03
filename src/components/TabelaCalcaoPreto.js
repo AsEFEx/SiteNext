@@ -8,7 +8,7 @@ export default function TabelaCalcaoPreto({ setShowTabela, setState, ano, tabela
     <button style={{ borderRadius: "4px", marginBottom: "10px" }}
       variant="primary" className="btn-default" onClick={() => {
         setShowTabela(false)
-        setState({ decada: "escolha", ano: "escolha", existeDados: true, preenchido: true })
+        setState({ decada: "Escolha uma década....", ano: "Escolha um ano....", existeDados: true, preenchido: true })
       }}>
       Voltar
     </button>
@@ -26,7 +26,7 @@ export default function TabelaCalcaoPreto({ setShowTabela, setState, ano, tabela
           <th>Nome</th>
           <th>Arma</th>
         </tr>
-        {tabela.Tabela.map((val, index) => {
+        {tabela.map((val, index) => {
           return <tr key={val.NrCP.toString()} style={{ height: "36px" }}>
             <td>{val.NrCP}</td>
             <td>{val.Curso}</td>
