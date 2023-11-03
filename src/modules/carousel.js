@@ -15,7 +15,7 @@ export default function Garbage() {
                   <div className="galleria-info-title">
                      <h3><Link target="_blank" href="https://www.asefex.com.br/">Confraternização AsEFEx - 1o SET 2023</Link></h3>
                   </div>
-                  <div className="galleria-info-description">Venha se confraternizar com a comunidade do Calção Preto!!</div>
+                  <div className="galleria-info-description">Venha confraternizar com a comunidade do Calção Preto!!</div>
                   {/* <div data-index={0} style={{ display: 'block' }} className="rights">
                      Nome do autor da imagem</div> */}
                </div>
