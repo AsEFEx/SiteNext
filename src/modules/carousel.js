@@ -203,7 +203,7 @@ export default function Garbage() {
                 Confira o Edital.
               </div>
               {/* <div data-index={0} style={{ display: 'block' }} className="rights">
-                     Nome do autor da imagem</div> */}
+                     Nome do autora da imagem</div> */}
             </div>
           </div>
         </Carousel.Item>
