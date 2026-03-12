@@ -17,7 +17,7 @@ export default function Home() {
           ensino e pesquisa em capacitação física e áreas correlatas, desporto,
           cultura e divulgação de fatos e eventos relacionados à atuação de
           Ex-Alunos e Amigos, ao CCFEx e suas Organizações Militares Diretamente
-          Subordinadas (EsEFEx, IPCFEx e CDE) e ao Sitio Histórico da Fortaleza
+          Subordinadas (EsEFEx, IPCFEx e CDE) e ao Sítio Histórico da Fortaleza
           de São João.{" "}
         </p>
         <p>
@@ -25,6 +25,38 @@ export default function Home() {
             Faça sua proposta de matéria para publicação na Revista da AsEFEx.
           </Link>
         </p>
+
+        <h2>Edições 2025</h2>
+        <div className="container">
+          {/*By TC Fabio  */}
+          <div className="row">
+            <Card
+              title="Nr 130"
+              image="/images/ed130.png"
+              alt="Revista Edição 130"
+              description="Setembro a Dezembro de 2025"
+              route="https://www.calameo.com/read/006435344ad22ffa9ce90"
+            />
+
+            <Card
+              title="Nr 129"
+              image="/images/ed129.png"
+              alt="Revista Edição 129"
+              description="Maio a Agosto de 2025"
+              route="https://www.calameo.com/read/0064353445805a31fe524"
+            />
+          </div>
+
+          <div className="row">
+            <Card
+              title="Nr 128"
+              image="/images/ed128.jpg"
+              alt="Revista Edição 128"
+              description="Janeiro a Abril de 2025"
+              route="https://www.calameo.com/read/0064353448c55f7eb66b0"
+            />
+          </div>
+        </div>
 
         <h2>Edições 2024</h2>
         <div className="container">
@@ -93,7 +125,7 @@ export default function Home() {
               image="/images/ed121.jpg"
               alt="Revista Edição 121"
               description="Janeiro a Março de 2023"
-              route="https://pt.calameo.com/read/00643534488486616d10b"
+              route="https://www.calameo.com/read/00643534438982bb28291"
             />
 
             {/* <Card title="Nr ___" image="/images/______.jpg" alt="Revista Edição ___ " description="____ a ____ de 2022"
