@@ -43,42 +43,6 @@ export default function Garbage() {
         <Carousel.Item>
           <Link
             target="_blank"
-            href="https://fpcs.edu.br/especializacao-em-educacao-fisica-e-saude-da-promocao-de-saude-a-internacao/"
-          >
-            <Image
-              alt="Curso Ed Física e Saúde FPCS 2023"
-              src="/images/carrossel2.png"
-              width={1000}
-              height={1000}
-              priority={true}
-            />
-          </Link>
-          <div className="galleria-info">
-            <div className="galleria-info-text">
-              <div className="galleria-info-title">
-                <h3>
-                  <Link
-                    target="_blank"
-                    href="https://fpcs.edu.br/especializacao-em-educacao-fisica-e-saude-da-promocao-de-saude-a-internacao/"
-                  >
-                    Curso Ed Física e Saúde FPSC 2023
-                  </Link>
-                </h3>
-              </div>
-              <div className="galleria-info-description">
-                Aproveite o desconto e a oportunidade de se especializar! Mais
-                informações:
-                https://fpcs.edu.br/especializacao-em-educacao-fisica-e-saude-da-promocao-de-saude-a-internacao/
-              </div>
-              {/* <div data-index={0} style={{ display: 'block' }} className="rights">
-                     Nome do autor da imagem</div> */}
-            </div>
-          </div>
-        </Carousel.Item>
-
-        <Carousel.Item>
-          <Link
-            target="_blank"
             href="https://pt.calameo.com/read/006435344e3ff145ebcc5?authid=IcwOmLTWn2AD"
           >
             <Image
