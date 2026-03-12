@@ -30,6 +30,25 @@ export default function Home() {
         <div className="container">
           <div className="row">
             {/*By TC Fabio  */}
+
+            <Card
+              title="Nr 120"
+              image="/images/ed120.jpg"
+              alt="Revista Edição 120"
+              description="Outubro a Dezembro de 2022"
+              route="https://pt.calameo.com/read/00643534488486616d10b"
+            />
+
+            <Card
+              title="Nr 119"
+              image="/images/ed119.jpg"
+              alt="Revista Edição 119"
+              description="Julho a Setembro de 2022"
+              route="https://pt.calameo.com/read/006435344f9e7ae0302b9"
+            />
+          </div>
+
+          <div className="row">
             <Card
               title="Nr 118"
               image="/images/ed118.jpg"
