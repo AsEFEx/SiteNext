@@ -7,34 +7,6 @@ export default function Garbage() {
     <div className="carousel-inner">
       <Carousel>
         <Carousel.Item>
-          <Link target="_blank" href="https://www.asefex.com.br/">
-            <Image
-              alt="Confraternização AsEFEx"
-              src="/images/Carrossel0.jpg"
-              width={1000}
-              height={1000}
-              priority={true}
-            />
-          </Link>
-          <div className="galleria-info">
-            <div className="galleria-info-text">
-              <div className="galleria-info-title">
-                <h3>
-                  <Link target="_blank" href="https://www.asefex.com.br/">
-                    Confraternização AsEFEx - 1o SET 2023
-                  </Link>
-                </h3>
-              </div>
-              <div className="galleria-info-description">
-                Venha confraternizar com a comunidade do Calção Preto!!
-              </div>
-              {/* <div data-index={0} style={{ display: 'block' }} className="rights">
-                     Nome do autor da imagem</div> */}
-            </div>
-          </div>
-        </Carousel.Item>
-
-        <Carousel.Item>
           <Link
             target="_blank"
             href="https://www.calameo.com/read/00643534438982bb28291"
