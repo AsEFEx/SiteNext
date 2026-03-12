@@ -42,75 +42,75 @@ export default function Garbage() {
             </div>
           </div>
         </Carousel.Item>
+
+        <Carousel.Item>
+          <Link
+            target="_blank"
+            href="https://www.calameo.com/read/006435344ad22ffa9ce90"
+          >
+            <Image
+              alt="Revista AsEFEx 130"
+              src="/images/carrossel-Ed130.png"
+              width={1000}
+              height={1000}
+              priority={true}
+            />
+          </Link>
+          <div className="galleria-info">
+            <div className="galleria-info-text">
+              <div className="galleria-info-title">
+                <h3>
+                  <Link
+                    target="_blank"
+                    href="https://www.calameo.com/read/006435344ad22ffa9ce90"
+                  >
+                    Informativo AsEFEx
+                  </Link>
+                </h3>
+              </div>
+              <div className="galleria-info-description">
+                Confira as matérias da Edição 130 da nossa revista
+              </div>
+              {/* <div data-index={0} style={{ display: 'block' }} className="rights">
+                     Nome do autor da imagem</div> */}
+            </div>
+          </div>
+        </Carousel.Item>
+
+        <Carousel.Item>
+          <Link
+            target="_blank"
+            href="https://www.calameo.com/read/0064353445805a31fe524"
+          >
+            <Image
+              alt="Revista AsEFEx 129"
+              src="/images/carrossel-Ed129.png"
+              width={1000}
+              height={1000}
+              priority={true}
+            />
+          </Link>
+          <div className="galleria-info">
+            <div className="galleria-info-text">
+              <div className="galleria-info-title">
+                <h3>
+                  <Link
+                    target="_blank"
+                    href="https://www.calameo.com/read/0064353445805a31fe524"
+                  >
+                    Informativo AsEFEx
+                  </Link>
+                </h3>
+              </div>
+              <div className="galleria-info-description">
+                Confira as matérias da Edição 129 da nossa revista.
+              </div>
+              {/* <div data-index={0} style={{ display: 'block' }} className="rights">
+                     Nome do autor da imagem</div> */}
+            </div>
+          </div>
+        </Carousel.Item>
         {/* Fim - by TC Fabio */}
-        <Carousel.Item>
-          <Link
-            target="_blank"
-            href="https://www.calameo.com/read/00643534438982bb28291"
-          >
-            <Image
-              alt="Revista AsEFEx 121"
-              src="/images/carrossel1.png"
-              width={1000}
-              height={1000}
-              priority={true}
-            />
-          </Link>
-          <div className="galleria-info">
-            <div className="galleria-info-text">
-              <div className="galleria-info-title">
-                <h3>
-                  <Link
-                    target="_blank"
-                    href="https://www.calameo.com/read/00643534438982bb28291"
-                  >
-                    Informativo AsEFEx
-                  </Link>
-                </h3>
-              </div>
-              <div className="galleria-info-description">
-                Confira as matérias da Edição 121 nossa revista
-              </div>
-              {/* <div data-index={0} style={{ display: 'block' }} className="rights">
-                     Nome do autor da imagem</div> */}
-            </div>
-          </div>
-        </Carousel.Item>
-
-        <Carousel.Item>
-          <Link
-            target="_blank"
-            href="https://pt.calameo.com/read/006435344e3ff145ebcc5?authid=IcwOmLTWn2AD"
-          >
-            <Image
-              alt="Revista AsEFEx 116"
-              src="/images/carrossel3.png"
-              width={1000}
-              height={1000}
-              priority={true}
-            />
-          </Link>
-          <div className="galleria-info">
-            <div className="galleria-info-text">
-              <div className="galleria-info-title">
-                <h3>
-                  <Link
-                    target="_blank"
-                    href="https://pt.calameo.com/read/006435344e3ff145ebcc5?authid=IcwOmLTWn2AD"
-                  >
-                    Informativo AsEFEx
-                  </Link>
-                </h3>
-              </div>
-              <div className="galleria-info-description">
-                Confira as matérias da Edição 116 nossa revista.
-              </div>
-              {/* <div data-index={0} style={{ display: 'block' }} className="rights">
-                     Nome do autor da imagem</div> */}
-            </div>
-          </div>
-        </Carousel.Item>
-
         <Carousel.Item>
           <Link
             target="_blank"
