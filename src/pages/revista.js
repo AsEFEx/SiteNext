@@ -26,6 +26,38 @@ export default function Home() {
           </Link>
         </p>
 
+        <h2>Edições 2024</h2>
+        <div className="container">
+          {/*By TC Fabio  */}
+          <div className="row">
+            <Card
+              title="Nr 127"
+              image="/images/ed127.png"
+              alt="Revista Edição 127"
+              description="Setembro a Dezembro de 2024"
+              route="https://www.calameo.com/read/006435344dafbe26ffe21"
+            />
+
+            <Card
+              title="Nr 126"
+              image="/images/ed126.jpg"
+              alt="Revista Edição 126"
+              description="Maio a Agosto de 2024"
+              route="https://www.calameo.com/read/006435344f4f2087a0144"
+            />
+          </div>
+
+          <div className="row">
+            <Card
+              title="Nr 125"
+              image="/images/ed125.jpg"
+              alt="Revista Edição 125"
+              description="Janeiro a Abril de 2024"
+              route="https://www.calameo.com/read/006435344034795798a6b"
+            />
+          </div>
+        </div>
+
         <h2>Edições 2023</h2>
         <div className="container">
           {/*By TC Fabio  */}
