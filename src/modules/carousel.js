@@ -10,11 +10,11 @@ export default function Garbage() {
         <Carousel.Item>
           <Link
             target="_blank"
-            href="/documentos/Edital-AGO-eleicao-2026-2028.pdf"
+            href="/documentos/SaibaMaisChurrascoAsEFEx-220526.pdf"
           >
             <Image
-              alt="Assembléia Geral Ordinária"
-              src="/images/carrossel5.png"
+              alt="AsEFEx - Convite para churrasco de Confraternização"
+              src="/images/ConviteChurrascoAsEFEx-220526.jpeg"
               width={1000}
               height={1000}
               priority={true}
@@ -26,16 +26,14 @@ export default function Garbage() {
                 <h3>
                   <Link
                     target="_blank"
-                    href="/documentos/Edital-AGO-eleicao-2026-2028.pdf"
+                    href="/documentos/SaibaMaisChurrascoAsEFEx-220526.pdf"
                   >
-                    Assembléia Geral Ordinária
+                    AsEFEx - Convite para churrasco de Confraternização 
                   </Link>
                 </h3>
               </div>
               <div className="galleria-info-description">
-                Será realizada em duas modalidades, PRESENCIAL E VIRTUAL, pelo
-                aplicativo Meet. O link será disponibilizado oportunamente.
-                Confira o Edital.
+                A AsEFEx tem o prazer de convidá-los para um churrasco de confraternização, a ser realizado no Recanto dos Calções Pretos (EsEFEx), no dia 22 de maio de 2026 (sexta-feira), a partir das 12h.
               </div>
               {/* <div data-index={0} style={{ display: 'block' }} className="rights">
                      Nome do autora da imagem</div> */}
