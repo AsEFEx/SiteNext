@@ -14,23 +14,23 @@ export default function Home() {
 
         <div className="row">
           <Card title="Presidente"
-            image="/images/presidente.png"
+            image="/images/DirExec_Generica.png"
             alt="Presidente"
-            description={<><b>Cel</b> Josué Morisson de Moraes</>}
+            description={<><b>Cel</b> Alexandre Tempesta Lincoln</>}
           />
 
           <Card title="Vice-Presidente"
-            image="/images/vicepresidente.png"
+            image="/images/diretorcomunicacao - Copia.png"
             alt="Vice-Presidente"
-            description={<><b>Cel</b> Mauro Benedito Guaraldo Secco</>}
-          />
+            description={<><b>Ten Cel</b> Flavio Gomes Ferreira Pinto</>}
+           />
         </div>
 
         <div className="row">
           <Card title="Diretor Administrativo"
             image="/images/DirExec_Generica.png"
             alt="Diretor Administrativo"
-            description={<><b>Ten</b> Cleber das Neves Tourinho</>}
+            description={<><b>Ten</b> Mauro Santos Teixeira</>}
           />
 
           <Card title="Diretor de Planejamento e Controle"
@@ -42,9 +42,9 @@ export default function Home() {
 
         <div className="row">
           <Card title="Diretor de Comunicação Social"
-            image="/images/diretorcomunicacao.png"
+            image="/images/DirExec_Generica.png"
             alt="Diretor de Comunicação Social"
-            description={<><b>Ten Cel</b> Flavio Gomes Ferreira Pinto</>}
+            description={<><b>Cel</b> Alfredo de Andrade Bottino</>}
           />
 
           <Card title="Diretor Cultural"
@@ -56,9 +56,9 @@ export default function Home() {
 
         <div className="row">
           <Card title="Diretor para Esporte e Eventos"
-            image="/images/diretoresportes.jpg"
+            image="/images/DirExec_Generica.png"
             alt="Diretor para Esporte e Eventos"
-            description={<><b>Ten Cel</b> André Valentim Siqueira Rodrigues</>}
+            description={<><b>Cel</b> Paulo Lizardo Valetim de Mattos</>}
           />
 
           <Card title="Diretor Financeiro e de Patrimônio"
