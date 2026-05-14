@@ -115,8 +115,8 @@ export default function Garbage() {
             href="https://asefex.com.br/diretoria-executiva"
           >
             <Image
-              alt="Diretoria AsEFEx 2022 - 2023"
-              src="/images/carrossel4.png"
+              alt="Diretoria AsEFEx 2026 - 2028"
+              src="/images/DiretoriaExecutiva2026.png"
               width={1000}
               height={1000}
               priority={true}
@@ -135,7 +135,7 @@ export default function Garbage() {
                 </h3>
               </div>
               <div className="galleria-info-description">
-                Equipe para o biênio 2022 - 2023.
+                Equipe para o biênio 2026 - 2028.
               </div>
               {/* <div data-index={0} style={{ display: 'block' }} className="rights">
                      Nome do autor da imagem</div> */}
