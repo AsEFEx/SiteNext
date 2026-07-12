@@ -6,15 +6,16 @@ export default function Garbage() {
   return (
     <div className="carousel-inner">
       <Carousel>
-        {/* Inicio - by TC Fabio */}
+        {/* Inicio - by TC Fabio - 12 JUL 26 */}
+        
         <Carousel.Item>
           <Link
             target="_blank"
-            href="/documentos/SaibaMaisChurrascoAsEFEx-220526.pdf"
+            href="https://www.encontrocalcaopreto.com.br/"
           >
             <Image
-              alt="AsEFEx - Convite para churrasco de Confraternização"
-              src="/images/ConviteChurrascoAsEFEx-220526.jpeg"
+              alt="AsEFEx - Convite para Encontro Nacional Calção Preto 2026"
+              src="/images/ENCP2026_2.jpg"
               width={1000}
               height={1000}
               priority={true}
@@ -26,14 +27,14 @@ export default function Garbage() {
                 <h3>
                   <Link
                     target="_blank"
-                    href="/documentos/SaibaMaisChurrascoAsEFEx-220526.pdf"
+                    href="https://www.encontrocalcaopreto.com.br/"
                   >
-                    AsEFEx - Convite para churrasco de Confraternização 
+                    EsEFEx - Convite para Encontro Nacional Calção Preto 2026 
                   </Link>
                 </h3>
               </div>
               <div className="galleria-info-description">
-                A AsEFEx tem o prazer de convidá-los para um churrasco de confraternização, a ser realizado no Recanto dos Calções Pretos (EsEFEx), no dia 22 de maio de 2026 (sexta-feira), a partir das 12h.
+                O Comandante da EsEFEx tem o prazer de convidar toda a Família dos Calções Pretos para nosso Encontro Nacional, que acontecerá no dia 31 de outubro de 2026, a partir das 10h, nas instalações daquela Escola.
               </div>
               {/* <div data-index={0} style={{ display: 'block' }} className="rights">
                      Nome do autora da imagem</div> */}
