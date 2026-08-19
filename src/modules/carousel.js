@@ -6,6 +6,36 @@ export default function Garbage() {
   return (
     <div className="carousel-inner">
       <Carousel>
+        
+        {/* Inicio - by TC Fabio - 19 AGO 26 */}
+        
+        <Carousel.Item>
+          
+           <Image
+              alt="AsEFEx - Convite para Feijoada - 12 SET 2026 - 11:30hs - Recanto do Calção Preto"
+              src="/images/ConviteFeijoadaAsEFEx.png"
+              width={1000}
+              height={1000}
+              priority={true}
+            />
+          
+          <div className="galleria-info">
+            <div className="galleria-info-text">
+              <div className="galleria-info-title">
+                <h3>
+                    EsEFEx - Convite para Feijoada - 12 SET 2026 - 11:30hs - Recanto do Calção Preto
+                </h3>
+              </div>
+              <div className="galleria-info-description">
+                O Comandante da EsEFEx tem o prazer de convidar toda a Família para Feijoada, que acontecerá no dia 12 Set 2026, a partir das 8hs, com atividades desportivas, nas instalações daquela Escola, no Recanto do Calção Preto, às 11:30hs.
+              </div>
+              {/* <div data-index={0} style={{ display: 'block' }} className="rights">
+                     Nome do autora da imagem</div> */}
+            </div>
+          </div>
+        </Carousel.Item>
+        
+        
         {/* Inicio - by TC Fabio - 12 JUL 26 */}
         
         <Carousel.Item>
