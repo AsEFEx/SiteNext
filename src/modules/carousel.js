@@ -23,7 +23,12 @@ export default function Garbage() {
             <div className="galleria-info-text">
               <div className="galleria-info-title">
                 <h3 className="galleria-info-title" >
+                  <Link
+                    //target="_blank"
+                    href="#"
+                  >
                     EsEFEx - Convite para Feijoada - 12 SET 2026 - 11:30hs - Recanto do Calção Preto - Email: asefex1990@gmail.com
+                  </Link>
                 </h3>
               </div>
               <div className="galleria-info-description">
