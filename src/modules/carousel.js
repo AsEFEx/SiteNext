@@ -27,12 +27,14 @@ export default function Garbage() {
                     //target="_blank"
                     href="#"
                   >
-                    EsEFEx - Convite para Feijoada-12 SET 2026-11:30hs-Recanto do Calção Preto-Pagamento: BB-Ag. 287-9|C/C 212.438-6|Pix 39.126.347/0001-10 - Confirmação até 09 SET 2026 - Email: asefex1990@gmail.com
+                    Feijoada no Recanto do Calção Preto, em 12 SET 2026-11:30hs;
+                    <br /> Pagamento: BB-Ag. 287-9|C/C 212.438-6 / Pix 39.126.347/0001-10; e
+                    <br /> Confirmação até 09 SET 2026 pelo Email: asefex1990@gmail.com.
                   </Link>
                 </h3>
               </div>
               <div className="galleria-info-description">
-                O Comandante da EsEFEx tem o prazer de convidar toda a Família para a Feijoada, que acontecerá no dia 12 Set 2026, a partir das 8hs, com atividades desportivas, nas instalações daquela Escola, no Recanto do Calção Preto, às 11:30hs. Email: asefex1990@gmail.com
+                A Diretoria da AsEFEx tem o prazer de convidar os Calções Pretos e amigos da EsEFEx para uma Feijoada, a ser realizado no Recanto dos Calções Pretos (EsEFEx), no dia 12 Set 2026, a partir das 8hs, iniciando com atividades desportivas. Será uma excelente oportunidade para reencontrar amigos e fortalecer os laços da nossa família EsEFEx!
               </div>
               {/* <div data-index={0} style={{ display: 'block' }} className="rights">
                      Nome do autora da imagem</div> */}
