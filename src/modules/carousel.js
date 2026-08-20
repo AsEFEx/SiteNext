@@ -27,7 +27,7 @@ export default function Garbage() {
                     //target="_blank"
                     href="#"
                   >
-                    EsEFEx - Convite para Feijoada - 12 SET 2026 - 11:30hs - Recanto do Calção Preto - Confirmação até 09 SET 2026 - Email: asefex1990@gmail.com
+                    EsEFEx - Convite para Feijoada-12 SET 2026-11:30hs-Recanto do Calção Preto-Pagamento: BB-Ag. 287-9|C/C 212.438-6|Pix 39.126.347/0001-10 - Confirmação até 09 SET 2026 - Email: asefex1990@gmail.com
                   </Link>
                 </h3>
               </div>
