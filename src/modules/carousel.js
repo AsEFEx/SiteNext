@@ -22,12 +22,12 @@ export default function Garbage() {
           <div className="galleria-info">
             <div className="galleria-info-text">
               <div className="galleria-info-title">
-                <h3>
-                    EsEFEx - Convite para Feijoada - 12 SET 2026 - 11:30hs - Recanto do Calção Preto
+                <h3 className="galleria-info-title" >
+                    EsEFEx - Convite para Feijoada - 12 SET 2026 - 11:30hs - Recanto do Calção Preto - Email: asefex1990@gmail.com
                 </h3>
               </div>
               <div className="galleria-info-description">
-                O Comandante da EsEFEx tem o prazer de convidar toda a Família para Feijoada, que acontecerá no dia 12 Set 2026, a partir das 8hs, com atividades desportivas, nas instalações daquela Escola, no Recanto do Calção Preto, às 11:30hs.
+                O Comandante da EsEFEx tem o prazer de convidar toda a Família para a Feijoada, que acontecerá no dia 12 Set 2026, a partir das 8hs, com atividades desportivas, nas instalações daquela Escola, no Recanto do Calção Preto, às 11:30hs. Email: asefex1990@gmail.com
               </div>
               {/* <div data-index={0} style={{ display: 'block' }} className="rights">
                      Nome do autora da imagem</div> */}
