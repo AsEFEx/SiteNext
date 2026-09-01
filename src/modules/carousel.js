@@ -7,6 +7,40 @@ export default function Garbage() {
     <div className="carousel-inner">
       <Carousel>
         
+        {/* Inicio - by TC Fabio - 01 SET 26 */}
+        
+        <Carousel.Item>
+          
+           <Image
+              alt="Dia do Profissional de Educação Física - 1º de Setembro"
+              src="/images/FotoDiaProfEF2026-11.png"
+              width={1000}
+              height={1000}
+              priority={true}
+            />
+          
+          <div className="galleria-info">
+            <div className="galleria-info-text">
+              <div className="galleria-info-title">
+                <h3 className="galleria-info-title" >
+                  <Link
+                    //target="_blank"
+                    href="#"
+                  >
+                     Dia do Profissional de Educação Física - 1º de Setembro.
+                  </Link>
+                </h3>
+              </div>
+              <div className="galleria-info-description">
+                Diferenciados pelo Calção Preto, unidos pela missão de preparar o corpo e o espírito da nossa tropa.
+              </div>
+              {/* <div data-index={0} style={{ display: 'block' }} className="rights">
+                     Nome do autora da imagem</div> */}
+            </div>
+          </div>
+        </Carousel.Item>
+        
+        
         {/* Inicio - by TC Fabio - 19 AGO 26 */}
         
         <Carousel.Item>
