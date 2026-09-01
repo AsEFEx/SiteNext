@@ -13,7 +13,7 @@ export default function Garbage() {
           
            <Image
               alt="Dia do Profissional de Educação Física - 1º de Setembro"
-              src="/images/FotoDiaProfEF2026-4.png"
+              src="/images/FotoDiaProfEF2026-11.png"
               width={1000}
               height={1000}
               priority={true}
