@@ -58,7 +58,7 @@ function Menu() {
                            <Link href="/galeria-as" title="Galeria de Associados">»Galeria de Associados</Link>
                         </li>
                         <li>
-                           <Link href="/cadastroUsuarioCP" title="Atualize seu Cadastro">»Atualize seu Cadastro</Link>
+                           <Link href="/login" title="Atualize seu Cadastro">»Atualize seu Cadastro</Link>
                         </li>
                         <li>
                            <Link href="/seja-associado" title="Seja um Associado">»Seja um Associado</Link>
