@@ -1,5 +1,14 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/router';
+
+const formatarCelular = (value) => {
+  return value
+    .replace(/\D/g, '')
+    .replace(/^(\d{2})(\d)/g, '($1) $2')
+    .replace(/(\d{5})(\d)/, '$1-$2')
+    .substring(0, 15);
+};
 
 export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dadosParte1, aoVoltar }) {
   // Inicializa o formulário capturando os dados que já possam ter vindo da Parte 1 (auto-fill)
@@ -70,25 +79,50 @@ export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dados
         {/* SEÇÃO 3: CONTATO */}
         <h4 style={{ borderBottom: '1px solid #eee', paddingBottom: '5px' }}>Contato</h4>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '15px' }}>
-          <div>
-            <label style={{ fontSize: '14px', fontWeight: 'bold' }}>Celular 1:</label>
-            <input type="text" {...register("celular1", { required: "Pelo menos um celular é obrigatório" })} style={{ width: '100%', padding: '6px', boxSizing: 'border-box' }} />
-            {errors.celular1 && <span style={{ color: 'red', fontSize: '11px' }}>{errors.celular1.message}</span>}
-          </div>
-          <div>
-            <label style={{ fontSize: '14px' }}>Celular 2:</label>
-            <input type="text" {...register("celular2")} style={{ width: '100%', padding: '6px', boxSizing: 'border-box' }} />
-          </div>
+            <div>
+              <label style={{ fontSize: '14px', fontWeight: 'bold' }}>Celular 1:</label>
+              <input 
+                type="text" 
+                {...register("celular1", { 
+                  required: "Pelo menos um celular é obrigatório",
+                  onChange: (e) => { e.target.value = formatarCelular(e.target.value); }
+                })} 
+                placeholder="(00) 00000-0000"
+                style={{ width: '100%', padding: '6px', boxSizing: 'border-box' }} 
+              />
+              {errors.celular1 && <span style={{ color: 'red', fontSize: '11px' }}>{errors.celular1.message}</span>}
+            </div>
+            <div>
+              <label style={{ fontSize: '14px' }}>Celular 2:</label>
+              <input 
+                type="text" 
+                {...register("celular2", {
+                  onChange: (e) => { e.target.value = formatarCelular(e.target.value); }
+                })} 
+                placeholder="(00) 00000-0000"
+                style={{ width: '100%', padding: '6px', boxSizing: 'border-box' }} 
+              />
+            </div>
         </div>
 
         {/* SEÇÃO 4: INFORMAÇÕES MILITARES / ACADÊMICAS */}
         <h4 style={{ borderBottom: '1px solid #eee', paddingBottom: '5px', marginTop: '20px' }}>Dados Militares / Curso</h4>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px', marginBottom: '10px' }}>
-          <div>
-            <label style={{ fontSize: '14px' }}>Curso ID:</label>
-            <input type="number" {...register("curso_id")} style={{ width: '100%', padding: '6px', boxSizing: 'border-box' }} />
-          </div>
-          <div>
+            {/* 🎯 CAMPO SUBSTITUÍDO POR SELECT */}
+            <div>
+              <label style={{ fontSize: '14px', fontWeight: 'bold' }}>Curso:</label>
+              <select 
+                {...register("curso_id", { required: "Selecione um curso" })} 
+                style={{ width: '100%', padding: '6px', height: '32px', boxSizing: 'border-box' }}
+              >
+                <option value="">Selecione o curso...</option>
+                <option value="1">Curso de Instrutores (CI)</option>
+                <option value="2">Curso de Monitores (CM)</option>
+                <option value="3">Curso de Mestre D'Armas (CMD)</option>
+                <option value="4">Curso de Medicina Esportiva (CME)</option>
+              </select>
+              {errors.curso_id && <span style={{ color: 'red', fontSize: '11px' }}>{errors.curso_id.message}</span>}
+            </div>          <div>
             <label style={{ fontSize: '14px' }}>Ano Formação:</label>
             <input type="number" {...register("ano_formacao")} style={{ width: '100%', padding: '6px', boxSizing: 'border-box' }} />
           </div>
