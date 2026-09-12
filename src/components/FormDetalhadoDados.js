@@ -95,7 +95,10 @@ export default function FormDetalhadoDados({ usuarioLogado, aoAvancar }) {
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '10px', marginBottom: '15px' }}>
           <div>
             <label style={{ fontSize: '14px', fontWeight: 'bold' }}>Nome:</label>
-            <input type="text" {...register("nome", { required: "Nome é obrigatório" })} style={{ width: '100%', padding: '6px', boxSizing: 'border-box' }} />
+            <input type="text" {...register("nome", { 
+              required: "Nome é obrigatório",
+              onChange: (e) => { e.target.value = e.target.value.toUpperCase(); } // 🔥 Transforma em MAIÚSCULO
+              })} style={{ width: '100%', padding: '6px', boxSizing: 'border-box' }} />
             {errors.nome && <span style={{ color: 'red', fontSize: '11px' }}>{errors.nome.message}</span>}
           </div>
           <div>

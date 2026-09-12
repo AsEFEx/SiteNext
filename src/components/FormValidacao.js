@@ -105,7 +105,10 @@ export default function Cadastro() {
             <label style={{ display: 'block', fontWeight: 'bold' }}>Número do CP:</label>
             <input 
               type="text" 
-              {...registerValidacao("nr_cp", { required: "O Número do CP é obrigatório" })}
+              {...registerValidacao("nr_cp", {
+                required: "O Número do CP é obrigatório",
+                onChange: (e) => { e.target.value = e.target.value.toUpperCase(); } // 🔥 Transforma em MAIÚSCULO
+              })}
               style={{ width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box' }}
             />
             {errorsValidacao.nr_cp && <span style={{ color: 'red', fontSize: '12px' }}>{errorsValidacao.nr_cp.message}</span>}
@@ -115,7 +118,10 @@ export default function Cadastro() {
             <label style={{ display: 'block', fontWeight: 'bold' }}>Curso:</label>
             <input 
               type="text" 
-              {...registerValidacao("curso", { required: "O curso é obrigatório" })}
+              {...registerValidacao("curso", { 
+                required: "O curso é obrigatório",
+                onChange: (e) => { e.target.value = e.target.value.toUpperCase(); } // 🔥 Transforma em MAIÚSCULO
+              })}
               style={{ width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box' }}
             />
             {errorsValidacao.curso && <span style={{ color: 'red', fontSize: '12px' }}>{errorsValidacao.curso.message}</span>}
@@ -125,7 +131,10 @@ export default function Cadastro() {
             <label style={{ display: 'block', fontWeight: 'bold' }}>Nome completo:</label>
             <input 
               type="text" 
-              {...registerValidacao("nome", { required: "O nome é obrigatório" })}
+              {...registerValidacao("nome", {
+                required: "O nome é obrigatório",
+                onChange: (e) => { e.target.value = e.target.value.toUpperCase(); } // 🔥 Transforma em MAIÚSCULO
+              })}
               style={{ width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box' }}
             />
             {errorsValidacao.nome && <span style={{ color: 'red', fontSize: '12px' }}>{errorsValidacao.nome.message}</span>}
@@ -135,7 +144,10 @@ export default function Cadastro() {
             <label style={{ display: 'block', fontWeight: 'bold' }}>Arma:</label>
             <input 
               type="text" 
-              {...registerValidacao("arma", { required: "A Arma é obrigatória" })}
+              {...registerValidacao("arma", {
+                required: "A Arma é obrigatória",
+                  onChange: (e) => { e.target.value = e.target.value.toUpperCase(); } // 🔥 Transforma em MAIÚSCULO
+              })}
               style={{ width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box' }}
             />
             {errorsValidacao.arma && <span style={{ color: 'red', fontSize: '12px' }}>{errorsValidacao.arma.message}</span>}

@@ -87795,6 +87795,18 @@
       "id": "OgX948QwmBs",
       "senha": "$2b$10$r7r0xR9zJ6nhEsRggCMPA.yOrejh7OH/cGWo0URfRayG6SWaDuu8K",
       "data_cadastro": "2026-09-08T00:54:35.363Z"
+    },
+    {
+      "nr_cp": "1296C",
+      "curso": "MONITOR DE ESGRIMA",
+      "ano_formacao": 1939,
+      "posto": "3º SARGENTO",
+      "nome": "GABRIEL LEMOS",
+      "arma": "ARTILHARIA",
+      "e-mail": "",
+      "id": "dhnmgBslqms",
+      "senha": "$2b$10$TFYjBk1HcDSaHEXnmr87EuYWNw4Gay1naZ/..3WSrcBjNXqu1KaRW",
+      "data_cadastro": "2026-09-12T20:48:08.854Z"
     }
   ],
   "informacoes_adicionais": [
@@ -87825,6 +87837,34 @@
       "data_admissao": "2026-09-10",
       "atualizado_em": "2026-09-12T19:53:41.243Z",
       "id": "RVZW_MxJKlY"
+    },
+    {
+      "usuario_id": "OgX948QwmBs",
+      "nr_cp": "1296C",
+      "email": "teste2@gmail.com",
+      "nome": "GABRIEL LEMOS",
+      "cpf": "123.542.258-78",
+      "categoria_id": "1",
+      "situacao_id": "1",
+      "posto_id": "14",
+      "cep": "21210590",
+      "rua": "Rua Oito",
+      "bairro": "Vila da Penha",
+      "municipio": "Rio de Janeiro",
+      "uf": "RJ",
+      "complemento": "nr8",
+      "cidade_res": "Rio de Janeiro",
+      "estado_res": "RJ",
+      "celular1": "(21) 95689-5247",
+      "celular2": "(21) 98754-2136",
+      "curso_id": "1",
+      "ano_formacao": "2005",
+      "estado_f_aux": "RJ",
+      "integrante_ex_ccfex": "Não",
+      "matricula": "1244585",
+      "data_admissao": "2017-02-13",
+      "atualizado_em": "2026-09-12T21:31:13.399Z",
+      "id": "-Fwb4uksEgo"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

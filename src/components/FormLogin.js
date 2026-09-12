@@ -50,7 +50,10 @@ export default function FormLogin({ onLoginSucesso }) {
           <label style={{ display: 'block', fontWeight: 'bold' }}>Número do CP:</label>
           <input 
             type="text" 
-            {...register("nr_cp", { required: "O Número do CP é obrigatório" })}
+            {...register("nr_cp", {
+              required: "O Número do CP é obrigatório",
+              onChange: (e) => { e.target.value = e.target.value.toUpperCase(); } // 🔥 Transforma em MAIÚSCULO
+            })}
             style={{ width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box' }}
           />
           {errors.nr_cp && <span style={{ color: 'red', fontSize: '12px' }}>{errors.nr_cp.message}</span>}

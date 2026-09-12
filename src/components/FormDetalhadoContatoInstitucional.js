@@ -141,7 +141,20 @@ export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dados
           </div>
           <div>
             <label style={{ fontSize: '14px' }}>Estado F. Aux:</label>
-            <input type="text" {...register("estado_f_aux")} style={{ width: '100%', padding: '6px', boxSizing: 'border-box' }} />
+            <select {...register("estado_f_aux", { required: "Selecione o estado" })} style={{ width: '100%', padding: '6px', height: '32px', boxSizing: 'border-box' }}>
+              <option value="">Selecione...</option>
+              {Object.entries({
+                AC: 'Acre', AL: 'Alagoas', AP: 'Amapá', AM: 'Amazonas', BA: 'Bahia',
+                CE: 'Ceará', DF: 'Distrito Federal', ES: 'Espírito Santo', GO: 'Goiás',
+                MA: 'Maranhão', MT: 'Mato Grosso', MS: 'Mato Grosso do Sul', MG: 'Minas Gerais',
+                PA: 'Pará', PB: 'Paraíba', PR: 'Paraná', PE: 'Pernambuco', PI: 'Piauí',
+                RJ: 'Rio de Janeiro', RN: 'Rio Grande do Norte', RS: 'Rio Grande do Sul',
+                RO: 'Rondônia', RR: 'Roraima', SC: 'Santa Catarina', SP: 'São Paulo',
+                SE: 'Sergipe', TO: 'Tocantins'
+              }).map(([sigla, nome]) => (
+                <option key={sigla} value={sigla}>{sigla} - {nome}</option>
+              ))}
+            </select>
           </div>
         </div>
 
