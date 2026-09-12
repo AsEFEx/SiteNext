@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { useRouter } from 'next/router';
 
 const formatarCelular = (value) => {
   return value
@@ -11,13 +10,15 @@ const formatarCelular = (value) => {
 };
 
 export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dadosParte1, aoVoltar }) {
-  // Inicializa o formulário capturando os dados que já possam ter vindo da Parte 1 (auto-fill)
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  // 💡 Configuração extra: aciona a validação assim que o usuário sai do campo (onBlur)
+  const { register, handleSubmit, reset, formState: { errors } } = useForm({
+    mode: "onBlur" 
+  });
 
   useEffect(() => {
-    // Se a Parte 1 já carregou dados pré-existentes do banco, preenche eles aqui também
     if (dadosParte1) {
       reset({
+        email: dadosParte1.email || usuarioLogado?.email || '',
         celular1: dadosParte1.celular1 || '',
         celular2: dadosParte1.celular2 || '',
         curso_id: dadosParte1.curso_id || '',
@@ -28,23 +29,20 @@ export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dados
         data_admissao: dadosParte1.data_admissao || ''
       });
     }
-  }, [dadosParte1, reset]);
+  }, [dadosParte1, usuarioLogado, reset]);
 
   const onSalvarFichaFinal = async (data) => {
-    // 🔀 Junta os dados da Parte 1 com os dados novos da Parte 2
     const dadosCompletosPerfil = {
       usuario_id: usuarioLogado?.id,
       nr_cp: usuarioLogado?.nr_cp,
-      ...dadosParte1, // Traz Nome, CPF, Endereço, etc.
-      ...data,        // Traz Celulares, Matrícula, etc.
+      ...dadosParte1,
+      ...data,
       atualizado_em: new Date().toISOString()
     };
 
-    // Remove a propriedade temporária 'registroId' do corpo do JSON que vai pro banco
     const idDoRegistro = dadosParte1?.registroId;
     delete dadosCompletosPerfil.registroId;
 
-    // Se temos um ID de registro existente, faz um UPDATE (PUT), senão faz um INSERT (POST)
     const url = idDoRegistro 
       ? `http://localhost:5000/informacoes_adicionais/${idDoRegistro}`
       : 'http://localhost:5000/informacoes_adicionais';
@@ -78,51 +76,66 @@ export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dados
         
         {/* SEÇÃO 3: CONTATO */}
         <h4 style={{ borderBottom: '1px solid #eee', paddingBottom: '5px' }}>Contato</h4>
+        
+        {/* 🔐 Campo de E-mail corrigido e robusto */}
+        <div style={{ marginBottom: '15px' }}>
+          <label style={{ fontSize: '14px', fontWeight: 'bold', display: 'block' }}>E-mail para Contato:</label>
+          <input 
+            type="email" 
+            {...register("email", { 
+              required: "O e-mail de contato é obrigatório",
+              pattern: { 
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, 
+                message: "Insira um e-mail válido (exemplo@dominio.com)" 
+              }
+            })} 
+            style={{ width: '100%', padding: '6px', boxSizing: 'border-box', marginTop: '5px' }} 
+          />
+          {errors.email && <span style={{ color: 'red', fontSize: '11px', display: 'block', marginTop: '4px' }}>{errors.email.message}</span>}
+        </div>
+
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '15px' }}>
-            <div>
-              <label style={{ fontSize: '14px', fontWeight: 'bold' }}>Celular 1:</label>
-              <input 
-                type="text" 
-                {...register("celular1", { 
-                  required: "Pelo menos um celular é obrigatório",
-                  onChange: (e) => { e.target.value = formatarCelular(e.target.value); }
-                })} 
-                placeholder="(00) 00000-0000"
-                style={{ width: '100%', padding: '6px', boxSizing: 'border-box' }} 
-              />
-              {errors.celular1 && <span style={{ color: 'red', fontSize: '11px' }}>{errors.celular1.message}</span>}
-            </div>
-            <div>
-              <label style={{ fontSize: '14px' }}>Celular 2:</label>
-              <input 
-                type="text" 
-                {...register("celular2", {
-                  onChange: (e) => { e.target.value = formatarCelular(e.target.value); }
-                })} 
-                placeholder="(00) 00000-0000"
-                style={{ width: '100%', padding: '6px', boxSizing: 'border-box' }} 
-              />
-            </div>
+          <div>
+            <label style={{ fontSize: '14px', fontWeight: 'bold' }}>Celular 1:</label>
+            <input 
+              type="text" 
+              {...register("celular1", { 
+                required: "Pelo menos um celular é obrigatório",
+                onChange: (e) => { e.target.value = formatarCelular(e.target.value); }
+              })} 
+              placeholder="(00) 00000-0000"
+              style={{ width: '100%', padding: '6px', boxSizing: 'border-box' }} 
+            />
+            {errors.celular1 && <span style={{ color: 'red', fontSize: '11px' }}>{errors.celular1.message}</span>}
+          </div>
+          <div>
+            <label style={{ fontSize: '14px' }}>Celular 2:</label>
+            <input 
+              type="text" 
+              {...register("celular2", {
+                onChange: (e) => { e.target.value = formatarCelular(e.target.value); }
+              })} 
+              placeholder="(00) 00000-0000"
+              style={{ width: '100%', padding: '6px', boxSizing: 'border-box' }} 
+            />
+          </div>
         </div>
 
         {/* SEÇÃO 4: INFORMAÇÕES MILITARES / ACADÊMICAS */}
         <h4 style={{ borderBottom: '1px solid #eee', paddingBottom: '5px', marginTop: '20px' }}>Dados Militares / Curso</h4>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px', marginBottom: '10px' }}>
-            {/* 🎯 CAMPO SUBSTITUÍDO POR SELECT */}
-            <div>
-              <label style={{ fontSize: '14px', fontWeight: 'bold' }}>Curso:</label>
-              <select 
-                {...register("curso_id", { required: "Selecione um curso" })} 
-                style={{ width: '100%', padding: '6px', height: '32px', boxSizing: 'border-box' }}
-              >
-                <option value="">Selecione o curso...</option>
-                <option value="1">Curso de Instrutores (CI)</option>
-                <option value="2">Curso de Monitores (CM)</option>
-                <option value="3">Curso de Mestre D'Armas (CMD)</option>
-                <option value="4">Curso de Medicina Esportiva (CME)</option>
-              </select>
-              {errors.curso_id && <span style={{ color: 'red', fontSize: '11px' }}>{errors.curso_id.message}</span>}
-            </div>          <div>
+          <div>
+            <label style={{ fontSize: '14px', fontWeight: 'bold' }}>Curso:</label>
+            <select {...register("curso_id", { required: "Selecione um curso" })} style={{ width: '100%', padding: '6px', height: '32px', boxSizing: 'border-box' }}>
+              <option value="">Selecione...</option>
+              <option value="1">Curso de Instrutores (CI)</option>
+              <option value="2">Curso de Monitores (CM)</option>
+              <option value="3">Curso de Mestre D'Armas (CMD)</option>
+              <option value="4">Curso de Medicina Esportiva (CME)</option>
+            </select>
+          </div>
+          
+          <div>
             <label style={{ fontSize: '14px' }}>Ano Formação:</label>
             <input type="number" {...register("ano_formacao")} style={{ width: '100%', padding: '6px', boxSizing: 'border-box' }} />
           </div>
@@ -150,13 +163,12 @@ export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dados
           </div>
         </div>
 
-        {/* Botões de Ação */}
         <div style={{ display: 'flex', gap: '10px' }}>
           <button type="button" onClick={aoVoltar} style={{ flex: 1, padding: '12px', backgroundColor: '#9ca3af', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>
             ← Voltar
           </button>
           
-          <button type="submit" style={{ flex: 2, padding: '12px', backgroundColor: '#22c55e', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '16px' }}>
+          <button type="submit" style={{ flex: 2, padding: '12px', backgroundColor: '#0070f3', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '16px' }}>
             {dadosParte1?.registroId ? 'Confirmar Atualização (Update)' : 'Salvar Ficha Completa (Insert)'}
           </button>
         </div>

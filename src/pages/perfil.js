@@ -28,18 +28,6 @@ export default function PaginaPerfil() {
 
   return (
     <div>
-      {/* Botão de Logout */}
-      <div style={{ maxWidth: '600px', margin: '10px auto', textAlign: 'right', fontFamily: 'sans-serif' }}>
-        <button 
-          onClick={() => {
-            localStorage.removeItem('usuario_sessao');
-            router.push('/');
-          }}
-          style={{ padding: '5px 10px', backgroundColor: '#ef4444', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
-        >
-          Sair do Sistema
-        </button>
-      </div>
       
       {/* Orquestração dos dois sub-componentes */}
       {subStep === 1 ? (
@@ -57,6 +45,20 @@ export default function PaginaPerfil() {
           aoVoltar={() => setSubStep(1)} // Permite voltar para corrigir dados sem perder o progresso
         />
       )}
+
+      {/* Botão de Logout */}
+      <div style={{ maxWidth: '600px', margin: '10px auto', textAlign: 'right', fontFamily: 'sans-serif' }}>
+        <button 
+          onClick={() => {
+            localStorage.removeItem('usuario_sessao');
+            router.push('/');
+          }}
+          style={{ padding: '5px 10px', backgroundColor: '#ef4444', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+        >
+          Sair do Sistema
+        </button>
+      </div>
+
     </div>
   );
 }

@@ -58,7 +58,15 @@ function Menu() {
                            <Link href="/galeria-as" title="Galeria de Associados">»Galeria de Associados</Link>
                         </li>
                         <li>
-                           <Link href="/login" title="Atualize seu Cadastro">»Atualize seu Cadastro</Link>
+                           <Link href="/login" title="Atualize seu Cadastro" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                               <img 
+                                 src="/images/file-pen-solid-full.svg" 
+                                 alt="Serviço Novo" 
+                                 style={{ height: '20px', width: 'auto', verticalAlign: 'middle' }}
+                              />
+                              »Atualize seu Cadastro                            
+                              
+                           </Link>
                         </li>
                         <li>
                            <Link href="/seja-associado" title="Seja um Associado">»Seja um Associado</Link>
