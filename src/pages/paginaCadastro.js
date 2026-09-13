@@ -1,6 +1,6 @@
 // src/pages/cadastro.jsx
 import { useState } from 'react';
-import FormValidacao from '../components/FormValidacao';
+import  FormValidacao from '../components/FormValidacao';
 import FormSenha from '../components/FormSenha';
 
 export default function PaginaCadastro() {

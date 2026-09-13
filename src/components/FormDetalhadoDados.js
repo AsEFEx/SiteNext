@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import $ from 'jquery';
 
 // Aplica a máscara padrão de CPF: 000.000.000-00
 const formatarCPF = (value) => {
@@ -22,9 +23,9 @@ const limpaCEP = (value) => {
 // 🔒 FUNÇÃO CORRIGIDA: Validação matemática oficial com os índices corrigidos
 // 🔒 VALIDADOR DEFINITIVO E CORRIGIDO (Sem risco de ocultar código)
 // 🔒 ALGORITMO INFALÍVEL: Utiliza charAt para evitar falhas de renderização de código no chat
+// Algoritmo matemático oficial com charAt (Sem perda de código no chat)
 const algoritmoValidarCPF = (strCPF) => {
   if (!strCPF) return false;
-
   const cpfLimpo = strCPF.replace(/\D/g, '');
 
   if (cpfLimpo.length !== 11 || /^(\d)\1+$/.test(cpfLimpo)) return false;
@@ -47,7 +48,6 @@ const algoritmoValidarCPF = (strCPF) => {
 
   return true;
 };
-
 
 export default function FormDetalhadoDados({ usuarioLogado, aoAvancar }) {
   const [registroId, setRegistroId] = useState(null);
@@ -135,6 +135,7 @@ export default function FormDetalhadoDados({ usuarioLogado, aoAvancar }) {
 
   // 🔥 LÓGICA DO SUBMIT CORRIGIDA: Usa o validador definitivo com charAt
   const onSubmeterParte1 = (data) => {
+    // 🔥 Agora 'data.cpf' contém o valor 100% atualizado da tela!
     const valido = algoritmoValidarCPF(data.cpf);
     if (!valido) {
       setErroCPF('CPF inválido');
@@ -143,8 +144,7 @@ export default function FormDetalhadoDados({ usuarioLogado, aoAvancar }) {
     setErroCPF('');
     aoAvancar({ ...data, registroId });
   };
-
-
+ 
   if (carregando) {
     return <p style={{ textAlign: 'center', fontFamily: 'sans-serif' }}>Carregando dados pessoais...</p>;
   }
@@ -167,19 +167,21 @@ export default function FormDetalhadoDados({ usuarioLogado, aoAvancar }) {
           </div>
           <div>
             <label style={{ fontSize: '14px', fontWeight: 'bold' }}>CPF:</label>
-             {/* 🔒 Input de CPF com onBlur nativo e controlado */}
-             <input 
-              type="text" 
-              {...register("cpf", { required: "CPF é obrigatório" })}
-              onBlur={(e) => verificarCpfNoBlur(e)}
-              onChange={(e) => {
-                e.target.value = formatarCPF(e.target.value);
-                if (erroCPF) setErroCPF(''); 
-              }}
-              placeholder="000.000.000-00"
-              style={{ width: '100%', padding: '6px', boxSizing: 'border-box' }} 
-            />
-           
+              {/* 🔒 Input de CPF com onBlur nativo e controlado */}
+              {/* 🔒 Input de CPF sincronizado forçadamente com o setValue do Hook Form */}
+              <input 
+                type="text" 
+                {...register("cpf", { required: "CPF é obrigatório" })}
+                onBlur={(e) => verificarCpfNoBlur(e)}
+                onChange={(e) => {
+                  const valorFormatado = formatarCPF(e.target.value);
+                  e.target.value = valorFormatado;
+                  setValue("cpf", valorFormatado); // 🔥 Sincroniza o valor digitado diretamente com o hook-form (data do onSubmit)
+                  if (erroCPF) setErroCPF(''); 
+                }}
+                placeholder="000.000.000-00"
+                style={{ width: '100%', padding: '6px', boxSizing: 'border-box' }} 
+              />           
             {/* 🚨 Exibição imediata do erro de validação do CPF */}
             {erroCPF && <span style={{ color: 'red', fontSize: '11px', display: 'block', marginTop: '4px', fontWeight: 'bold' }}>{erroCPF}</span>}
           </div>
@@ -276,7 +278,7 @@ export default function FormDetalhadoDados({ usuarioLogado, aoAvancar }) {
 
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: '10px', marginBottom: '20px' }}>
           <div>
-            <label style={{ fontSize: '14px' }}>Complemento:</label>
+            <label style={{ fontSize: '14px' }}>Nr/Complemento:</label>
             <input type="text" {...register("complemento")} style={{ width: '100%', padding: '6px', boxSizing: 'border-box' }} />
           </div>
           <div>

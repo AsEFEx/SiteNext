@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import Card from '@/components/Card'
+import Card from '@/components/AtualizarDadosCP/Card'
 
 export default function Home() {
   return <>

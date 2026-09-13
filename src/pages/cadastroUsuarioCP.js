@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import bcrypt from 'bcryptjs'; // 🔒 Importação da biblioteca de criptografia
 import Head from 'next/head'
 import Link from 'next/link'
+import $ from 'jQuery';
 
 export default function Cadastro() {
   const [step, setStep] = useState(1); // 1 = Validação, 2 = Criação de senha
