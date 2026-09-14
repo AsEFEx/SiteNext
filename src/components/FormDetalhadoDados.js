@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import $ from 'jquery';
+
 
 // Aplica a máscara padrão de CPF: 000.000.000-00
 const formatarCPF = (value) => {

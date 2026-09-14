@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import bcrypt from 'bcryptjs'; // 🔒 Importação da biblioteca de criptografia
 import Head from 'next/head'
 import Link from 'next/link'
-import $ from 'jQuery';
+
 
 export default function Cadastro() {
   const [step, setStep] = useState(1); // 1 = Validação, 2 = Criação de senha
@@ -89,9 +89,9 @@ export default function Cadastro() {
           <span className="hide">Início do conteúdo da página</span>
           <h1 className="documentFirstHeading">ATUALIZE SEU CADASTRO</h1>
           <p style={{ textAlign: 'justify' }} >Para você mesmmo manter suas informações atualizadas preencha os dados solicitados a seguir, para validação e em seguida será direcionado para um formulário onde criará uma senha de acesso.</p>
-          <Link target="_blank" style={{ color: '#0088CC' }} href="https://forms.gle/KsQsW8hpMG9HQ1HV8">https://forms.gle/KsQsW8hpMG9HQ1HV8</Link>
+          {/* <Link target="_blank" style={{ color: '#0088CC' }} href="https://forms.gle/KsQsW8hpMG9HQ1HV8">https://forms.gle/KsQsW8hpMG9HQ1HV8</Link>
           <p style={{ textAlign: 'justify' }} >Permanecemos à disposição para contatos por e-mail – <Link onClick={(e) => e.preventDefault()} style={{ color: '#0088CC' }} href="asefex1990@gmail.com">asefex1990@gmail.com</Link>- ou pessoalmente na sede da AsEFEx, de segunda à sexta, de 9h às 12h. </p>
-          <span className="hide">Fim do conteúdo da página</span>
+ */}          <span className="hide">Fim do conteúdo da página</span>
         </section>
       </>
           
