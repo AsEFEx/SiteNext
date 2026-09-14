@@ -41,42 +41,6 @@ export default function Garbage() {
         </Carousel.Item>
         
         
-        {/* Inicio - by TC Fabio - 19 AGO 26 */}
-        
-        <Carousel.Item>
-          
-           <Image
-              alt="AsEFEx - Convite para Feijoada - 12 SET 2026 - 11:30hs - Recanto do Calção Preto"
-              src="/images/ConviteFeijoadaAsEFEx.png"
-              width={1000}
-              height={1000}
-              priority={true}
-            />
-          
-          <div className="galleria-info">
-            <div className="galleria-info-text">
-              <div className="galleria-info-title">
-                <h3 className="galleria-info-title" >
-                  <Link
-                    //target="_blank"
-                    href="#"
-                  >
-                    Feijoada no Recanto do Calção Preto, em 12 SET 2026-11:30hs;
-                    <br /> Pagamento: BB-Ag. 287-9|C/C 212.438-6 / Pix 39.126.347/0001-10; e
-                    <br /> Confirmação até 09 SET 2026 pelo Email: asefex1990@gmail.com.
-                  </Link>
-                </h3>
-              </div>
-              <div className="galleria-info-description">
-                A Diretoria da AsEFEx tem o prazer de convidar os Calções Pretos e amigos da EsEFEx para uma Feijoada, a ser realizado no Recanto dos Calções Pretos (EsEFEx), no dia 12 Set 2026, a partir das 8hs, iniciando com atividades desportivas. Será uma excelente oportunidade para reencontrar amigos e fortalecer os laços da nossa família EsEFEx!
-              </div>
-              {/* <div data-index={0} style={{ display: 'block' }} className="rights">
-                     Nome do autora da imagem</div> */}
-            </div>
-          </div>
-        </Carousel.Item>
-        
-        
         {/* Inicio - by TC Fabio - 12 JUL 26 */}
         
         <Carousel.Item>

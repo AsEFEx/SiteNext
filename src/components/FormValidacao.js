@@ -88,9 +88,9 @@ export default function Cadastro() {
           <span className="hide">Início do conteúdo da página</span>
           <h2>1º Passo: Validação de suas informações</h2>
           <p style={{ textAlign: 'justify' }} >Para você validar suas informações preencha os campos a seguir e em seguida será redirecionado para um formulário para criar a senha de acesso ao sistema de atualização.</p>
-          <Link target="_blank" style={{ color: '#0088CC' }} href="https://forms.gle/KsQsW8hpMG9HQ1HV8">https://forms.gle/KsQsW8hpMG9HQ1HV8</Link>
+          {/* <Link target="_blank" style={{ color: '#0088CC' }} href="https://forms.gle/KsQsW8hpMG9HQ1HV8">https://forms.gle/KsQsW8hpMG9HQ1HV8</Link>
           <p style={{ textAlign: 'justify' }} >Permanecemos à disposição para contatos por e-mail – <Link onClick={(e) => e.preventDefault()} style={{ color: '#0088CC' }} href="asefex1990@gmail.com">asefex1990@gmail.com</Link>- ou pessoalmente na sede da AsEFEx, de segunda à sexta, de 9h às 12h. </p>
-          <span className="hide">Fim do conteúdo da página</span>
+ */}          <span className="hide">Fim do conteúdo da página</span>
         </section>
       </>
           
