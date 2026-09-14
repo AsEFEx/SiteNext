@@ -1,62 +1,66 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import bcrypt from 'bcryptjs'; // 🔒 Importação da biblioteca de criptografia
+import bcrypt from 'bcryptjs'; 
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router';
 
 export default function Cadastro() {
   const [step, setStep] = useState(1); // 1 = Validação, 2 = Criação de senha
   const [usuarioValidado, setUsuarioValidado] = useState(null);
+  const router = useRouter();
 
-  // Form da Etapa 1 (Validação de Dados no arquivo original do Excel)
   const { 
     register: registerValidacao, 
     handleSubmit: handleSubmitValidacao, 
     formState: { errors: errorsValidacao } 
-  } = useForm();
+  } = useForm({ mode: "onBlur" });
 
-  // Form da Etapa 2 (Criação de Senha Segura)
   const { 
     register: registerSenha, 
     handleSubmit: handleSubmitSenha, 
     watch, 
     formState: { errors: errorsSenha } 
-  } = useForm();
+  } = useForm({ mode: "onBlur" });
 
-  // Monitora o campo de senha para validar a confirmação
   const senhaDigitada = watch("senha");
 
-  // 1️⃣ ETAPA 1: Validar se consta na lista permitida do Excel
+  // 1️⃣ ETAPA 1: Validar as informações através do Proxy Seguro do Next.js
   const onValidarSubmit = async (data) => {
     try {
-      const resposta = await fetch(
-        `http://localhost:5000/usuarios_validos?nr_cp=${data.nr_cp}&curso=${data.curso}&nome=${data.nome}&arma=${data.arma}`
-      );
-      const dados = await resposta.json();
+      const resposta = await fetch('/api/validar', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data) // 🔥 CORREÇÃO: Transforma os dados em texto puro para o Next.js aceitar de forma estável
+      });
 
-      if (dados.length > 0) {
-        setUsuarioValidado(dados[0]); // Armazena os dados do usuário encontrado
-        setStep(2); // Avança para o formulário de senha
+      const resultado = await resposta.json();
+
+      if (resposta.ok && resultado.sucesso) {
+        setUsuarioValidado(resultado.usuario);
+        setStep(2); // Avança com segurança para a criação de senha
       } else {
-        alert('Dados não encontrados. Verifique o Número do CP e o E-mail.');
+        alert(resultado.mensagem || resultado.erro || 'Dados não encontrados.');
       }
+
     } catch (error) {
-      console.error('Erro ao conectar na API:', error);
-      alert('Erro ao conectar ao servidor de validação.');
+      alert(`Erro na requisição: ${error.message}`);
+      console.error('Erro ao processar validação:', error);
     }
   };
 
   // 2️⃣ ETAPA 2: Aplicar Criptografia e Salvar o Cadastro Definitivo
   const onSenhaSubmit = async (data) => {
     try {
-      // 🔒 Gera o "salt" (fator de custo de segurança) e depois cria o Hash único
       const salt = bcrypt.genSaltSync(10);
       const senhaCriptografada = bcrypt.hashSync(data.senha, salt);
 
-      // Une as informações do Excel com o Hash seguro da nova senha
       const novoUsuarioCompleto = {
         ...usuarioValidado, 
-        senha: senhaCriptografada, // <- O hash vai para o "banco" no lugar da senha limpa
+        senha: senhaCriptografada, 
         data_cadastro: new Date().toISOString(),
       };
 
@@ -68,13 +72,16 @@ export default function Cadastro() {
 
       if (resposta.ok) {
         alert('Cadastro realizado com segurança! Sua senha foi salva de forma criptografada.');
-        // Opcional: Resetar estados ou redirecionar para página de login aqui
+        router.push('/login');
+      } else {
+        alert('Erro ao registrar as credenciais no servidor.');
       }
     } catch (error) {
       console.error('Erro ao salvar cadastro:', error);
       alert('Não foi possível salvar o seu cadastro.');
     }
   };
+
 
   return (
     <div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px', fontFamily: 'sans-serif' }}>
@@ -87,10 +94,10 @@ export default function Cadastro() {
         <section id="content-section">
           <span className="hide">Início do conteúdo da página</span>
           <h2>1º Passo: Validação de suas informações</h2>
-          <p style={{ textAlign: 'justify' }} >Para você validar suas informações preencha os campos a seguir e em seguida será redirecionado para um formulário para criar a senha de acesso ao sistema de atualização.</p>
-          {/* <Link target="_blank" style={{ color: '#0088CC' }} href="https://forms.gle/KsQsW8hpMG9HQ1HV8">https://forms.gle/KsQsW8hpMG9HQ1HV8</Link>
-          <p style={{ textAlign: 'justify' }} >Permanecemos à disposição para contatos por e-mail – <Link onClick={(e) => e.preventDefault()} style={{ color: '#0088CC' }} href="asefex1990@gmail.com">asefex1990@gmail.com</Link>- ou pessoalmente na sede da AsEFEx, de segunda à sexta, de 9h às 12h. </p>
- */}          <span className="hide">Fim do conteúdo da página</span>
+          <p style={{ textAlign: 'justify', fontSize: '18px', fontWeight: 'bold', color: '#555', lineHeight: '1.5' }}>
+            Para você validar suas informações preencha os campos a seguir e em seguida será redirecionado para um formulário para criar a senha de acesso ao sistema de atualização.
+          </p>
+          <span className="hide">Fim do conteúdo da página</span>
         </section>
       </>
           
@@ -101,70 +108,75 @@ export default function Cadastro() {
         <form onSubmit={handleSubmitValidacao(onValidarSubmit)}>
           <p style={{ fontSize: '14px', color: '#555' }}>Insira seus dados pré-autorizados para iniciar.</p>
           
+          {/* Campo: Número do CP */}
           <div style={{ marginBottom: '15px' }}>
             <label style={{ display: 'block', fontWeight: 'bold' }}>Número do CP:</label>
             <input 
               type="text" 
               {...registerValidacao("nr_cp", {
                 required: "O Número do CP é obrigatório",
-                onChange: (e) => { e.target.value = e.target.value.toUpperCase(); } // 🔥 Transforma em MAIÚSCULO
+                onChange: (e) => { e.target.value = e.target.value.trim().toUpperCase(); }
               })}
               style={{ width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box' }}
             />
             {errorsValidacao.nr_cp && <span style={{ color: 'red', fontSize: '12px' }}>{errorsValidacao.nr_cp.message}</span>}
           </div>
 
+          {/* Campo: Curso */}
           <div style={{ marginBottom: '15px' }}>
             <label style={{ display: 'block', fontWeight: 'bold' }}>Curso:</label>
             <input 
               type="text" 
               {...registerValidacao("curso", { 
                 required: "O curso é obrigatório",
-                onChange: (e) => { e.target.value = e.target.value.toUpperCase(); } // 🔥 Transforma em MAIÚSCULO
+                onChange: (e) => { e.target.value = e.target.value.trim().toUpperCase(); }
               })}
               style={{ width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box' }}
             />
             {errorsValidacao.curso && <span style={{ color: 'red', fontSize: '12px' }}>{errorsValidacao.curso.message}</span>}
           </div>
 
+          {/* Campo: Nome Completo */}
           <div style={{ marginBottom: '15px' }}>
             <label style={{ display: 'block', fontWeight: 'bold' }}>Nome completo:</label>
             <input 
               type="text" 
               {...registerValidacao("nome", {
                 required: "O nome é obrigatório",
-                onChange: (e) => { e.target.value = e.target.value.toUpperCase(); } // 🔥 Transforma em MAIÚSCULO
+                onChange: (e) => { e.target.value = e.target.value.trim().toUpperCase(); }
               })}
               style={{ width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box' }}
             />
             {errorsValidacao.nome && <span style={{ color: 'red', fontSize: '12px' }}>{errorsValidacao.nome.message}</span>}
           </div>
 
-          <div style={{ marginBottom: '15px' }}>
+          {/* Campo: Arma */}
+          <div style={{ marginBottom: '20px' }}>
             <label style={{ display: 'block', fontWeight: 'bold' }}>Arma:</label>
             <input 
               type="text" 
               {...registerValidacao("arma", {
                 required: "A Arma é obrigatória",
-                  onChange: (e) => { e.target.value = e.target.value.toUpperCase(); } // 🔥 Transforma em MAIÚSCULO
+                onChange: (e) => { e.target.value = e.target.value.trim().toUpperCase(); }
               })}
               style={{ width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box' }}
             />
             {errorsValidacao.arma && <span style={{ color: 'red', fontSize: '12px' }}>{errorsValidacao.arma.message}</span>}
           </div>
 
-          <button type="submit" style={{ width: '100%', padding: '10px', backgroundColor: '#0070f3', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
-            Validar Dados
+          <button type="submit" style={{ width: '100%', padding: '10px', backgroundColor: '#0070f3', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '16px' }}>
+            Validar Informações
           </button>
         </form>
       ) : (
-        /* 🔒 FORMULÁRIO ETAPA 2: CRIAÇÃO DE SENHA CRIPTOGRAFADA */
+        /* 🔒 FORMULÁRIO ETAPA 2: CRIAÇÃO DE SENHA */
         <form onSubmit={handleSubmitSenha(onSenhaSubmit)}>
-          <p style={{ fontSize: '14px', color: '#555' }}>
-            Olá, <strong>{usuarioValidado?.nome}</strong> ({usuarioValidado?.posto} de {usuarioValidado?.arma}).
+          <p style={{ fontSize: '15px', color: '#333', lineHeight: '1.4' }}>
+            Olá, <strong>{usuarioValidado?.NOME_COMPLETO || usuarioValidado?.NOME || usuarioValidado?.nome_completo || usuarioValidado?.nome || 'Usuário'}</strong>. Seus dados foram validados com sucesso!
           </p>
-          <p style={{ fontSize: '14px', color: '#555' }}>Crie sua senha de acesso abaixo:</p>
+          <p style={{ fontSize: '14px', color: '#666', marginBottom: '20px' }}>Defina sua senha de acesso abaixo:</p>
           
+          {/* Campo: Nova Senha */}
           <div style={{ marginBottom: '15px' }}>
             <label style={{ display: 'block', fontWeight: 'bold' }}>Nova Senha:</label>
             <input 
@@ -178,12 +190,13 @@ export default function Cadastro() {
             {errorsSenha.senha && <span style={{ color: 'red', fontSize: '12px' }}>{errorsSenha.senha.message}</span>}
           </div>
 
-          <div style={{ marginBottom: '15px' }}>
+          {/* Campo: Confirmar Senha */}
+          <div style={{ marginBottom: '20px' }}>
             <label style={{ display: 'block', fontWeight: 'bold' }}>Confirme a Senha:</label>
             <input 
               type="password" 
               {...registerSenha("confirmarSenha", { 
-                required: "A confirmação de senha é obrigatória",
+                required: "A confirmation de senha é obrigatória",
                 validate: (value) => value === senhaDigitada || "As senhas não coincidem"
               })}
               style={{ width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box' }}
@@ -191,8 +204,8 @@ export default function Cadastro() {
             {errorsSenha.confirmarSenha && <span style={{ color: 'red', fontSize: '12px' }}>{errorsSenha.confirmarSenha.message}</span>}
           </div>
 
-          <button type="submit" style={{ width: '100%', padding: '10px', backgroundColor: '#22c55e', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
-            Concluir Cadastro
+          <button type="submit" style={{ width: '100%', padding: '10px', backgroundColor: '#22c55e', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '16px' }}>
+            Concluir e Salvar Conta
           </button>
         </form>
       )}
