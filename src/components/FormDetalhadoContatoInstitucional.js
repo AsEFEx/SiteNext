@@ -130,7 +130,7 @@ export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dados
               <option value="">Selecione...</option>
               <option value="1">Curso de Instrutores (CI)</option>
               <option value="2">Curso de Monitores (CM)</option>
-              <option value="3">Curso de Mestre D'Armas (CMD)</option>
+              <option value="3">Curso de Mestre DArmas (CMD)</option>
               <option value="4">Curso de Medicina Esportiva (CME)</option>
             </select>
           </div>
