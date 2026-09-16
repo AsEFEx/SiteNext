@@ -8,6 +8,7 @@ import Link from 'next/link'
 export default function Cadastro() {
   const [step, setStep] = useState(1); // 1 = Validação, 2 = Criação de senha
   const [usuarioValidado, setUsuarioValidado] = useState(null);
+  const router = useRouter();
 
   // Form da Etapa 1 (Validação de Dados no arquivo original do Excel)
   const { 
@@ -31,7 +32,7 @@ export default function Cadastro() {
   const onValidarSubmit = async (data) => {
     try {
       const resposta = await fetch(
-        `http://localhost:5000/usuarios_validos?nr_cp=${data.nr_cp}&curso=${data.curso}&nome=${data.nome}&arma=${data.arma}`
+        `http://127.0.0.1:5000/usuarios_validos?nr_cp=${data.nr_cp}&curso=${data.curso}&nome=${data.nome}&arma=${data.arma}`
       );
       const dados = await resposta.json();
 
@@ -61,7 +62,7 @@ export default function Cadastro() {
         data_cadastro: new Date().toISOString(),
       };
 
-      const resposta = await fetch('http://localhost:5000/usuarios_cadastrados', {
+      const resposta = await fetch('http://127.0.0.1:5000/usuarios_cadastrados', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(novoUsuarioCompleto),
