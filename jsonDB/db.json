@@ -87867,6 +87867,18 @@
       "id": "PbHD4SAWh2E",
       "senha": "$2b$10$6yxVqAzRbwXudFHSEIUOTOqVhN76M26dosmTGbGcSF6yqDut3oI/m",
       "data_cadastro": "2026-09-16T21:19:09.679Z"
+    },
+    {
+      "nr_cp": "0007",
+      "curso": "MONITOR",
+      "ano_formacao": 1929,
+      "posto": "SARGENTO",
+      "nome": "ANTONIO AUGUSTO RIBEIRO DA PAIXÃO",
+      "arma": "ARTILHARIA",
+      "e-mail": "",
+      "id": "16qYACj8DmE",
+      "senha": "$2b$10$2n8BfgvSOlBpirWiqJiOkOf9TdMnuMr9a2dTHVfsvLn9w7NAT/v/G",
+      "data_cadastro": "2026-09-16T22:56:02.810Z"
     }
   ],
   "informacoes_adicionais": [
@@ -87979,7 +87991,7 @@
       "integrante_ex_ccfex": "Sim",
       "matricula": "124787895",
       "data_admissao": "2026-08-31",
-      "atualizado_em": "2026-09-16T20:48:10.559Z",
+      "atualizado_em": "2026-09-16T22:47:26.850Z",
       "id": "RncdWQhoONM"
     },
     {
