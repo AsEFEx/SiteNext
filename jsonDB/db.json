@@ -87843,6 +87843,18 @@
       "id": "0iQ9zumBBxA",
       "senha": "$2b$10$i0j1vf8bhzP7FmV6Smx9z.YQqVEo0j9cWmjISruq5CBZmgIMgtote",
       "data_cadastro": "2026-09-16T20:27:40.331Z"
+    },
+    {
+      "nr_cp": "0005",
+      "curso": "MONITOR",
+      "ano_formacao": 1929,
+      "posto": "SARGENTO",
+      "nome": "ALUIZIO MARQUES DA SILVA",
+      "arma": "QI",
+      "e-mail": "",
+      "id": "Qc5dNBExtKI",
+      "senha": "$2b$10$LsiI6OTUDVrbcgaod9KtCulrJ7NXCX.jXdZfd8nGl90Ege0gjTK0m",
+      "data_cadastro": "2026-09-16T21:05:17.089Z"
     }
   ],
   "informacoes_adicionais": [
@@ -87927,7 +87939,7 @@
       "integrante_ex_ccfex": "Não",
       "matricula": "12478956",
       "data_admissao": "1958-06-16",
-      "atualizado_em": "2026-09-16T00:39:07.891Z",
+      "atualizado_em": "2026-09-16T20:42:17.205Z",
       "id": "Z9G4D7F50PY"
     },
     {
@@ -87955,7 +87967,7 @@
       "integrante_ex_ccfex": "Sim",
       "matricula": "124787895",
       "data_admissao": "2026-08-31",
-      "atualizado_em": "2026-09-15T23:24:20.624Z",
+      "atualizado_em": "2026-09-16T20:48:10.559Z",
       "id": "RncdWQhoONM"
     },
     {
@@ -87983,7 +87995,7 @@
       "integrante_ex_ccfex": "Não",
       "matricula": "12478956",
       "data_admissao": "2025-04-09",
-      "atualizado_em": "2026-09-16T20:29:39.498Z",
+      "atualizado_em": "2026-09-16T21:04:34.521Z",
       "id": "I3jaZ2FuA5o"
     }
   ],

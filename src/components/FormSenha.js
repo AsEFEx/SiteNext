@@ -22,7 +22,7 @@ export default function FormSenha({ usuarioValidado, onCadastroCompleto }) {
       };
 
       // 3. Faz o POST para salvar o usuário definitivo na rota do json-server
-      const resposta = await fetch('http://localhost:5000/usuarios_cadastrados', {
+      const resposta = await fetch('http://127.0.0.1:5000/usuarios_cadastrados', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(novoUsuarioCompleto),

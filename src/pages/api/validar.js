@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const respostaServer = await fetch('http://localhost:5000/usuarios_validos');
+    const respostaServer = await fetch('http://127.0.0.1:5000/usuarios_validos');
     
     if (!respostaServer.ok) {
       return res.status(500).json({ erro: 'Não foi possível ler o banco de dados local.' });

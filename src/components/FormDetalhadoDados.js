@@ -114,7 +114,7 @@ export default function FormDetalhadoDados({ usuarioLogado, aoAvancar }) {
     const buscarDados = async () => {
       if (!usuarioLogado?.id) return;
       try {
-        const resposta = await fetch(`http://localhost:5000/informacoes_adicionais?usuario_id=${usuarioLogado.id}`);
+        const resposta = await fetch(`http://127.0.0.1:5000/informacoes_adicionais?usuario_id=${usuarioLogado.id}`);
         const dados = await resposta.json();
         
         if (dados.length > 0) {

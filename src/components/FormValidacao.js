@@ -64,7 +64,7 @@ export default function Cadastro() {
         data_cadastro: new Date().toISOString(),
       };
 
-      const resposta = await fetch('http://localhost:5000/usuarios_cadastrados', {
+      const resposta = await fetch('http://127.0.0.1:5000/usuarios_cadastrados', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(novoUsuarioCompleto),
