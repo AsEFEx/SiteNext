@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import bcrypt from 'bcryptjs'; // 🔒 Importação da biblioteca de criptografia
 import Head from 'next/head'
+import { useRouter } from 'next/router';
 import Link from 'next/link'
 
 
