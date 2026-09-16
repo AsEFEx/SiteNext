@@ -71,7 +71,7 @@ const onSubmitLogin = async (data) => {
             type="text" 
             {...register("nr_cp", {
               required: "O Número do CP é obrigatório",
-              onChange: (e) => { e.target.value = Sring(e.target.value.trim().toUpperCase()); } // 🔥 Transforma em MAIÚSCULO
+              onChange: (e) => { e.target.value = String(e.target.value.trim().toUpperCase()); } // 🔥 Transforma em MAIÚSCULO
             })}
             style={{ width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box' }}
           />

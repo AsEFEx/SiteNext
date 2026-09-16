@@ -87831,6 +87831,18 @@
       "id": "9sDdHE-5dRo",
       "senha": "$2b$10$nuQJxFR4FJa4cxnJHccih.eA6ActdhdI1HwfhNQWgM72QJ7I/PKTe",
       "data_cadastro": "2026-09-15T23:00:56.484Z"
+    },
+    {
+      "nr_cp": "0004",
+      "curso": "MONITOR",
+      "ano_formacao": 1929,
+      "posto": "SARGENTO",
+      "nome": "ALBERTO DE CARVALHO PERRIRAZ",
+      "arma": "QI",
+      "e-mail": "",
+      "id": "0iQ9zumBBxA",
+      "senha": "$2b$10$i0j1vf8bhzP7FmV6Smx9z.YQqVEo0j9cWmjISruq5CBZmgIMgtote",
+      "data_cadastro": "2026-09-16T20:27:40.331Z"
     }
   ],
   "informacoes_adicionais": [
@@ -87915,7 +87927,7 @@
       "integrante_ex_ccfex": "Não",
       "matricula": "12478956",
       "data_admissao": "1958-06-16",
-      "atualizado_em": "2026-09-15T23:21:35.474Z",
+      "atualizado_em": "2026-09-16T00:39:07.891Z",
       "id": "Z9G4D7F50PY"
     },
     {
@@ -87945,6 +87957,34 @@
       "data_admissao": "2026-08-31",
       "atualizado_em": "2026-09-15T23:24:20.624Z",
       "id": "RncdWQhoONM"
+    },
+    {
+      "usuario_id": "0iQ9zumBBxA",
+      "nr_cp": "0004",
+      "email": "alberto@gmail.com",
+      "nome": "ALBERTO DE CARVALHO PERRIRAZ",
+      "cpf": "830.235.410-43",
+      "categoria_id": "1",
+      "situacao_id": "1",
+      "posto_id": "12",
+      "cep": "21750167",
+      "rua": "Rua Dois",
+      "bairro": "Magalhães Bastos",
+      "municipio": "Rio de Janeiro",
+      "uf": "RJ",
+      "complemento": "87",
+      "cidade_res": "Rio de Janeiro",
+      "estado_res": "RJ",
+      "celular1": "(21) 95689-5247",
+      "celular2": "(21) 98754-2136",
+      "curso_id": "1",
+      "ano_formacao": "1985",
+      "estado_f_aux": "RJ",
+      "integrante_ex_ccfex": "Não",
+      "matricula": "12478956",
+      "data_admissao": "2025-04-09",
+      "atualizado_em": "2026-09-16T20:29:39.498Z",
+      "id": "I3jaZ2FuA5o"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
