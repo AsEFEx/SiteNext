@@ -87855,6 +87855,18 @@
       "id": "Qc5dNBExtKI",
       "senha": "$2b$10$LsiI6OTUDVrbcgaod9KtCulrJ7NXCX.jXdZfd8nGl90Ege0gjTK0m",
       "data_cadastro": "2026-09-16T21:05:17.089Z"
+    },
+    {
+      "nr_cp": "0006",
+      "curso": "MONITOR",
+      "ano_formacao": 1929,
+      "posto": "SARGENTO",
+      "nome": "ANTONIO ALVES MARTINS",
+      "arma": "INFANTARIA",
+      "e-mail": "",
+      "id": "PbHD4SAWh2E",
+      "senha": "$2b$10$6yxVqAzRbwXudFHSEIUOTOqVhN76M26dosmTGbGcSF6yqDut3oI/m",
+      "data_cadastro": "2026-09-16T21:19:09.679Z"
     }
   ],
   "informacoes_adicionais": [
@@ -87997,6 +88009,34 @@
       "data_admissao": "2025-04-09",
       "atualizado_em": "2026-09-16T21:04:34.521Z",
       "id": "I3jaZ2FuA5o"
+    },
+    {
+      "usuario_id": "Qc5dNBExtKI",
+      "nr_cp": "0005",
+      "email": "aluizio@gmail.com",
+      "nome": "ALUIZIO MARQUES DA SILVA",
+      "cpf": "830.235.410-43",
+      "categoria_id": "5",
+      "situacao_id": "1",
+      "posto_id": "14",
+      "cep": "21750001",
+      "rua": "Avenida Marechal Fontenelle",
+      "bairro": "Vila Militar",
+      "municipio": "Rio de Janeiro",
+      "uf": "RJ",
+      "complemento": "125",
+      "cidade_res": "Rio de Janeiro",
+      "estado_res": "RJ",
+      "celular1": "(21) 95689-5247",
+      "celular2": "(21) 98754-2136",
+      "curso_id": "2",
+      "ano_formacao": "1985",
+      "estado_f_aux": "RJ",
+      "integrante_ex_ccfex": "Sim",
+      "matricula": "1244585",
+      "data_admissao": "",
+      "atualizado_em": "2026-09-16T21:17:53.671Z",
+      "id": "jgsUMj_R2OI"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
