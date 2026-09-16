@@ -8,14 +8,28 @@ export default async function handler(req, res) {
   }
 
   try {
-    const respostaServer = await fetch('http://127.0.0.1:5000/usuarios_validos');
+    
+    // 🔒 CONFIGURAÇÃO DE PRODUÇÃO NODE.JS: Passa os headers explicitamente para liberar o tráfego local
+    const opcoesFetchProducao = {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)', // Força o Node a simular o navegador
+        'Host': '127.0.0.1:5000'
+      }
+    };
+
+    
+    
+    const respostaServer = await fetch('http://127.0.0.1:5000/usuarios_validos', opcoesFetchProducao);
     
     if (!respostaServer.ok) {
       return res.status(500).json({ erro: 'Não foi possível ler o banco de dados local.' });
     }
 
     const todosUsuariosValidos = await respostaServer.json();
-    
+        
     // 🔥 Garante a leitura correta do corpo da requisição, aceitando objeto ou string convertida
     const dadosRecebidos = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
 
