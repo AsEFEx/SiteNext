@@ -2,14 +2,12 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import bcrypt from 'bcryptjs'; // 🔒 Importação da biblioteca de criptografia
 import Head from 'next/head'
-import { useRouter } from 'next/router';
 import Link from 'next/link'
 
 
 export default function Cadastro() {
   const [step, setStep] = useState(1); // 1 = Validação, 2 = Criação de senha
   const [usuarioValidado, setUsuarioValidado] = useState(null);
-  const router = useRouter();
 
   // Form da Etapa 1 (Validação de Dados no arquivo original do Excel)
   const { 
@@ -30,56 +28,22 @@ export default function Cadastro() {
   const senhaDigitada = watch("senha");
 
   // 1️⃣ ETAPA 1: Validar se consta na lista permitida do Excel
- const onValidarSubmit = async (data) => {
+  const onValidarSubmit = async (data) => {
     try {
-      // 🚀 Fazemos o fetch direto para o json-server, igualzinho você faz no Login e Perfil
-      const resposta = await fetch('http://127.0.0.1:5000/usuarios_validos');
-      
-      if (!resposta.ok) {
-        alert(`O servidor retornou um status de erro: ${resposta.status}`);
-        return;
-      }
+      const resposta = await fetch(
+        `http://127.0.0.1:5000/usuarios_validos?nr_cp=${data.nr_cp}&curso=${data.curso}&nome=${data.nome}&arma=${data.arma}`
+      );
+      const dados = await resposta.json();
 
-      const corpoResposta = await resposta.json();
-
-      // Trata se o json-server devolveu os dados envelopados ou em array puro
-      const todosUsuariosValidos = Array.isArray(corpoResposta) 
-        ? corpoResposta 
-        : (corpoResposta.data || []);
-
-      if (todosUsuariosValidos.length === 0) {
-        alert("A lista de usuários válidos está vazia no servidor.");
-        return;
-      }
-
-      // Filtragem rigorosa baseada no que você digitou na tela
-      const usuarioEncontrado = todosUsuariosValidos.find(usuario => {
-        const nrCpBanco = String(usuario.nr_cp ?? usuario.NR_CP ?? '').trim().toUpperCase();
-        const cursoBanco = String(usuario.curso ?? usuario.CURSO ?? '').trim().toUpperCase();
-        const nomeBanco = String(usuario.nome_completo ?? usuario.NOME_COMPLETO ?? usuario.nome ?? usuario.NOME ?? '').trim().toUpperCase();
-        const armaBanco = String(usuario.arma ?? usuario.ARMA ?? '').trim().toUpperCase();
-        
-        const nrCpDigitado = String(data.nr_cp ?? '').trim().toUpperCase();
-        const cursoDigitado = String(data.curso ?? '').trim().toUpperCase();
-        const nomeDigitado = String(data.nome ?? '').trim().toUpperCase();
-        const armaDigitado = String(data.arma ?? '').trim().toUpperCase();
-
-        return nrCpBanco === nrCpDigitado && 
-               cursoBanco === cursoDigitado && 
-               nomeBanco === nomeDigitado && 
-               armaBanco === armaDigitado;
-      });
-
-      if (usuarioEncontrado) {
-        setUsuarioValidado(usuarioEncontrado);
-        setStep(2); // Avança com sucesso para a Etapa 2
+      if (dados.length > 0) {
+        setUsuarioValidado(dados[0]); // Armazena os dados do usuário encontrado
+        setStep(2); // Avança para o formulário de senha
       } else {
-        alert('Dados não encontrados. Verifique se o Número do CP, Curso, Nome Completo e Arma foram digitados exatamente como constam na lista pré-autorizada.');
+        alert('Dados não encontrados. Verifique o Número do CP e o E-mail.');
       }
-
     } catch (error) {
-      console.error('Erro detalhado de execução:', error);
-      alert('Erro interno ao tentar validar as informações.');
+      console.error('Erro ao conectar na API:', error);
+      alert('Erro ao conectar ao servidor de validação.');
     }
   };
 
@@ -123,7 +87,6 @@ export default function Cadastro() {
 
         <section id="content-section">
           <span className="hide">Início do conteúdo da página</span>
-          <h2>1º Passo: Validação de suas informações</h2>
           <h1 className="documentFirstHeading">ATUALIZE SEU CADASTRO</h1>
           <p style={{ textAlign: 'justify' }} >Para você mesmmo manter suas informações atualizadas preencha os dados solicitados a seguir, para validação e em seguida será direcionado para um formulário onde criará uma senha de acesso.</p>
           {/* <Link target="_blank" style={{ color: '#0088CC' }} href="https://forms.gle/KsQsW8hpMG9HQ1HV8">https://forms.gle/KsQsW8hpMG9HQ1HV8</Link>

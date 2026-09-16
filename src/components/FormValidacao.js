@@ -25,25 +25,52 @@ export default function Cadastro() {
 
   const senhaDigitada = watch("senha");
 
-  // 1️⃣ ETAPA 1: Validar as informações através do Proxy Seguro do Next.js
+  // 1️⃣ ETAPA 1: Validar se consta na lista permitida do Excel (DIRETO NO CLIENTE)
   const onValidarSubmit = async (data) => {
     try {
-      const resposta = await fetch('/api/validar', {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(data) // 🔥 CORREÇÃO: Transforma os dados em texto puro para o Next.js aceitar de forma estável
+      // 🚀 Chamada direta ao json-server (idêntica ao funcionamento do seu Login e Perfil)
+      const resposta = await fetch('http://127.0.0.1:5000/usuarios_validos');
+      
+      if (!resposta.ok) {
+        alert(`O servidor retornou um status de erro: ${resposta.status}`);
+        return;
+      }
+
+      const corpoResposta = await resposta.json();
+
+      // Trata se o json-server devolveu os dados envelopados ou em array puro
+      const todosUsuariosValidos = Array.isArray(corpoResposta) 
+        ? corpoResposta 
+        : (corpoResposta.data || []);
+
+      if (todosUsuariosValidos.length === 0) {
+        alert("A lista de usuários válidos está vazia no servidor.");
+        return;
+      }
+
+      // 🔍 FILTRAGEM RIGOROSA: Procura o usuário ignorando espaços e forçando maiúsculas
+      const usuarioEncontrado = todosUsuariosValidos.find(usuario => {
+        const nrCpBanco = String(usuario.nr_cp ?? usuario.NR_CP ?? '').trim().toUpperCase();
+        const cursoBanco = String(usuario.curso ?? usuario.CURSO ?? '').trim().toUpperCase();
+        const nomeBanco = String(usuario.nome_completo ?? usuario.NOME_COMPLETO ?? usuario.nome ?? usuario.NOME ?? '').trim().toUpperCase();
+        const armaBanco = String(usuario.arma ?? usuario.ARMA ?? '').trim().toUpperCase();
+        
+        const nrCpDigitado = String(data.nr_cp ?? '').trim().toUpperCase();
+        const cursoDigitado = String(data.curso ?? '').trim().toUpperCase();
+        const nomeDigitado = String(data.nome ?? '').trim().toUpperCase();
+        const armaDigitado = String(data.arma ?? '').trim().toUpperCase();
+
+        return nrCpBanco === nrCpDigitado && 
+               cursoBanco === cursoDigitado && 
+               nomeBanco === nomeDigitado && 
+               armaBanco === armaDigitado;
       });
 
-      const resultado = await resposta.json();
-
-      if (resposta.ok && resultado.sucesso) {
-        setUsuarioValidado(resultado.usuario);
-        setStep(2); // Avança com segurança para a criação de senha
+      if (usuarioEncontrado) {
+        setUsuarioValidado(usuarioEncontrado);
+        setStep(2); // Avança com sucesso para a Etapa 2 (Criação de Senha)
       } else {
-        alert(resultado.mensagem || resultado.erro || 'Dados não encontrados.');
+        alert('Dados não encontrados. Verifique se o Número do CP, Curso, Nome Completo e Arma foram digitados exatamente como constam na lista pré-autorizada.');
       }
 
     } catch (error) {
@@ -51,6 +78,7 @@ export default function Cadastro() {
       console.error('Erro ao processar validação:', error);
     }
   };
+
 
   // 2️⃣ ETAPA 2: Aplicar Criptografia e Salvar o Cadastro Definitivo
   const onSenhaSubmit = async (data) => {

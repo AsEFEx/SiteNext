@@ -87879,6 +87879,30 @@
       "id": "16qYACj8DmE",
       "senha": "$2b$10$2n8BfgvSOlBpirWiqJiOkOf9TdMnuMr9a2dTHVfsvLn9w7NAT/v/G",
       "data_cadastro": "2026-09-16T22:56:02.810Z"
+    },
+    {
+      "nr_cp": "0008",
+      "curso": "MONITOR",
+      "ano_formacao": 1929,
+      "posto": "1º SARGENTO",
+      "nome": "ANTONIO E JESUS DO PRADO LOPES",
+      "arma": "QI",
+      "e-mail": "",
+      "id": "Y5phSuc7WPk",
+      "senha": "$2b$10$343oaBCwaLm6tsnq.96jYOtFC8G1Pcfugscf/aYgnJpbc/bpnXdpS",
+      "data_cadastro": "2026-09-16T23:25:32.138Z"
+    },
+    {
+      "nr_cp": "0009",
+      "curso": "MONITOR",
+      "ano_formacao": 1929,
+      "posto": "SARGENTO",
+      "nome": "ANTONIO RENNO RIBEIRO",
+      "arma": "INFANTARIA",
+      "e-mail": "",
+      "id": "UKAeg_VJcAA",
+      "senha": "$2b$10$oblGlzPCsnQPCMeqzZzV6.L.or9AD44RvWYrlHA3bB9j5BgDm5hjK",
+      "data_cadastro": "2026-09-16T23:29:07.709Z"
     }
   ],
   "informacoes_adicionais": [
@@ -88019,7 +88043,7 @@
       "integrante_ex_ccfex": "Não",
       "matricula": "12478956",
       "data_admissao": "2025-04-09",
-      "atualizado_em": "2026-09-16T21:04:34.521Z",
+      "atualizado_em": "2026-09-16T23:00:40.464Z",
       "id": "I3jaZ2FuA5o"
     },
     {
