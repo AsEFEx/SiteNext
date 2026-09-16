@@ -9,35 +9,54 @@ export default function FormLogin({ onLoginSucesso }) {
   // Estado para exibir mensagens de erro que venham do servidor/validação
   const [erroServidor, setErroServidor] = useState('');
 
-  const onSubmitLogin = async (data) => {
-    setErroServidor(''); // Limpa erros anteriores
+const onSubmitLogin = async (data) => {
+  setErroServidor(''); // Limpa erros anteriores
+  
+  try {
+    // 🚀 BURLA A INFERÊNCIA: Busca a lista de cadastrados para processar de forma idêntica no JS
+    const resposta = await fetch('http://localhost:5000/usuarios_cadastrados');
     
-    try {
-      // 1. Busca no json-server se existe algum usuário cadastrado definitiva com este Número do CP
-      const resposta = await fetch(`http://localhost:5000/usuarios_cadastrados?nr_cp=${data.nr_cp}`);
-      const usuarios = await resposta.json();
-
-      if (usuarios.length > 0) {
-        // Como o json-server sempre retorna uma lista [], pegamos o primeiro usuário encontrado
-        const usuarioEncontrado = usuarios[0];
-
-        // 2. 🔒 Compara a senha em texto limpo digitada com o HASH seguro guardado no db.json
-        const senhaValida = bcrypt.compareSync(data.senha, usuarioEncontrado.senha);
-
-        if (senhaValida) {
-          // 3. Sucesso! Dispara a função que avisa a página que o login deu certo
-          onLoginSucesso(usuarioEncontrado);
-        } else {
-          setErroServidor('Senha incorreta. Tente novamente.');
-        }
-      } else {
-        setErroServidor('Número do CP não encontrado. Você já criou sua senha no primeiro acesso?');
-      }
-    } catch (error) {
-      console.error('Erro ao tentar fazer login:', error);
+    if (!resposta.ok) {
       setErroServidor('Erro ao conectar ao servidor de autenticação.');
+      return;
     }
-  };
+
+    const todosUsuariosCadastrados = await resposta.json();
+
+    // Trata se o json-server devolveu os dados envelopados ou em array puro
+    const listaUsuarios = Array.isArray(todosUsuariosCadastrados) 
+      ? todosUsuariosCadastrados 
+      : (todosUsuariosCadastrados.data || []);
+
+    // 🔍 COMPARÇÃO ESTRITA DE TEXTO: Ignora qualquer conversão numérica automática do servidor
+    const usuarioEncontrado = listaUsuarios.find(usuario => {
+      const cpBancoStr = String(usuario.nr_cp ?? '').trim().toUpperCase();
+      const cpDigitadoStr = String(data.nr_cp ?? '').trim().toUpperCase();
+
+      // Força a comparação de texto exato, mantendo os zeros à esquerda ("0002" === "0002")
+      return cpBancoStr === cpDigitadoStr;
+    });
+
+    // 3. Validação do Usuário e da Senha Criptografada
+    if (usuarioEncontrado) {
+      // Compara a senha digitada com o HASH seguro guardado no db.json
+      const senhaValida = bcrypt.compareSync(data.senha, usuarioEncontrado.senha);
+
+      if (senhaValida) {
+        // Sucesso! Dispara a sessão
+        onLoginSucesso(usuarioEncontrado);
+      } else {
+        setErroServidor('Senha incorreta. Tente novamente.');
+      }
+    } else {
+      setErroServidor('Número do CP não encontrado. Você já criou sua senha no primeiro acesso?');
+    }
+
+  } catch (error) {
+    console.error('Erro ao tentar fazer login:', error);
+    setErroServidor('Não foi possível processar a autenticação local.');
+  }
+};
 
   return (
     <div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px', fontFamily: 'sans-serif' }}>
@@ -52,7 +71,7 @@ export default function FormLogin({ onLoginSucesso }) {
             type="text" 
             {...register("nr_cp", {
               required: "O Número do CP é obrigatório",
-              onChange: (e) => { e.target.value = e.target.value.toUpperCase(); } // 🔥 Transforma em MAIÚSCULO
+              onChange: (e) => { e.target.value = Sring(e.target.value.trim().toUpperCase()); } // 🔥 Transforma em MAIÚSCULO
             })}
             style={{ width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box' }}
           />
