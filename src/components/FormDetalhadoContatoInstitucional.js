@@ -44,8 +44,8 @@ export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dados
     delete dadosCompletosPerfil.registroId;
 
     const url = idDoRegistro 
-      ? `http://127.0.0.1:5000/informacoes_adicionais/${idDoRegistro}`
-      : 'http://127.0.0.1:5000/informacoes_adicionais';
+      ? `http://192.168.0.52:5000/informacoes_adicionais/${idDoRegistro}`
+      : 'http://192.168.0.52:5000/informacoes_adicionais';
       
     const metodo = idDoRegistro ? 'PUT' : 'POST';
 

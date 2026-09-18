@@ -31,7 +31,7 @@ export default function Cadastro() {
   const onValidarSubmit = async (data) => {
     try {
       const resposta = await fetch(
-        `http://127.0.0.1:5000/usuarios_validos?nr_cp=${data.nr_cp}&curso=${data.curso}&nome=${data.nome}&arma=${data.arma}`
+        `http://192.168.0.52:5000/usuarios_validos?nr_cp=${data.nr_cp}&curso=${data.curso}&nome=${data.nome}&arma=${data.arma}`
       );
       const dados = await resposta.json();
 
@@ -61,7 +61,7 @@ export default function Cadastro() {
         data_cadastro: new Date().toISOString(),
       };
 
-      const resposta = await fetch('http://127.0.0.1:5000/usuarios_cadastrados', {
+      const resposta = await fetch('http://192.168.0.52:5000/usuarios_cadastrados', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(novoUsuarioCompleto),
