@@ -14,7 +14,7 @@ const onSubmitLogin = async (data) => {
   
   try {
     // 🚀 BURLA A INFERÊNCIA: Busca a lista de cadastrados para processar de forma idêntica no JS
-    const resposta = await fetch('http://asefex-api.onrender.com/usuarios_cadastrados');
+    const resposta = await fetch('https://asefex-api.onrender.com/usuarios_cadastrados');
     
     if (!resposta.ok) {
       setErroServidor('Erro ao conectar ao servidor de autenticação.');

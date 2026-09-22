@@ -22,7 +22,7 @@ export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dados
         celular1: dadosParte1.celular1 || '',
         celular2: dadosParte1.celular2 || '',
         curso_id: dadosParte1.curso_id || '',
-        ano_formacao: dadosParte1.ano_formacao || dadosParte1.anor_formacao || '',
+        ano_formacao: dadosParte1.ano_formacao || dadosParte1.ano_formacao || '',
         estado_f_aux: dadosParte1.estado_f_aux || '',
         integrante_ex_ccfex: dadosParte1.integrante_ex_ccfex || 'Não',
         matricula: dadosParte1.matricula || '',
@@ -45,7 +45,7 @@ export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dados
 
     const url = idDoRegistro 
       ? `https://asefex-api.onrender.com/informacoes_adicionais/${idDoRegistro}`
-      : 'http://asefex-api.onrender.com/informacoes_adicionais';
+      : 'https://asefex-api.onrender.com/informacoes_adicionais';
       
     const metodo = idDoRegistro ? 'PUT' : 'POST';
 
