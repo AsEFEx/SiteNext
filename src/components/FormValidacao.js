@@ -29,7 +29,7 @@ export default function Cadastro() {
   const onValidarSubmit = async (data) => {
     try {
       // 🚀 Chamada direta ao json-server (idêntica ao funcionamento do seu Login e Perfil)
-      const resposta = await fetch('http://192.168.0.52:5000/usuarios_validos');
+      const resposta = await fetch('https://asefex-api.onrender.com/usuarios_validos');
       
       if (!resposta.ok) {
         alert(`O servidor retornou um status de erro: ${resposta.status}`);
@@ -92,7 +92,7 @@ export default function Cadastro() {
         data_cadastro: new Date().toISOString(),
       };
 
-      const resposta = await fetch('http://192.168.0.52:5000/usuarios_cadastrados', {
+      const resposta = await fetch('https://asefex-api.onrender.com/usuarios_cadastrados', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(novoUsuarioCompleto),

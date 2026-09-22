@@ -22,7 +22,7 @@ export default function FormSenha({ usuarioValidado, onCadastroCompleto }) {
       };
 
       // 3. Faz o POST para salvar o usuário definitivo na rota do json-server
-      const resposta = await fetch('http://192.168.0.52:5000/usuarios_cadastrados', {
+      const resposta = await fetch('http://asefex-api.onrender.com/usuarios_cadastrados', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(novoUsuarioCompleto),

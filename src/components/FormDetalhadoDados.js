@@ -114,7 +114,7 @@ export default function FormDetalhadoDados({ usuarioLogado, aoAvancar }) {
     const buscarDados = async () => {
       if (!usuarioLogado?.id) return;
       try {
-        const resposta = await fetch(`http://192.168.0.52:5000/informacoes_adicionais?usuario_id=${usuarioLogado.id}`);
+        const resposta = await fetch(`http://asefex-api.onrender.com/informacoes_adicionais?usuario_id=${usuarioLogado.id}`);
         const dados = await resposta.json();
         
         if (dados.length > 0) {

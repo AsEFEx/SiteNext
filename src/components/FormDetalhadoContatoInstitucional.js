@@ -44,8 +44,8 @@ export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dados
     delete dadosCompletosPerfil.registroId;
 
     const url = idDoRegistro 
-      ? `http://192.168.0.52:5000/informacoes_adicionais/${idDoRegistro}`
-      : 'http://192.168.0.52:5000/informacoes_adicionais';
+      ? `https://asefex-api.onrender.com/informacoes_adicionais/${idDoRegistro}`
+      : 'http://asefex-api.onrender.com/informacoes_adicionais';
       
     const metodo = idDoRegistro ? 'PUT' : 'POST';
 

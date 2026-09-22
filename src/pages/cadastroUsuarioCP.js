@@ -31,7 +31,7 @@ export default function Cadastro() {
   const onValidarSubmit = async (data) => {
     try {
       const resposta = await fetch(
-        `http://192.168.0.52:5000/usuarios_validos?nr_cp=${data.nr_cp}&curso=${data.curso}&nome=${data.nome}&arma=${data.arma}`
+        `https://asefex-api.onrender.com/usuarios_validos?nr_cp=${data.nr_cp}&curso=${data.curso}&nome=${data.nome}&arma=${data.arma}`
       );
       const dados = await resposta.json();
 
