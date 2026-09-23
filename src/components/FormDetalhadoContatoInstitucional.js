@@ -1,18 +1,20 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 const formatarCelular = (value) => {
   return value
     .replace(/\D/g, '')
-    .replace(/^(\d{2})(\d)/g, '($1) $2')
-    .replace(/(\d{5})(\d)/, '$1-$2')
+    .replace(/^(\d{2})(\d)/, '(\$1) \$2')
+    .replace(/(\d{5})(\d)/, '\$1-\$2')
     .substring(0, 15);
 };
 
-export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dadosParte1, aoVoltar }) {
-  // 💡 Configuração extra: aciona a validação assim que o usuário sai do campo (onBlur)
+export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dadosParte1, aoVoltar, aoAtualizarIdPai }) {
+  // 🔥 NOVO: Estado local para controlar o ID do registro em tempo real sem precisar deslogar
+  const [registroIdLocal, setRegistroIdLocal] = useState(dadosParte1?.registroId || null);
+
   const { register, handleSubmit, reset, formState: { errors } } = useForm({
-    mode: "onBlur" 
+    mode: "onBlur"
   });
 
   useEffect(() => {
@@ -22,12 +24,16 @@ export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dados
         celular1: dadosParte1.celular1 || '',
         celular2: dadosParte1.celular2 || '',
         curso_id: dadosParte1.curso_id || '',
-        ano_formacao: dadosParte1.ano_formacao || dadosParte1.ano_formacao || '',
+        ano_formacao: dadosParte1.ano_formacao || dadosParte1.anor_formacao || '',
         estado_f_aux: dadosParte1.estado_f_aux || '',
         integrante_ex_ccfex: dadosParte1.integrante_ex_ccfex || 'Não',
         matricula: dadosParte1.matricula || '',
         data_admissao: dadosParte1.data_admissao || ''
       });
+      // Sincroniza o ID caso ele já venha do banco no primeiro carregamento
+      if (dadosParte1.registroId) {
+        setRegistroIdLocal(dadosParte1.registroId);
+      }
     }
   }, [dadosParte1, usuarioLogado, reset]);
 
@@ -40,7 +46,8 @@ export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dados
       atualizado_em: new Date().toISOString()
     };
 
-    const idDoRegistro = dadosParte1?.registroId;
+    // 🔥 Usa o ID do estado local, que se atualiza na hora após o primeiro clique
+    const idDoRegistro = registroIdLocal;
     delete dadosCompletosPerfil.registroId;
 
     const url = idDoRegistro 
@@ -57,6 +64,18 @@ export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dados
       });
 
       if (resposta.ok) {
+        const dadosSalvos = await resposta.json();
+        
+        // 🚀 A MÁGICA ACONTECE AQUI: Se foi um POST (Insert), o Render devolve o objeto criado com o novo ID
+        if (!idDoRegistro && dadosSalvos && dadosSalvos.id) {
+          setRegistroIdLocal(dadosSalvos.id); // Transforma o estado local imediatamente em UPDATE (PUT)
+          
+          // Opcional: Se o componente Pai gerencia o fluxo de abas, avisa ele sobre o novo ID
+          if (typeof aoAtualizarIdPai === 'function') {
+            aoAtualizarIdPai(dadosSalvos.id);
+          }
+        }
+
         alert(idDoRegistro ? 'Ficha cadastral atualizada com sucesso!' : 'Ficha cadastral salva com sucesso!');
       } else {
         alert('Erro ao salvar as informações no servidor.');

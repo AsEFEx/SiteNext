@@ -25,30 +25,19 @@ export default function Cadastro() {
 
   const senhaDigitada = watch("senha");
 
-  // 1️⃣ ETAPA 1: Validar se consta na lista permitida do Excel (DIRETO NO CLIENTE)
+  // 1️⃣ ETAPA 1: Validar se consta no Excel E se já possui conta criada na Nuvem
   const onValidarSubmit = async (data) => {
     try {
-      // 🚀 Chamada direta ao json-server (idêntica ao funcionamento do seu Login e Perfil)
-      const resposta = await fetch('https://asefex-api.onrender.com/usuarios_validos');
-      
-      if (!resposta.ok) {
-        alert(`O servidor retornou um status de erro: ${resposta.status}`);
+      // 🚀 Passo A: Busca a lista de pessoas autorizadas vinda do Excel
+      const respostaValidos = await fetch('https://asefex-api.onrender.com/usuarios_validos');
+      if (!respostaValidos.ok) {
+        alert(`Erro ao acessar base de autorizações: ${respostaValidos.status}`);
         return;
       }
+      const corpoValidos = await respostaValidos.json();
+      const todosUsuariosValidos = Array.isArray(corpoValidos) ? corpoValidos : (corpoValidos.data || []);
 
-      const corpoResposta = await resposta.json();
-
-      // Trata se o json-server devolveu os dados envelopados ou em array puro
-      const todosUsuariosValidos = Array.isArray(corpoResposta) 
-        ? corpoResposta 
-        : (corpoResposta.data || []);
-
-      if (todosUsuariosValidos.length === 0) {
-        alert("A lista de usuários válidos está vazia no servidor.");
-        return;
-      }
-
-      // 🔍 FILTRAGEM RIGOROSA: Procura o usuário ignorando espaços e forçando maiúsculas
+      // Executa a filtragem rigorosa baseada no que foi digitado na tela
       const usuarioEncontrado = todosUsuariosValidos.find(usuario => {
         const nrCpBanco = String(usuario.nr_cp ?? usuario.NR_CP ?? '').trim().toUpperCase();
         const cursoBanco = String(usuario.curso ?? usuario.CURSO ?? '').trim().toUpperCase();
@@ -66,19 +55,36 @@ export default function Cadastro() {
                armaBanco === armaDigitado;
       });
 
-      if (usuarioEncontrado) {
-        setUsuarioValidado(usuarioEncontrado);
-        setStep(2); // Avança com sucesso para a Etapa 2 (Criação de Senha)
-      } else {
+      if (!usuarioEncontrado) {
         alert('Dados não encontrados. Verifique se o Número do CP, Curso, Nome Completo e Arma foram digitados exatamente como constam na lista pré-autorizada.');
+        return;
       }
+
+      // 🔐 Passo B: INTERCEPTOR DE SEGURANÇA - Verifica se este usuário JÁ se cadastrou anteriormente
+      const respostaCadastrados = await fetch('https://asefex-api.onrender.com/usuarios_cadastrados');
+      if (respostaCadastrados.ok) {
+        const corpoCadastrados = await respostaCadastrados.json();
+        const listaCadastrados = Array.isArray(corpoCadastrados) ? corpoCadastrados : (corpoCadastrados.data || []);
+        
+        // Verifica se o id da planilha já consta na tabela com senha criptografada
+        const jaExisteConta = listaCadastrados.some(u => String(u.id).trim() === String(usuarioEncontrado.id).trim() || String(u.nr_cp).trim() === String(usuarioEncontrado.nr_cp).trim());
+        
+        if (jaExisteConta) {
+          alert(`Atenção: O cadastro para o Número do CP ${usuarioEncontrado.nr_cp} já foi realizado com sucesso anteriormente!\n\nPor favor, utilize a tela de Login para acessar o sistema.`);
+          router.push('/login'); // Redireciona o militar direto para a página de login
+          return;
+        }
+      }
+
+      // Se passou por todas as barreiras, armazena e segue para definir a senha
+      setUsuarioValidado(usuarioEncontrado);
+      setStep(2);
 
     } catch (error) {
       alert(`Erro na requisição: ${error.message}`);
       console.error('Erro ao processar validação:', error);
     }
   };
-
 
   // 2️⃣ ETAPA 2: Aplicar Criptografia e Salvar o Cadastro Definitivo
   const onSenhaSubmit = async (data) => {
@@ -92,7 +98,7 @@ export default function Cadastro() {
         data_cadastro: new Date().toISOString(),
       };
 
-      const resposta = await fetch('https://asefex-api.onrender.com/usuarios_cadastrados', {
+      const resposta = await fetch('https://asefex-api.onrender.com/usuarios_cadastrados', { // Lembrar de trocar para https://onrender.com ao subir
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(novoUsuarioCompleto),
@@ -109,7 +115,6 @@ export default function Cadastro() {
       alert('Não foi possível salvar o seu cadastro.');
     }
   };
-
 
   return (
     <div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px', fontFamily: 'sans-serif' }}>
