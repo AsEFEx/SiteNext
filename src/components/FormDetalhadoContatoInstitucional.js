@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+// 🚀 Importação do cliente unificado do Supabase
+import { supabase } from '../lib/supabaseClient'; 
 
 const formatarCelular = (value) => {
   return value
@@ -10,13 +12,15 @@ const formatarCelular = (value) => {
 };
 
 export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dadosParte1, aoVoltar, aoAtualizarIdPai }) {
-  // 🔥 NOVO: Estado local para controlar o ID do registro em tempo real sem precisar deslogar
+  // 🔥 Estado local para controlar o ID do registro em tempo real e evitar clonagem de linhas
   const [registroIdLocal, setRegistroIdLocal] = useState(dadosParte1?.registroId || null);
+  const [salvando, setSalvando] = useState(false);
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm({
     mode: "onBlur"
   });
 
+  // Preenche os campos da tela com as informações vindas da Parte 1 ou do estado anterior
   useEffect(() => {
     if (dadosParte1) {
       reset({
@@ -24,65 +28,73 @@ export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dados
         celular1: dadosParte1.celular1 || '',
         celular2: dadosParte1.celular2 || '',
         curso_id: dadosParte1.curso_id || '',
-        ano_formacao: dadosParte1.ano_formacao || dadosParte1.anor_formacao || '',
+        ano_formacao: dadosParte1.ano_formacao || '',
         estado_f_aux: dadosParte1.estado_f_aux || '',
         integrante_ex_ccfex: dadosParte1.integrante_ex_ccfex || 'Não',
         matricula: dadosParte1.matricula || '',
         data_admissao: dadosParte1.data_admissao || ''
       });
-      // Sincroniza o ID caso ele já venha do banco no primeiro carregamento
+      
       if (dadosParte1.registroId) {
         setRegistroIdLocal(dadosParte1.registroId);
       }
     }
   }, [dadosParte1, usuarioLogado, reset]);
 
+  // 💾 SALVAMENTO FINAL NA NUVEM
   const onSalvarFichaFinal = async (data) => {
+    setSalvando(true);
+
+    // Une os dados tratados da Parte 1 com os novos campos da Parte 2
     const dadosCompletosPerfil = {
-      usuario_id: usuarioLogado?.id,
-      nr_cp: usuarioLogado?.nr_cp,
+      usuario_id: String(usuarioLogado?.id),
+      nr_cp: String(usuarioLogado?.nr_cp),
       ...dadosParte1,
       ...data,
       atualizado_em: new Date().toISOString()
     };
 
-    // 🔥 Usa o ID do estado local, que se atualiza na hora após o primeiro clique
-    const idDoRegistro = registroIdLocal;
+    // Remove propriedades de controle local para não corromper as colunas do Supabase
     delete dadosCompletosPerfil.registroId;
 
-    const url = idDoRegistro 
-      ? `https://asefex-api.onrender.com/informacoes_adicionais/${idDoRegistro}`
-      : 'https://asefex-api.onrender.com/informacoes_adicionais';
-      
-    const metodo = idDoRegistro ? 'PUT' : 'POST';
-
     try {
-      const resposta = await fetch(url, {
-        method: metodo,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(dadosCompletosPerfil)
-      });
+      if (registroIdLocal) {
+        // 🚀 CENÁRIO A: Se o ID já existe, faz uma ATUALIZAÇÃO (Update) na linha existente
+        const { error: erroUpdate } = await supabase
+          .from('informacoes_adicionais')
+          .update(dadosCompletosPerfil)
+          .eq('id', registroIdLocal);
 
-      if (resposta.ok) {
-        const dadosSalvos = await resposta.json();
-        
-        // 🚀 A MÁGICA ACONTECE AQUI: Se foi um POST (Insert), o Render devolve o objeto criado com o novo ID
-        if (!idDoRegistro && dadosSalvos && dadosSalvos.id) {
-          setRegistroIdLocal(dadosSalvos.id); // Transforma o estado local imediatamente em UPDATE (PUT)
+        if (erroUpdate) throw erroUpdate;
+
+        alert('Ficha cadastral atualizada com sucesso no Supabase!');
+      } else {
+        // 🚀 CENÁRIO B: Se é a primeira vez salvando na sessão, faz uma INSERÇÃO (Insert)
+        // O modificador .select() força o Supabase a devolver a linha criada contendo o ID automático
+        const { data: registroCriado, error: erroInsert } = await supabase
+          .from('informacoes_adicionais')
+          .insert([dadosCompletosPerfil])
+          .select();
+
+        if (erroInsert) throw erroInsert;
+
+        if (registroCriado && registroCriado.length > 0) {
+          const novoIdGerado = registroCriado[0].id;
+          setRegistroIdLocal(novoIdGerado); // Transforma o estado local na mesma hora para evitar duplicidades
           
-          // Opcional: Se o componente Pai gerencia o fluxo de abas, avisa ele sobre o novo ID
+          // Sincroniza o ID com o componente pai (App.jsx / index.jsx), se a função existir
           if (typeof aoAtualizarIdPai === 'function') {
-            aoAtualizarIdPai(dadosSalvos.id);
+            aoAtualizarIdPai(novoIdGerado);
           }
         }
 
-        alert(idDoRegistro ? 'Ficha cadastral atualizada com sucesso!' : 'Ficha cadastral salva com sucesso!');
-      } else {
-        alert('Erro ao salvar as informações no servidor.');
+        alert('Ficha cadastral salva com sucesso de forma permanente no Supabase!');
       }
     } catch (error) {
-      console.error('Erro na requisição final:', error);
-      alert('Não foi possível conectar ao servidor.');
+      console.error('Erro ao salvar no Supabase:', error);
+      alert(`Erro ao salvar as informações no servidor: ${error.message}`);
+    } finally {
+      setSalvando(false);
     }
   };
 

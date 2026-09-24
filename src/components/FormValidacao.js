@@ -1,21 +1,24 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import bcrypt from 'bcryptjs'; 
-import Head from 'next/head'
-import Link from 'next/link'
+import Head from 'next/head';
 import { useRouter } from 'next/router';
+// 🚀 Importação do cliente unificado do Supabase
+import { supabase } from '../lib/supabaseClient'; 
 
 export default function Cadastro() {
   const [step, setStep] = useState(1); // 1 = Validação, 2 = Criação de senha
   const [usuarioValidado, setUsuarioValidado] = useState(null);
   const router = useRouter();
 
+  // Form da Etapa 1 (Validação de Dados)
   const { 
     register: registerValidacao, 
     handleSubmit: handleSubmitValidacao, 
     formState: { errors: errorsValidacao } 
   } = useForm({ mode: "onBlur" });
 
+  // Form da Etapa 2 (Criação de Senha)
   const { 
     register: registerSenha, 
     handleSubmit: handleSubmitSenha, 
@@ -25,94 +28,104 @@ export default function Cadastro() {
 
   const senhaDigitada = watch("senha");
 
-  // 1️⃣ ETAPA 1: Validar se consta no Excel E se já possui conta criada na Nuvem
+  // 1️⃣ ETAPA 1: Validar se consta na lista e impedir duplicados usando o Supabase
   const onValidarSubmit = async (data) => {
     try {
-      // 🚀 Passo A: Busca a lista de pessoas autorizadas vinda do Excel
-      const respostaValidos = await fetch('https://asefex-api.onrender.com/usuarios_validos');
-      if (!respostaValidos.ok) {
-        alert(`Erro ao acessar base de autorizações: ${respostaValidos.status}`);
+      // Formata os dados digitados pelo usuário na tela
+      const cpDigitado = String(data.nr_cp ?? '').trim().toUpperCase();
+      const cursoDigitado = String(data.curso ?? '').trim().toUpperCase();
+      const nomeDigitado = String(data.nome ?? '').trim().toUpperCase();
+      const armaDigitado = String(data.arma ?? '').trim().toUpperCase();
+
+      // 🚀 PASSO A: Busca o militar diretamente na tabela da nuvem filtrando estritamente pelo CP
+      const { data: listaValidos, error: erroValidos } = await supabase
+        .from('usuarios_validos')
+        .select('*')
+        .eq('nr_cp', cpDigitado);
+
+      if (erroValidos) {
+        alert(`Erro ao acessar base de validação do Supabase: ${erroValidos.message}`);
         return;
       }
-      const corpoValidos = await respostaValidos.json();
-      const todosUsuariosValidos = Array.isArray(corpoValidos) ? corpoValidos : (corpoValidos.data || []);
 
-      // Executa a filtragem rigorosa baseada no que foi digitado na tela
-      const usuarioEncontrado = todosUsuariosValidos.find(usuario => {
-        const nrCpBanco = String(usuario.nr_cp ?? usuario.NR_CP ?? '').trim().toUpperCase();
-        const cursoBanco = String(usuario.curso ?? usuario.CURSO ?? '').trim().toUpperCase();
-        const nomeBanco = String(usuario.nome_completo ?? usuario.NOME_COMPLETO ?? usuario.nome ?? usuario.NOME ?? '').trim().toUpperCase();
-        const armaBanco = String(usuario.arma ?? usuario.ARMA ?? '').trim().toUpperCase();
-        
-        const nrCpDigitado = String(data.nr_cp ?? '').trim().toUpperCase();
-        const cursoDigitado = String(data.curso ?? '').trim().toUpperCase();
-        const nomeDigitado = String(data.nome ?? '').trim().toUpperCase();
-        const armaDigitado = String(data.arma ?? '').trim().toUpperCase();
+      if (!listaValidos || listaValidos.length === 0) {
+        alert('Número do CP não cadastrado na lista de autorizações.');
+        return;
+      }
 
-        return nrCpBanco === nrCpDigitado && 
-               cursoBanco === cursoDigitado && 
+      // Executa o cruzamento completo dos campos para garantir autenticidade da planilha
+      const usuarioEncontrado = listaValidos.find(usuario => {
+        const cursoBanco = String(usuario.curso ?? '').trim().toUpperCase();
+        const nomeBanco = String(usuario.nome_completo ?? usuario.nome ?? '').trim().toUpperCase();
+        const armaBanco = String(usuario.arma ?? '').trim().toUpperCase();
+
+        return cursoBanco === cursoDigitado && 
                nomeBanco === nomeDigitado && 
                armaBanco === armaDigitado;
       });
 
       if (!usuarioEncontrado) {
-        alert('Dados não encontrados. Verifique se o Número do CP, Curso, Nome Completo e Arma foram digitados exatamente como constam na lista pré-autorizada.');
+        alert('Número do CP encontrado, mas o Nome, Curso ou Arma não coincidem com a lista original. Verifique a digitação.');
         return;
       }
 
-      // 🔐 Passo B: INTERCEPTOR DE SEGURANÇA - Verifica se este usuário JÁ se cadastrou anteriormente
-      const respostaCadastrados = await fetch('https://asefex-api.onrender.com/usuarios_cadastrados');
-      if (respostaCadastrados.ok) {
-        const corpoCadastrados = await respostaCadastrados.json();
-        const listaCadastrados = Array.isArray(corpoCadastrados) ? corpoCadastrados : (corpoCadastrados.data || []);
-        
-        // Verifica se o id da planilha já consta na tabela com senha criptografada
-        const jaExisteConta = listaCadastrados.some(u => String(u.id).trim() === String(usuarioEncontrado.id).trim() || String(u.nr_cp).trim() === String(usuarioEncontrado.nr_cp).trim());
-        
-        if (jaExisteConta) {
-          alert(`Atenção: O cadastro para o Número do CP ${usuarioEncontrado.nr_cp} já foi realizado com sucesso anteriormente!\n\nPor favor, utilize a tela de Login para acessar o sistema.`);
-          router.push('/login'); // Redireciona o militar direto para a página de login
-          return;
-        }
+      // 🔐 PASSO B: INTERCEPTOR - Verifica se este usuário já criou uma conta na tabela de cadastrados
+      const { data: listaCadastrados, error: erroCadastrados } = await supabase
+        .from('usuarios_cadastrados')
+        .select('id, nr_cp')
+        .eq('nr_cp', cpDigitado);
+
+      if (erroCadastrados) {
+        console.error("Erro ao checar duplicados:", erroCadastrados);
       }
 
-      // Se passou por todas as barreiras, armazena e segue para definir a senha
+      if (listaCadastrados && listaCadastrados.length > 0) {
+        alert(`Atenção: O cadastro para o Número do CP ${cpDigitado} já foi realizado com sucesso anteriormente!\n\nPor favor, utilize a página de Login para acessar o sistema.`);
+        router.push('/login');
+        return;
+      }
+
+      // Se passou por todas as travas, salva as informações e avança para a senha
       setUsuarioValidado(usuarioEncontrado);
       setStep(2);
 
     } catch (error) {
-      alert(`Erro na requisição: ${error.message}`);
-      console.error('Erro ao processar validação:', error);
+      alert(`Erro inesperado no fluxo de validação: ${error.message}`);
     }
   };
 
-  // 2️⃣ ETAPA 2: Aplicar Criptografia e Salvar o Cadastro Definitivo
+  // 2️⃣ ETAPA 2: Aplicar Hash e persistir o novo registro de forma permanente no Supabase
   const onSenhaSubmit = async (data) => {
     try {
       const salt = bcrypt.genSaltSync(10);
       const senhaCriptografada = bcrypt.hashSync(data.senha, salt);
 
+      // Estrutura o novo objeto com a chave de senha
       const novoUsuarioCompleto = {
-        ...usuarioValidado, 
+        nr_cp: String(usuarioValidado.nr_cp).trim().toUpperCase(),
+        curso: String(usuarioValidado.curso).trim().toUpperCase(),
+        nome: String(usuarioValidado.nome ?? usuarioValidado.nome_completo).trim().toUpperCase(),
+        arma: String(usuarioValidado.arma).trim().toUpperCase(),
         senha: senhaCriptografada, 
-        data_cadastro: new Date().toISOString(),
+        data_cadastro: new Date().toISOString()
       };
 
-      const resposta = await fetch('https://asefex-api.onrender.com/usuarios_cadastrados', { // Lembrar de trocar para https://onrender.com ao subir
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(novoUsuarioCompleto),
-      });
+      // 🚀 GRAVAÇÃO NA NUVEM: Insere de forma permanente o objeto na tabela
+      const { error: erroInserção } = await supabase
+        .from('usuarios_cadastrados')
+        .insert([novoUsuarioCompleto]);
 
-      if (resposta.ok) {
-        alert('Cadastro realizado com segurança! Sua senha foi salva de forma criptografada.');
-        router.push('/login');
-      } else {
-        alert('Erro ao registrar as credenciais no servidor.');
+      if (erroInserção) {
+        alert(`Erro ao salvar credenciais no banco do Supabase: ${erroInserção.message}`);
+        return;
       }
+
+      alert('Cadastro realizado com segurança! Sua conta foi salva de forma permanente.');
+      router.push('/login');
+
     } catch (error) {
       console.error('Erro ao salvar cadastro:', error);
-      alert('Não foi possível salvar o seu cadastro.');
+      alert('Não foi possível concluir o salvamento do seu cadastro.');
     }
   };
 

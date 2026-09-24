@@ -1,49 +1,60 @@
 import { useForm } from 'react-hook-form';
 import bcrypt from 'bcryptjs';
+// 🚀 Importação do cliente unificado do Supabase
+import { supabase } from '../lib/supabaseClient'; 
 
-export default function FormSenha({ usuarioValidado, onCadastroCompleto }) {
-  // Inicializa o React Hook Form
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  
+export default function FormSenha({ usuarioValidado, aoSucessoCadastro }) {
+  const { 
+    register, 
+    handleSubmit, 
+    watch, 
+    formState: { errors } 
+  } = useForm({ mode: "onBlur" });
+
   // Monitora o campo de senha em tempo real para validar a confirmação
   const senhaDigitada = watch("senha");
 
+  // 2️⃣ ETAPA 2: Aplicar Hash Criptográfico e persistir no Supabase
   const onSenhaSubmit = async (data) => {
     try {
-      // 🔒 1. Gera a criptografia (Hash) da senha de forma segura
+      // 🔒 Gera o "salt" (fator de custo de segurança de 10 rodadas) e cria o Hash único
       const salt = bcrypt.genSaltSync(10);
       const senhaCriptografada = bcrypt.hashSync(data.senha, salt);
 
-      // 2. Une os dados validados do Excel com o hash seguro da senha criada
+      // Une as informações validadas da planilha com o Hash seguro da nova senha
+      // O Supabase gerará o ID sequencial automaticamente (começando do 10, conforme configuramos!)
       const novoUsuarioCompleto = {
-        ...usuarioValidado, 
-        senha: senhaCriptografada, 
-        data_cadastro: new Date().toISOString(),
+        nr_cp: String(usuarioValidado.nr_cp ?? usuarioValidado.NR_CP ?? '').trim().toUpperCase(),
+        curso: String(usuarioValidado.curso ?? usuarioValidado.CURSO ?? '').trim().toUpperCase(),
+        nome: String(usuarioValidado.nome_completo ?? usuarioValidado.NOME_COMPLETO ?? usuarioValidado.nome ?? usuarioValidado.NOME ?? '').trim().toUpperCase(),
+        arma: String(usuarioValidado.arma ?? usuarioValidado.ARMA ?? '').trim().toUpperCase(),
+        senha: senhaCriptografada, // O hash vai para a nuvem no lugar da senha limpa
+        data_cadastro: new Date().toISOString()
       };
 
-      // 3. Faz o POST para salvar o usuário definitivo na rota do json-server
-      const resposta = await fetch('http://asefex-api.onrender.com/usuarios_cadastrados', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(novoUsuarioCompleto),
-      });
+      // 🚀 GRAVAÇÃO SEGURA NA NUVEM: Insere o registro na tabela do Supabase
+      const { error: erroInsercao } = await supabase
+        .from('usuarios_cadastrados')
+        .insert([novoUsuarioCompleto]);
 
-      if (resposta.ok) {
-        alert('Cadastro realizado com segurança! Sua senha foi criptografada e salva.');
-        
-        // 🚀 4. Executa a função recebida por parâmetro para avisar a página pai (cadastro.jsx)
-        // que o cadastro terminou, disparando o redirecionamento para o login.
-        if (onCadastroCompleto) {
-          onCadastroCompleto();
-        }
-      } else {
-        alert('Erro ao registrar as credenciais no servidor.');
+      if (erroInsercao) {
+        alert(`Erro ao salvar credenciais no banco do Supabase: ${erroInsercao.message}`);
+        return;
       }
+
+      alert('Cadastro realizado com segurança! Sua senha foi salva de forma criptografada na nuvem.');
+      
+      // Dispara a função de sucesso para redirecionar para a tela de login
+      if (typeof aoSucessoCadastro === 'function') {
+        aoSucessoCadastro();
+      }
+
     } catch (error) {
-      console.error('Erro ao salvar cadastro:', error);
-      alert('Não foi possível conectar ao servidor para concluir o cadastro.');
+      console.error('Erro ao salvar cadastro no Supabase:', error);
+      alert('Não foi possível concluir o salvamento do seu cadastro.');
     }
   };
+
 
   return (
     <form onSubmit={handleSubmit(onSenhaSubmit)}>
@@ -83,7 +94,7 @@ export default function FormSenha({ usuarioValidado, onCadastroCompleto }) {
       </div>
 
       <button type="submit" style={{ width: '100%', padding: '10px', backgroundColor: '#22c55e', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '15px' }}>
-        Concluir Cadastro
+        Concluir e Salvar Cadastro
       </button>
     </form>
   );

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+// 🚀 Importação do cliente unificado do Supabase
+import { supabase } from '../lib/supabaseClient'; 
 
 
 // Aplica a máscara padrão de CPF: 000.000.000-00
@@ -110,44 +112,63 @@ export default function FormDetalhadoDados({ usuarioLogado, aoAvancar }) {
     }
   };
 
+  // 🚀 BUSCA NA NUVEM: Carrega a ficha existente do Supabase se o militar já tiver salvo algo antes
+  // 🚀 BUSCA NA NUVEM CORRIGIDA: Varredura segura com tratamento de erros que impede o travamento da tela
   useEffect(() => {
-    const buscarDados = async () => {
-      if (!usuarioLogado?.id) return;
+    const buscarDadosFicha = async () => {
+      if (!usuarioLogado?.id) {
+        setCarregando(false);
+        return;
+      }
+      
       try {
-        const resposta = await fetch(`https://asefex-api.onrender.com/informacoes_adicionais?usuario_id=${usuarioLogado.id}`);
-        const dados = await resposta.json();
-        
-        if (dados.length > 0) {
-          const fichaExistente = dados[0];
+        // Mudamos para uma busca direta por lista (.select) forçando a conversão para String para evitar erros de tipo
+        const { data: listaFichas, error: erroFicha } = await supabase
+          .from('informacoes_adicionais')
+          .select('*')
+          .eq('usuario_id', String(usuarioLogado.id));
+
+        if (erroFicha) {
+          console.error("Erro técnico retornado pelo Supabase:", erroFicha.message);
+          alert(`Aviso de banco: ${erroFicha.message}. Iniciando ficha em branco.`);
+        }
+
+        // Se encontrou algum registro gravado anteriormente para este militar
+        if (listaFichas && listaFichas.length > 0) {
+          const fichaExistente = listaFichas[0]; // Pega a primeira ficha encontrada
           setRegistroId(fichaExistente.id);
-          reset(fichaExistente);
+          reset(fichaExistente); // Preenche automaticamente todos os campos da tela
         } else {
+          // Se for a primeira vez atualizando, inicia o formulário com o e-mail da sessão
           reset({ email: usuarioLogado?.email || '' });
         }
       } catch (error) {
-        console.error("Erro ao buscar dados básicos:", error);
+        console.error("Erro crítico no processamento interno do carregamento:", error);
+        alert("Não foi possível carregar os dados antigos da nuvem. O formulário foi iniciado em branco.");
       } finally {
+        // 🔥 GARANTIA DE DESTRAVAMENTO: Aconteça o que acontecer, desliga o letreiro de carregando
         setCarregando(false);
       }
     };
-    buscarDados();
+    
+    buscarDadosFicha();
   }, [usuarioLogado, reset]);
 
   // 🔥 LÓGICA DO SUBMIT CORRIGIDA: Usa o validador definitivo com charAt
+  // 💾 AVANÇAR ETAPA: Transmite os dados salvos da Parte 1 para a memória do App
   const onSubmeterParte1 = (data) => {
-    // 🔥 Agora 'data.cpf' contém o valor 100% atualizado da tela!
-    const valido = algoritmoValidarCPF(data.cpf);
-    if (!valido) {
+    if (erroCPF || !algoritmoValidarCPF(data.cpf)) {
       setErroCPF('CPF inválido');
       return;
     }
-    setErroCPF('');
+    // Repassa os dados da primeira etapa e o ID do registro (caso já exista no banco)
     aoAvancar({ ...data, registroId });
   };
- 
+
   if (carregando) {
-    return <p style={{ textAlign: 'center', fontFamily: 'sans-serif' }}>Carregando dados pessoais...</p>;
+    return <p style={{ textAlign: 'center', fontFamily: 'sans-serif', marginTop: '5px' }}>Carregando dados pessoais da nuvem...</p>;
   }
+
   return (
     <div style={{ maxWidth: '600px', margin: '20px auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px', fontFamily: 'sans-serif' }}>
       <h3 style={{ marginTop: 0 }}>Ficha Cadastral - Parte 1 de 2</h3>
