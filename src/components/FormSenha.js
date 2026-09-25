@@ -1,38 +1,139 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcryptjs'; 
+import Head from 'next/head';
+import { useRouter } from 'next/router';
 // 🚀 Importação do cliente unificado do Supabase
 import { supabase } from '../lib/supabaseClient'; 
 
-export default function FormSenha({ usuarioValidado, aoSucessoCadastro }) {
+export default function Cadastro() {
+  const [step, setStep] = useState(1); // 1 = Validação, 2 = Criação de senha
+  const [usuarioValidado, setUsuarioValidado] = useState(null);
+  const router = useRouter();
+
+  // Form da Etapa 1 (Validação de Dados)
   const { 
-    register, 
-    handleSubmit, 
-    watch, 
-    formState: { errors } 
+    register: registerValidacao, 
+    handleSubmit: handleSubmitValidacao, 
+    formState: { errors: errorsValidacao } 
   } = useForm({ mode: "onBlur" });
 
-  // Monitora o campo de senha em tempo real para validar a confirmação
+  // Form da Etapa 2 (Criação de Senha)
+  const { 
+    register: registerSenha, 
+    handleSubmit: handleSubmitSenha, 
+    watch, 
+    formState: { errors: errorsSenha } 
+  } = useForm({ mode: "onBlur" });
+
   const senhaDigitada = watch("senha");
 
-  // 2️⃣ ETAPA 2: Aplicar Hash Criptográfico e persistir no Supabase
+  // 1️⃣ ETAPA 1: Validar as informações trazendo TODAS as colunas do Supabase
+  // 1️⃣ ETAPA 1: Validar as informações trazendo e inspecionando os campos do Supabase
+  const onValidarSubmit = async (data) => {
+    try {
+      const cpDigitado = String(data.nr_cp ?? '').trim().toUpperCase();
+      const cursoDigitado = String(data.curso ?? '').trim().toUpperCase();
+      const nomeDigitado = String(data.nome ?? '').trim().toUpperCase();
+      const armaDigitado = String(data.arma ?? '').trim().toUpperCase();
+
+      const { data: listaValidos, error: erroValidos } = await supabase
+        .from('usuarios_validos')
+        .select('*') 
+        .eq('nr_cp', cpDigitado);
+
+      if (erroValidos) {
+        alert(`Erro ao acessar base de validação: ${erroValidos.message}`);
+        return;
+      }
+
+      if (!listaValidos || listaValidos.length === 0) {
+        alert('Número do CP não cadastrado na lista de autorizações.');
+        return;
+      }
+
+      const usuarioEncontrado = listaValidos.find(usuario => {
+        const cursoBanco = String(usuario.curso ?? '').trim().toUpperCase();
+        const nomeBanco = String(usuario.nome ?? '').trim().toUpperCase();
+        const armaBanco = String(usuario.arma ?? '').trim().toUpperCase();
+
+        return cursoBanco === cursoDigitado && 
+               nomeBanco === nomeDigitado && 
+               armaBanco === armaDigitado;
+      });
+
+      if (!usuarioEncontrado) {
+        alert('Número do CP encontrado, mas o Nome, Curso ou Arma não coincidem com a lista original.');
+        return;
+      }
+
+      // 🔐 INTERCEPTOR: Evita que contas duplicadas passem
+      const { data: listaCadastrados } = await supabase
+        .from('usuarios_cadastrados')
+        .select('nr_cp')
+        .eq('nr_cp', cpDigitado);
+
+      if (listaCadastrados && listaCadastrados.length > 0) {
+        alert(`Atenção: O cadastro para o Número do CP ${cpDigitado} já foi realizado anteriormente.`);
+        router.push('/login');
+        return;
+      }
+
+      // 🕵️‍♂️ O RASTREADOR DE CHAVES: Mostra na tela exatamente o que veio da tabela 'usuarios_validos'
+      alert(
+        `🔍 DIAGNÓSTICO DOS DADOS RECEBIDOS:\n\n` +
+        `• Posto recebido: "${usuarioEncontrado.posto}"\n` +
+        `• Ano de Formação recebido: "${usuarioEncontrado.ano_formacao}"\n` +
+        `• E-mail recebido: "${usuarioEncontrado['e-mail']}"\n\n` +
+        `Se algum desses campos aparecer vazio ou "undefined", o problema está na tabela usuarios_validos do seu painel Supabase!`
+      );
+
+      // Passa o objeto completo para a Etapa 2
+      setUsuarioValidado(usuarioEncontrado);
+      setStep(2);
+
+    } catch (error) {
+      alert(`Erro inesperado no fluxo de validação: ${error.message}`);
+    }
+  };
+
+
+  // 2️⃣ ETAPA 2: Persistir a conta completa com Posto, Ano e E-mail sem nulos
+  // 2️⃣ ETAPA 2: Aplicar Hash e salvar a conta copiando exatamente as colunas minúsculas do Supabase
   const onSenhaSubmit = async (data) => {
     try {
-      // 🔒 Gera o "salt" (fator de custo de segurança de 10 rodadas) e cria o Hash único
       const salt = bcrypt.genSaltSync(10);
       const senhaCriptografada = bcrypt.hashSync(data.senha, salt);
 
-      // Une as informações validadas da planilha com o Hash seguro da nova senha
-      // O Supabase gerará o ID sequencial automaticamente (começando do 10, conforme configuramos!)
+      // 🚀 CAPTURA EXATA E ESTRITA: Lendo as propriedades em minúsculo exatamente como estão na tabela 'usuarios_validos'
+      const cpFinal = String(usuarioValidado.nr_cp ?? '').trim().toUpperCase();
+      const cursoFinal = String(usuarioValidado.curso ?? '').trim().toUpperCase();
+      const nomeFinal = String(usuarioValidado.nome ?? '').trim().toUpperCase();
+      const armaFinal = String(usuarioValidado.arma ?? '').trim().toUpperCase();
+      
+      // 🔥 CORREÇÃO 1: Posto em minúsculo direto do banco
+      const postoFinal = String(usuarioValidado.posto ?? '').trim().toUpperCase();
+      
+      // 🔥 CORREÇÃO 2: Ano de Formação em minúsculo convertido para número limpo
+      const anoFormacaoFinal = usuarioValidado.ano_formacao ? Number(usuarioValidado.ano_formacao) : null;
+
+      // 🔥 CORREÇÃO 3: E-mail em minúsculo usando a sintaxe de colchetes por causa do hífen do Supabase
+      const emailFinal = String(usuarioValidado['e-mail'] ?? '').trim();
+
+      // 💡 MONTAGEM DO OBJETO DE PRODUÇÃO: Chaves idênticas às colunas da tabela 'usuarios_cadastrados'
       const novoUsuarioCompleto = {
-        nr_cp: String(usuarioValidado.nr_cp ?? usuarioValidado.NR_CP ?? '').trim().toUpperCase(),
-        curso: String(usuarioValidado.curso ?? usuarioValidado.CURSO ?? '').trim().toUpperCase(),
-        nome: String(usuarioValidado.nome_completo ?? usuarioValidado.NOME_COMPLETO ?? usuarioValidado.nome ?? usuarioValidado.NOME ?? '').trim().toUpperCase(),
-        arma: String(usuarioValidado.arma ?? usuarioValidado.ARMA ?? '').trim().toUpperCase(),
-        senha: senhaCriptografada, // O hash vai para a nuvem no lugar da senha limpa
+        nr_cp: cpFinal,
+        curso: cursoFinal,
+        nome: nomeFinal,
+        arma: armaFinal,
+        posto: postoFinal,          // Salva na coluna 'posto'
+        ano_formacao: anoFormacaoFinal, // Salva na coluna 'ano_formacao'
+        'e-mail': emailFinal,       // Salva na coluna 'e-mail' (com hífen e aspas)
+        senha: senhaCriptografada, 
         data_cadastro: new Date().toISOString()
       };
 
-      // 🚀 GRAVAÇÃO SEGURA NA NUVEM: Insere o registro na tabela do Supabase
+      // Grava o registro completo de forma permanente na nuvem do Supabase
       const { error: erroInsercao } = await supabase
         .from('usuarios_cadastrados')
         .insert([novoUsuarioCompleto]);
@@ -42,60 +143,142 @@ export default function FormSenha({ usuarioValidado, aoSucessoCadastro }) {
         return;
       }
 
-      alert('Cadastro realizado com segurança! Sua senha foi salva de forma criptografada na nuvem.');
-      
-      // Dispara a função de sucesso para redirecionar para a tela de login
-      if (typeof aoSucessoCadastro === 'function') {
-        aoSucessoCadastro();
-      }
+      alert('Cadastro realizado com sucesso! Sua conta foi salva com todas as informações.');
+      router.push('/login');
 
     } catch (error) {
-      console.error('Erro ao salvar cadastro no Supabase:', error);
+      console.error('Erro ao salvar cadastro:', error);
       alert('Não foi possível concluir o salvamento do seu cadastro.');
     }
   };
 
 
   return (
-    <form onSubmit={handleSubmit(onSenhaSubmit)}>
-      <p style={{ fontSize: '14px', color: '#555', lineHeight: '1.5' }}>
-        Olá, <strong>{usuarioValidado?.nome_completo}</strong> ({usuarioValidado?.posto} de {usuarioValidado?.arma}).
-      </p>
-      <p style={{ fontSize: '14px', color: '#555', marginBottom: '20px' }}>
-        Crie sua senha de acesso abaixo para futuros logins:
-      </p>
+    <div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px', fontFamily: 'sans-serif' }}>
       
-      {/* Campo: Nova Senha */}
-      <div style={{ marginBottom: '15px' }}>
-        <label style={{ display: 'block', fontWeight: 'bold', fontSize: '14px' }}>Nova Senha:</label>
-        <input 
-          type="password" 
-          {...register("senha", { 
-            required: "A senha é obrigatória",
-            minLength: { value: 6, message: "A senha deve ter no mínimo 6 caracteres" }
-          })}
-          style={{ width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box', border: '1px solid #ccc', borderRadius: '4px' }}
-        />
-        {errors.senha && <span style={{ color: 'red', fontSize: '12px', display: 'block', marginTop: '5px' }}>{errors.senha.message}</span>}
-      </div>
+      <>
+        <Head>
+          <title>Cadastro - AsEFEx</title>
+        </Head>
 
-      {/* Campo: Confirme a Senha */}
-      <div style={{ marginBottom: '20px' }}>
-        <label style={{ display: 'block', fontWeight: 'bold', fontSize: '14px' }}>Confirme a Senha:</label>
-        <input 
-          type="password" 
-          {...register("confirmarSenha", { 
-            required: "A confirmação de senha é obrigatória",
-            validate: (value) => value === senhaDigitada || "As senhas não coincidem"
-          })}
-          style={{ width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box', border: '1px solid #ccc', borderRadius: '4px' }}
-        />
-        {errors.confirmarSenha && <span style={{ color: 'red', fontSize: '12px', display: 'block', marginTop: '5px' }}>{errors.confirmarSenha.message}</span>}
-      </div>
+        <section id="content-section">
+          <span className="hide">Início do conteúdo da página</span>
+          <h2>1º Passo: Validação de suas informações</h2>
+          <p style={{ textAlign: 'justify', fontSize: '18px', fontWeight: 'bold', color: '#555', lineHeight: '1.5' }}>
+            Para você validar suas informações preencha os campos a seguir e em seguida será redirecionado para um formulário para criar a senha de acesso ao sistema de atualização.
+          </p>
+          <span className="hide">Fim do conteúdo da página</span>
+        </section>
+      </>
+          
+      <h2>Cadastro do Sistema</h2>
 
-      <button type="submit" style={{ width: '100%', padding: '10px', backgroundColor: '#22c55e', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '15px' }}>
-        Concluir e Salvar Cadastro
-      </button>
-    </form>
+      {step === 1 ? (
+        /* 📋 FORMULÁRIO ETAPA 1: VALIDAÇÃO COM SUPABASE */
+        <form onSubmit={handleSubmitValidacao(onValidarSubmit)}>
+          <p style={{ fontSize: '14px', color: '#555' }}>Insira seus dados pré-autorizados para iniciar.</p>
+          
+          {/* Campo: Número do CP */}
+          <div style={{ marginBottom: '15px' }}>
+            <label style={{ display: 'block', fontWeight: 'bold' }}>Número do CP:</label>
+            <input 
+              type="text" 
+              {...registerValidacao("nr_cp", {
+                required: "O Número do CP é obrigatório",
+                onChange: (e) => { e.target.value = e.target.value.trim().toUpperCase(); }
+              })}
+              style={{ width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box' }}
+            />
+            {errorsValidacao.nr_cp && <span style={{ color: 'red', fontSize: '12px' }}>{errorsValidacao.nr_cp.message}</span>}
+          </div>
+
+          {/* Campo: Curso */}
+          <div style={{ marginBottom: '15px' }}>
+            <label style={{ display: 'block', fontWeight: 'bold' }}>Curso:</label>
+            <input 
+              type="text" 
+              {...registerValidacao("curso", { 
+                required: "O curso é obrigatório",
+                onChange: (e) => { e.target.value = e.target.value.trim().toUpperCase(); }
+              })}
+              style={{ width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box' }}
+            />
+            {errorsValidacao.curso && <span style={{ color: 'red', fontSize: '12px' }}>{errorsValidacao.curso.message}</span>}
+          </div>
+
+          {/* Campo: Nome Completo */}
+          <div style={{ marginBottom: '15px' }}>
+            <label style={{ display: 'block', fontWeight: 'bold' }}>Nome completo:</label>
+            <input 
+              type="text" 
+              {...registerValidacao("nome", {
+                required: "O nome é obrigatório",
+                onChange: (e) => { e.target.value = e.target.value.trim().toUpperCase(); }
+              })}
+              style={{ width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box' }}
+            />
+            {errorsValidacao.nome && <span style={{ color: 'red', fontSize: '12px' }}>{errorsValidacao.nome.message}</span>}
+          </div>
+
+          {/* Campo: Arma */}
+          <div style={{ marginBottom: '20px' }}>
+            <label style={{ display: 'block', fontWeight: 'bold' }}>Arma:</label>
+            <input 
+              type="text" 
+              {...registerValidacao("arma", {
+                required: "A Arma é obrigatória",
+                onChange: (e) => { e.target.value = e.target.value.trim().toUpperCase(); }
+              })}
+              style={{ width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box' }}
+            />
+            {errorsValidacao.arma && <span style={{ color: 'red', fontSize: '12px' }}>{errorsValidacao.arma.message}</span>}
+          </div>
+
+          <button type="submit" style={{ width: '100%', padding: '10px', backgroundColor: '#0070f3', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '16px' }}>
+            Validar Informações
+          </button>
+        </form>
+      ) : (
+        /* 🔒 FORMULÁRIO ETAPA 2: CRIAÇÃO DE SENHA */
+        <form onSubmit={handleSubmitSenha(onSenhaSubmit)}>
+          <p style={{ fontSize: '15px', color: '#333', lineHeight: '1.4' }}>
+            Olá, <strong>{usuarioValidado?.NOME_COMPLETO || usuarioValidado?.NOME || usuarioValidado?.nome_completo || usuarioValidado?.nome || 'Usuário'}</strong>. Seus dados foram validados com sucesso!
+          </p>
+          <p style={{ fontSize: '14px', color: '#666', marginBottom: '20px' }}>Defina sua senha de acesso abaixo:</p>
+          
+          {/* Campo: Nova Senha */}
+          <div style={{ marginBottom: '15px' }}>
+            <label style={{ display: 'block', fontWeight: 'bold' }}>Nova Senha:</label>
+            <input 
+              type="password" 
+              {...registerSenha("senha", { 
+                required: "A senha é obrigatória",
+                minLength: { value: 6, message: "A senha deve ter no mínimo 6 caracteres" }
+              })}
+              style={{ width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box' }}
+            />
+            {errorsSenha.senha && <span style={{ color: 'red', fontSize: '12px' }}>{errorsSenha.senha.message}</span>}
+          </div>
+
+          {/* Campo: Confirmar Senha */}
+          <div style={{ marginBottom: '20px' }}>
+            <label style={{ display: 'block', fontWeight: 'bold' }}>Confirme a Senha:</label>
+            <input 
+              type="password" 
+              {...registerSenha("confirmarSenha", { 
+                required: "A confirmação de senha é obrigatória",
+                validate: (value) => value === senhaDigitada || "As senhas não coincidem"
+              })}
+              style={{ width: '100%', padding: '8px', marginTop: '5px', boxSizing: 'border-box' }}
+            />
+            {errorsSenha.confirmarSenha && <span style={{ color: 'red', fontSize: '12px' }}>{errorsSenha.confirmarSenha.message}</span>}
+          </div>
+
+          <button type="submit" style={{ width: '100%', padding: '10px', backgroundColor: '#22c55e', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '16px' }}>
+            Concluir e Salvar Conta
+          </button>
+        </form>
+      )}
+    </div>
   );
 }

@@ -114,40 +114,43 @@ export default function FormDetalhadoDados({ usuarioLogado, aoAvancar }) {
 
   // 🚀 BUSCA NA NUVEM: Carrega a ficha existente do Supabase se o militar já tiver salvo algo antes
   // 🚀 BUSCA NA NUVEM CORRIGIDA: Varredura segura com tratamento de erros que impede o travamento da tela
+  // 🚀 CARREGAMENTO SEGURO POR CP: Busca os dados na nuvem usando o 'nr_cp' como chave principal
   useEffect(() => {
     const buscarDadosFicha = async () => {
-      if (!usuarioLogado?.id) {
+      // Garante que temos o Número do CP do usuário logado na sessão
+      if (!usuarioLogado?.nr_cp) {
         setCarregando(false);
         return;
       }
       
       try {
-        // Mudamos para uma busca direta por lista (.select) forçando a conversão para String para evitar erros de tipo
+        // Padroniza o CP para garantir que a busca seja precisa e em maiúsculas
+        const cpMilitar = String(usuarioLogado.nr_cp).trim().toUpperCase();
+
+        // 🎯 MUDANÇA AQUI: Filtramos a tabela 'informacoes_adicionais' pela coluna 'nr_cp'
         const { data: listaFichas, error: erroFicha } = await supabase
           .from('informacoes_adicionais')
           .select('*')
-          .eq('usuario_id', String(usuarioLogado.id));
+          .eq('nr_cp', cpMilitar);
 
         if (erroFicha) {
           console.error("Erro técnico retornado pelo Supabase:", erroFicha.message);
-          alert(`Aviso de banco: ${erroFicha.message}. Iniciando ficha em branco.`);
         }
 
-        // Se encontrou algum registro gravado anteriormente para este militar
+        // Se o militar já tiver uma ficha salva na nuvem com esse CP
         if (listaFichas && listaFichas.length > 0) {
-          const fichaExistente = listaFichas[0]; // Pega a primeira ficha encontrada
-          setRegistroId(fichaExistente.id);
-          reset(fichaExistente); // Preenche automaticamente todos os campos da tela
+          const fichaExistente = listaFichas[0]; // Pega a ficha encontrada
+          setRegistroId(fichaExistente.id); // Guarda o ID interno do Supabase para o posterior UPDATE (PUT)
+          reset(fichaExistente); // Preenche automaticamente todos os inputs da tela com os dados salvos
         } else {
-          // Se for a primeira vez atualizando, inicia o formulário com o e-mail da sessão
+          // Se for a primeira vez que ele entra, inicia a ficha usando o e-mail da conta dele
           reset({ email: usuarioLogado?.email || '' });
         }
       } catch (error) {
-        console.error("Erro crítico no processamento interno do carregamento:", error);
-        alert("Não foi possível carregar os dados antigos da nuvem. O formulário foi iniciado em branco.");
+        console.error("Erro crítico no carregamento da ficha:", error);
+        alert("Não foi possível carregar seus dados salvos. O formulário foi iniciado em branco.");
       } finally {
-        // 🔥 GARANTIA DE DESTRAVAMENTO: Aconteça o que acontecer, desliga o letreiro de carregando
-        setCarregando(false);
+        setCarregando(false); // Destrava a tela tirando o letreiro de carregamento
       }
     };
     

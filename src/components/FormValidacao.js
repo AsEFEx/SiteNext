@@ -95,32 +95,51 @@ export default function Cadastro() {
   };
 
   // 2️⃣ ETAPA 2: Aplicar Hash e persistir o novo registro de forma permanente no Supabase
+  // 2️⃣ ETAPA 2: Aplicar Hash e salvar a conta copiando exatamente as colunas minúsculas do Supabase
   const onSenhaSubmit = async (data) => {
     try {
       const salt = bcrypt.genSaltSync(10);
       const senhaCriptografada = bcrypt.hashSync(data.senha, salt);
 
-      // Estrutura o novo objeto com a chave de senha
+      // 🚀 CAPTURA EXATA E ESTRITA: Lendo as propriedades em minúsculo exatamente como estão na tabela 'usuarios_validos'
+      const cpFinal = String(usuarioValidado.nr_cp ?? '').trim().toUpperCase();
+      const cursoFinal = String(usuarioValidado.curso ?? '').trim().toUpperCase();
+      const nomeFinal = String(usuarioValidado.nome ?? '').trim().toUpperCase();
+      const armaFinal = String(usuarioValidado.arma ?? '').trim().toUpperCase();
+      
+      // 🔥 CORREÇÃO 1: Posto em minúsculo direto do banco
+      const postoFinal = String(usuarioValidado.posto ?? '').trim().toUpperCase();
+      
+      // 🔥 CORREÇÃO 2: Ano de Formação em minúsculo convertido para número limpo
+      const anoFormacaoFinal = usuarioValidado.ano_formacao ? Number(usuarioValidado.ano_formacao) : null;
+
+      // 🔥 CORREÇÃO 3: E-mail em minúsculo usando a sintaxe de colchetes por causa do hífen do Supabase
+      const emailFinal = String(usuarioValidado['e-mail'] ?? '').trim();
+
+      // 💡 MONTAGEM DO OBJETO DE PRODUÇÃO: Chaves idênticas às colunas da tabela 'usuarios_cadastrados'
       const novoUsuarioCompleto = {
-        nr_cp: String(usuarioValidado.nr_cp).trim().toUpperCase(),
-        curso: String(usuarioValidado.curso).trim().toUpperCase(),
-        nome: String(usuarioValidado.nome ?? usuarioValidado.nome_completo).trim().toUpperCase(),
-        arma: String(usuarioValidado.arma).trim().toUpperCase(),
+        nr_cp: cpFinal,
+        curso: cursoFinal,
+        nome: nomeFinal,
+        arma: armaFinal,
+        posto: postoFinal,          // Salva na coluna 'posto'
+        ano_formacao: anoFormacaoFinal, // Salva na coluna 'ano_formacao'
+        'e-mail': emailFinal,       // Salva na coluna 'e-mail' (com hífen e aspas)
         senha: senhaCriptografada, 
         data_cadastro: new Date().toISOString()
       };
 
-      // 🚀 GRAVAÇÃO NA NUVEM: Insere de forma permanente o objeto na tabela
-      const { error: erroInserção } = await supabase
+      // Grava o registro completo de forma permanente na nuvem do Supabase
+      const { error: erroInsercao } = await supabase
         .from('usuarios_cadastrados')
         .insert([novoUsuarioCompleto]);
 
-      if (erroInserção) {
-        alert(`Erro ao salvar credenciais no banco do Supabase: ${erroInserção.message}`);
+      if (erroInsercao) {
+        alert(`Erro ao salvar credenciais no banco do Supabase: ${erroInsercao.message}`);
         return;
       }
 
-      alert('Cadastro realizado com segurança! Sua conta foi salva de forma permanente.');
+      alert('Cadastro realizado com sucesso! Sua conta foi salva com todas as informações.');
       router.push('/login');
 
     } catch (error) {

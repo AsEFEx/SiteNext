@@ -1,26 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-// 🚀 Importação do cliente unificado do Supabase
+// 🚀 Importação do cliente do Supabase
 import { supabase } from '../lib/supabaseClient'; 
 
+// 🚀 CORREÇÃO: Cole esta função no topo do arquivo (FORA e ACIMA do componente)
 const formatarCelular = (value) => {
+  if (!value) return "";
   return value
-    .replace(/\D/g, '')
-    .replace(/^(\d{2})(\d)/, '(\$1) \$2')
-    .replace(/(\d{5})(\d)/, '\$1-\$2')
-    .substring(0, 15);
+    .replace(/\D/g, '') // Remove tudo o que não for número
+    .replace(/^(\d{2})(\d)/, '($1) $2') // Adiciona os parênteses no DDD
+    .replace(/(\d{5})(\d)/, '$1-$2') // Adiciona o hífen no número celular
+    .substring(0, 15); // Limita o tamanho máximo do campo
 };
 
-export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dadosParte1, aoVoltar, aoAtualizarIdPai }) {
-  // 🔥 Estado local para controlar o ID do registro em tempo real e evitar clonagem de linhas
-  const [registroIdLocal, setRegistroIdLocal] = useState(dadosParte1?.registroId || null);
-  const [salvando, setSalvando] = useState(false);
+export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dadosParte1, aoVoltar }) {
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm({
     mode: "onBlur"
   });
 
-  // Preenche os campos da tela com as informações vindas da Parte 1 ou do estado anterior
+  // Carrega os dados na tela vindos da Parte 1 ou do estado anterior
   useEffect(() => {
     if (dadosParte1) {
       reset({
@@ -34,67 +33,49 @@ export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dados
         matricula: dadosParte1.matricula || '',
         data_admissao: dadosParte1.data_admissao || ''
       });
-      
-      if (dadosParte1.registroId) {
-        setRegistroIdLocal(dadosParte1.registroId);
-      }
     }
   }, [dadosParte1, usuarioLogado, reset]);
 
-  // 💾 SALVAMENTO FINAL NA NUVEM
+  // 🔥 SALVAMENTO INTELIGENTE: Usa UPSERT baseado no nr_cp como Chave Primária
   const onSalvarFichaFinal = async (data) => {
-    setSalvando(true);
-
-    // Une os dados tratados da Parte 1 com os novos campos da Parte 2
-    const dadosCompletosPerfil = {
-      usuario_id: String(usuarioLogado?.id),
-      nr_cp: String(usuarioLogado?.nr_cp),
-      ...dadosParte1,
-      ...data,
-      atualizado_em: new Date().toISOString()
-    };
-
-    // Remove propriedades de controle local para não corromper as colunas do Supabase
-    delete dadosCompletosPerfil.registroId;
-
     try {
-      if (registroIdLocal) {
-        // 🚀 CENÁRIO A: Se o ID já existe, faz uma ATUALIZAÇÃO (Update) na linha existente
-        const { error: erroUpdate } = await supabase
-          .from('informacoes_adicionais')
-          .update(dadosCompletosPerfil)
-          .eq('id', registroIdLocal);
+      // Garante a extração e padronização do Número do CP da sessão do login
+      const cpMilitar = String(usuarioLogado?.nr_cp ?? '').trim().toUpperCase();
 
-        if (erroUpdate) throw erroUpdate;
-
-        alert('Ficha cadastral atualizada com sucesso no Supabase!');
-      } else {
-        // 🚀 CENÁRIO B: Se é a primeira vez salvando na sessão, faz uma INSERÇÃO (Insert)
-        // O modificador .select() força o Supabase a devolver a linha criada contendo o ID automático
-        const { data: registroCriado, error: erroInsert } = await supabase
-          .from('informacoes_adicionais')
-          .insert([dadosCompletosPerfil])
-          .select();
-
-        if (erroInsert) throw erroInsert;
-
-        if (registroCriado && registroCriado.length > 0) {
-          const novoIdGerado = registroCriado[0].id;
-          setRegistroIdLocal(novoIdGerado); // Transforma o estado local na mesma hora para evitar duplicidades
-          
-          // Sincroniza o ID com o componente pai (App.jsx / index.jsx), se a função existir
-          if (typeof aoAtualizarIdPai === 'function') {
-            aoAtualizarIdPai(novoIdGerado);
-          }
-        }
-
-        alert('Ficha cadastral salva com sucesso de forma permanente no Supabase!');
+      if (!cpMilitar) {
+        alert("Erro: Sessão do usuário inválida ou Número do CP não encontrado.");
+        return;
       }
+
+      // Junta as informações inseridas na Parte 1 e na Parte 2
+      const dadosCompletosPerfil = {
+        nr_cp: cpMilitar, // 🔑 Esta é a chave primária que o Supabase usará de âncora
+        ...dadosParte1,
+        ...data,
+        atualizado_em: new Date().toISOString()
+      };
+
+      // 🔒 LIMPEZA ESTRITA: Remove qualquer resquício de chaves antigas do json-server
+      delete dadosCompletosPerfil.registroId;
+      delete dadosCompletosPerfil.id;
+      delete dadosCompletosPerfil.usuario_id;
+
+      // 🚀 OPERAÇÃO UPSERT: Insere se for novo ou atualiza se o nr_cp já existir na tabela
+      const { error: erroUpsert } = await supabase
+        .from('informacoes_adicionais')
+        .upsert(dadosCompletosPerfil, { onConflict: 'nr_cp' }); // 🔥 Avisa o banco para usar o nr_cp para checar conflitos
+
+      if (erroUpsert) {
+        alert(`Erro de persistência no Supabase: ${erroUpsert.message}`);
+        return;
+      }
+
+      // Feedback único e limpo para o militar
+      alert('Ficha cadastral salva e sincronizada com sucesso na nuvem!');
+
     } catch (error) {
-      console.error('Erro ao salvar no Supabase:', error);
-      alert(`Erro ao salvar as informações no servidor: ${error.message}`);
-    } finally {
-      setSalvando(false);
+      console.error('Erro técnico na persistência do Supabase:', error);
+      alert('Não foi possível processar a persistência dos dados.');
     }
   };
 
@@ -168,7 +149,12 @@ export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dados
           
           <div>
             <label style={{ fontSize: '14px' }}>Ano Formação:</label>
-            <input type="number" {...register("ano_formacao")} style={{ width: '100%', padding: '6px', boxSizing: 'border-box' }} />
+           <input 
+              type="number" 
+              {...register("ano_formacao")} 
+              placeholder="Ex: 2005"
+              style={{ width: '100%', padding: '6px', boxSizing: 'border-box' }} 
+            />
           </div>
           <div>
             <label style={{ fontSize: '14px' }}>Estado F. Aux:</label>
@@ -213,7 +199,7 @@ export default function FormDetalhadoContatoInstitucional({ usuarioLogado, dados
           </button>
           
           <button type="submit" style={{ flex: 2, padding: '12px', backgroundColor: '#0070f3', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold', fontSize: '16px' }}>
-            {dadosParte1?.registroId ? 'Confirmar Atualização (Update)' : 'Salvar Ficha Completa (Insert)'}
+            Salvar Ficha Completa
           </button>
         </div>
       </form>
