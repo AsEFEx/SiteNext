@@ -221,6 +221,19 @@ function Menu() {
                         </li>
                      </ul>
                   </nav>
+                  {/* Seção adicionada de forma fixa no seu Menu */}
+                  <nav className="span9 sobre" style={{ marginTop: '20px' }}>
+                  <h2 className={styles.title} style={{ color: '#d9534f', borderColor: '#d9534f' }}>
+                     🛡️ Área Restrita <i className="icon-chevron-down visible-phone visible-tablet pull-right" />
+                  </h2>
+                  <ul>
+                     <li>
+                        <Link href="/loginAdmin" style={{ color: '#d9534f', fontWeight: 'bold' }}>
+                        » Login Administrativo
+                        </Link>
+                     </li>
+                  </ul>
+                  </nav>
 
                   <nav className="span9 contato">
                      <h2 className={styles.title}>Fale Conosco <i className="icon-chevron-down visible-phone visible-tablet pull-right" /></h2>
