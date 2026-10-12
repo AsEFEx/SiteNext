@@ -20,6 +20,7 @@ export default function FormLogin({ onLoginSucesso }) {
       // Padroniza o texto digitado na tela (remove espaços e força maiúsculas)
       const cpDigitadoStr = String(data.nr_cp ?? '').trim().toUpperCase();
 
+
       // 🚀 BUSCA NA NUVEM: Procura na tabela 'usuarios_cadastrados' filtrando exatamente pelo CP
       const { data: listaUsuarios, error: erroSupabase } = await supabase
         .from('usuarios_cadastrados')

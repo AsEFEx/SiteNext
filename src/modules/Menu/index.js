@@ -1,6 +1,10 @@
+'use client';
 import Link from 'next/link'
 import $ from "jquery"
 import styles from "./index.module.css"
+import { useState, useEffect } from 'react';
+import { Navbar, Nav, Container, Button } from 'react-bootstrap';
+import { supabase } from '../../lib/supabaseClient';  // Ajuste o caminho conforme a estrutura do seu projeto
 
 function handleMenuAccessibility(e) {
    let collapsable = null
@@ -17,7 +21,41 @@ function handleMenuAccessibility(e) {
    else $('#navigation-section').slideDown()
 }
 
+
 function Menu() {
+  /* const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    checarNivelAcesso();
+  }, []);
+
+   async function checarNivelAcesso() {
+    try {
+      // 1. Recupera o usuário salvo no localStorage após o login
+      const sessaoSalva = localStorage.getItem('usuario_sessao');
+      
+      if (sessaoSalva) {
+        const usuarioLogado = JSON.parse(sessaoSalva);
+        
+        // 2. Busca o perfil_Id atualizado diretamente no Supabase usando o nr_cp
+        const { data, error } = await supabase
+          .from('usuarios_cadastrados')
+          .select('perfil_Id')
+          .eq('nr_cp', usuarioLogado?.nr_cp)
+          .single();
+
+        // Se o perfil_Id for 1, libera a visualização do módulo administrativo
+        if (!error && data && data.perfil_Id === 1) {
+          setIsAdmin(true);
+        }
+      }
+    } catch (err) {
+      console.error("Erro ao validar acesso administrativo no menu:", err);
+    }
+  } */
+
+
+
    return (
       <>
          <div id="menu">
@@ -58,6 +96,7 @@ function Menu() {
                            <Link href="/galeria-as" title="Galeria de Associados">»Galeria de Associados</Link>
                         </li>
                         <li>
+                           {/* <Link href="/cadastro" title="Atualize seu Cadastro">»Atualize seu Cadastro</Link>*/}
                            <Link href="/login" title="Atualize seu Cadastro" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
                                <img 
                                  src="/images/file-pen-solid-full.svg" 
@@ -66,7 +105,7 @@ function Menu() {
                               />
                               »Atualize seu Cadastro                            
                               
-                           </Link>
+                           </Link> 
                         </li>
                         <li>
                            <Link href="/seja-associado" title="Seja um Associado">»Seja um Associado</Link>
@@ -76,6 +115,22 @@ function Menu() {
                         </li>
                      </ul>
                   </nav>
+
+                  {/* --- NOVA SEÇÃO: CONTROLE RESTRITO (ADMINISTRADOR) --- 
+                  {isAdmin && (
+                  <nav className="span9 sobre" style={{ marginTop: '20px' }}>
+                     <h2 className={styles.title} style={{ color: '#d9534f', borderColor: '#d9534f' }}>
+                        🛡️ Administração <i className="icon-chevron-down visible-phone visible-tablet pull-right" />
+                     </h2>
+                     <ul>
+                        <li>
+                        <Link href="/admin" title="Painel Administrativo" style={{ color: '#d9534f', fontWeight: 'bold' }}>
+                           » Painel de Controle
+                        </Link>
+                        </li>
+                     </ul>
+                  </nav>
+                  )}*/}
 
                   <nav className="span9 galeria-ex">
                      <h2 className={styles.title}>Galeria de Ex-Alunos <i className="icon-chevron-down visible-phone visible-tablet pull-right" /></h2>
