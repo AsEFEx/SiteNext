@@ -171,7 +171,7 @@ export default function PainelAdministrativo() {
                   <Dropdown.Menu style={{ minWidth: '240px' }}>
                     
                     <Dropdown.Item 
-                      onClick={() => window.location.href = `/admin/visualizar/${item.nr_cp}`}
+                      onClick={() => window.location.href = `/visualizarDetalhes/?cp=${item.nr_cp}`}
                       style={{ 
                         display: 'block', 
                         clear: 'both', 
