@@ -28,13 +28,18 @@ export default function gerenciarPagamentoMilitar() {
 
   // BUSCA OS DADOS DE IDENTIFICAÇÃO E O REGISTRO DE PAGAMENTO EXISTENTE
   // BUSCA OS DADOS FINANCEIROS E INJETA A DATA CORRENTE CASO SEJA UM NOVO CADASTRO
-  async function carregarDadosPagamento(cpMilitar) {
+  async function carregarDadosPagamento(cpMilitar, mesSelecionado = null) {
     try {
       setCarregando(true);
       const cpLimpo = String(cpMilitar).trim().toUpperCase();
 
-      // Gera a data corrente no formato AAAA-MM-DD (Horário de Brasília)
-      const hoje = new Date().toLocaleDateString('pt-BR').split('/').reverse().join('-');
+      // Pega o ano/mês corrente (Formato: YYYY-MM) para ser o padrão
+      const hojeData = new Date();
+      const anoCorrente = hojeData.getFullYear();
+      const mesCorrente = String(hojeData.getMonth() + 1).padStart(2, '0');
+      const mesReferenciaPadrao = mesSelecionado || `${anoCorrente}-${mesCorrente}`;
+      
+      const hojeFormatado = hojeData.toLocaleDateString('pt-BR').split('/').reverse().join('-');
 
       // 1. Busca os dados de identificação na tabela base
       const { data: usuario, error: erroBase } = await supabase
@@ -46,27 +51,29 @@ export default function gerenciarPagamentoMilitar() {
       if (erroBase) throw erroBase;
       setMilitar(usuario);
 
-      // 2. Busca o registro financeiro na tabela infor_pagamento pelo id_cp
+      // 2. Busca o registro baseado no CP E NO MÊS DE REFERÊNCIA escolhido
       const { data: pagto, error: erroPagto } = await supabase
         .from('infor_pagamento')
         .select('*')
         .eq('id_cp', cpLimpo)
-        .single();
+        .eq('mes_ref', mesReferenciaPadrao)
+        .maybeSingle(); // Usamos maybeSingle para não estourar erro se o mês for novo
 
-      if (!erroPagto && pagto) {
+      if (pagto) {
         setRegistroPagto({
-          // Se já existir no banco, usa o que está lá. Se vier em branco, usa hoje.
-          dt_pagto: pagto.dt_pagto || hoje, 
-          dt_venc: pagto.dt_venc || hoje,
-          comprov_pagto: pagto.comprov_pagto || ''
+          dt_pagto: pagto.dt_pagto || hojeFormatado, 
+          dt_venc: pagto.dt_venc || hojeFormatado,
+          comprov_pagto: pagto.comprov_pagto || '',
+          mes_ref: pagto.mes_ref || mesReferenciaPadrao
         });
       } else {
-        // 🔥 NOVO CADASTRO: Trava o pagamento e sugere o vencimento com a data de hoje
+        // Se o militar não tiver registro para ESTE mês específico, abre os campos limpos
         setRegistroPagto({
           id_cp: cpLimpo,
-          dt_pagto: hoje, // Fixado com a data corrente
-          dt_venc: hoje,  // Recebe a data corrente, mas editável
-          comprov_pagto: ''
+          dt_pagto: hojeFormatado,
+          dt_venc: hojeFormatado,
+          comprov_pagto: '',
+          mes_ref: mesReferenciaPadrao
         });
       }
     } catch (error) {
@@ -76,6 +83,7 @@ export default function gerenciarPagamentoMilitar() {
       setCarregando(false);
     }
   }
+
 
   // ATUALIZA OS ESTADOS TEXTUAIS DO FORMULÁRIO DINAMICAMENTE
   const lidarComMudancaForm = (e) => {
@@ -113,19 +121,14 @@ export default function gerenciarPagamentoMilitar() {
 
     try {
       const cpLimpo = String(militar.nr_cp).trim().toUpperCase();
+      const mesRefAtiva = registroPagto.mes_ref;
       let caminhoStorage = registroPagto.comprov_pagto;
 
-      // 1. Caso o administrador tenha selecionado um novo arquivo, faz o processamento do Storage primeiro
       if (arquivoSelecionado) {
         const extensao = arquivoSelecionado.name.split('.').pop().toLowerCase();
-        const nomeArquivo = `${cpLimpo}_comprovante.${extensao}`;
+        // O nome do arquivo agora inclui o mês para não sobrescrever os comprovantes de outros meses!
+        const nomeArquivo = `${cpLimpo}_${mesRefAtiva}_comprovante.${extensao}`;
 
-        // Limpa arquivos antigos para evitar acúmulo de lixo com extensões concorrentes
-        const extensoesPossiveis = ['png', 'jpg', 'jpeg', 'pdf'];
-        const arquivosParaDeletar = extensoesPossiveis.map(ext => `${cpLimpo}_comprovante.${ext}`);
-        await supabase.storage.from('comprov_pagto').remove(arquivosParaDeletar);
-
-        // Upload do arquivo físico
         const { error: erroUpload } = await supabase
           .storage
           .from('comprov_pagto')
@@ -137,38 +140,38 @@ export default function gerenciarPagamentoMilitar() {
 
         if (erroUpload) throw erroUpload;
 
-        // Recupera e define a URL pública ou caminho textual para salvar na tabela
         const { data: publicData } = supabase.storage.from('comprov_pagto').getPublicUrl(nomeArquivo);
         caminhoStorage = publicData?.publicUrl || nomeArquivo;
       }
 
-      // 2. Prepara o payload para atualizar ou inserir na tabela infor_pagamento
       const payloadPagamento = {
         id_cp: cpLimpo,
+        mes_ref: mesRefAtiva, // 🔥 Grava o ano-mês no banco
         dt_pagto: registroPagto.dt_pagto || null,
         dt_venc: registroPagto.dt_venc || null,
         comprov_pagto: caminhoStorage,
         update_at: new Date().toISOString()
       };
 
-      // Como o id_cp atua como vínculo lógico, usamos o upsert baseado nele
+      // 🔥 Altera a âncora de conflito para validar a duplicidade do mês também!
       const { error: erroUpsert } = await supabase
         .from('infor_pagamento')
-        .upsert(payloadPagamento, { onConflict: 'id_cp' });
+        .upsert(payloadPagamento, { onConflict: 'id_cp,mes_ref' });
 
       if (erroUpsert) throw erroUpsert;
 
-      setMensagem({ tipo: 'success', texto: 'Informações de pagamento salvas com sucesso!' });
+      setMensagem({ tipo: 'success', texto: `Dados de referência ${mesRefAtiva} gravados com sucesso!` });
       setArquivoSelecionado(null);
-      await carregarDadosPagamento(cpLimpo);
+      await carregarDadosPagamento(cpLimpo, mesRefAtiva);
 
     } catch (error) {
       console.error('Erro ao persistir informações financeiras:', error.message);
-      setMensagem({ tipo: 'danger', texto: 'Erro técnico ao gravar dados de pagamento no Supabase.' });
+      setMensagem({ tipo: 'danger', texto: 'Erro técnico ao gravar dados de pagamento.' });
     } finally {
       setSalvando(false);
     }
   };
+
   // TELA DE CARREGAMENTO INICIAL
   if (carregando) {
     return (
@@ -214,7 +217,26 @@ export default function gerenciarPagamentoMilitar() {
 
         {/* FORMULÁRIO EM FLEXBOX EM PILHA INDEPENDENTE DO BOOTSTRAP ROW */}
         <form onSubmit={salvarDadosFinanceiros} style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '100%' }}>
-          
+
+          {/* 🔥 NOVO CAMPO: SELETOR DE MÊS DE REFERÊNCIA (MUITO CLEAN) */}
+          <div style={{ width: '100%' }}>
+            <Form.Group>
+              <Form.Label className="text-muted mb-1" style={{ fontSize: '11px', display: 'block', textAlign: 'left' }}>Mês/Ano de Referência da Taxa:</Form.Label>
+              <Form.Control 
+                type="month" // Componente nativo que abre um seletor lindo de Mês e Ano
+                name="mes_ref" 
+                size="sm" 
+                style={{ width: '100%', boxSizing: 'border-box', display: 'block', fontWeight: 'bold' }}
+                value={registroPagto.mes_ref} 
+                onChange={(e) => {
+                  lidarComMudancaForm(e);
+                  // Atualiza a tela automaticamente se o administrador mudar o mês para ver se já há dados salvas naquele mês!
+                  carregarDadosPagamento(militar.nr_cp, e.target.value);
+                }} 
+              />
+            </Form.Group>
+          </div>
+
           {/* Campo 1: Data de Pagamento */}
           {/* Campo 1: Data de Pagamento - FIXADO COM READONLY E ESTILO BLOQUEADO */}
           <div style={{ width: '100%' }}>
