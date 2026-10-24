@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { Container, Card, Button, Spinner, Form } from 'react-bootstrap';
 import { supabase } from '../lib/supabaseClient';
 
-export default function gerenciarPagamentoMilitar() {
+export default function GerenciarPagamentoMilitar() {
   const router = useRouter();
   const { cp } = router.query; // Captura o ?cp=XXXX vindo do painel
 
