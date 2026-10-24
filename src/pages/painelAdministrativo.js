@@ -88,17 +88,38 @@ export default function PainelAdministrativo() {
   }
 
   // Rotinas para tratamento das ações baseadas em nr_cp
+  // Rotina para promover ou rebaixar um usuário de nível com segurança
   const alternarPerfilAdmin = async (cpUsuario, perfilAtual) => {
+    // Se perfilAtual for 1 (Admin), vira 2 (Usuário comum). Se for 2, vira 1 (Admin).
     const novoPerfil = Number(perfilAtual) === 1 ? 2 : 1; 
-    
-    // Altere para o nome exato da coluna do seu banco (perfil_Id ou perfil_id)
-    const { error } = await supabase
-      .from('usuarios_cadastrados')
-      .update({ perfil_id: novoPerfil }) 
-      .eq('nr_cp', cpUsuario);
+    const termoAcao = novoPerfil === 1 ? "PROMOVER a Administrador" : "REBAIXAR para Usuário Comum";
 
-    if (error) alert('Erro ao alterar privilégios.');
-    else verificarAcessoEDados(); 
+    // Alerta de confirmação para segurança da aplicação
+    const confirmar = window.confirm(`Deseja realmente ${termoAcao} o militar de CP ${cpUsuario}?`);
+    if (!confirmar) return;
+
+    try {
+      // Executa o update diretamente no Supabase usando o nr_cp minúsculo na cláusula eq
+      const { error } = await supabase
+        .from('usuarios_cadastrados')
+        .update({ perfil_id: novoPerfil }) 
+        .eq('nr_cp', cpUsuario);
+
+      if (error) {
+        console.error('Erro Supabase ao alterar perfil:', error.message);
+        alert('Não foi possível alterar os privilégios no banco de dados.');
+        return;
+      }
+
+      alert(`Militar atualizado com sucesso para o novo perfil!`);
+      
+      // Recarrega a tabela em tela automaticamente para mudar o Badge de cor na hora
+      verificarAcessoEDados(); 
+
+    } catch (err) {
+      console.error('Erro técnico na ação de perfil:', err);
+      alert('Erro interno ao processar a mudança de perfil.');
+    }
   };
 
   //campo status não existe, por isso retirado
@@ -185,7 +206,7 @@ export default function PainelAdministrativo() {
                     </Dropdown.Item>
 
                     <Dropdown.Item 
-                      onClick={() => window.location.href = `/admin/editar/${item.nr_cp}`}
+                      onClick={() => window.location.href = `/editarDetalhes/?cp=${item.nr_cp}`}
                       style={{ 
                         display: 'block', 
                         clear: 'both', 
@@ -209,11 +230,11 @@ export default function PainelAdministrativo() {
                         float: 'none'
                       }}
                     >
-                      🎖️ {Number(item.perfil_id) === 1 ? 'Rebaixar para Usuário' : 'Promover a Admin'}
+                      🎖️ {Number(item.perfil_id) === 1 ? 'Remover privilégios de Administrador' : 'Conceder privilégios de Administrador'}
                     </Dropdown.Item>
 
                     <Dropdown.Item 
-                      onClick={() => window.location.href = `/admin/pagamentos/${item.nr_cp}`}
+                      onClick={() => window.location.href = `/gerenciarPagamentoMilitar/?cp=${item.nr_cp}`}
                       style={{ 
                         display: 'block', 
                         clear: 'both', 
@@ -227,7 +248,7 @@ export default function PainelAdministrativo() {
                     </Dropdown.Item>
 
                     <Dropdown.Item 
-                      onClick={() => window.location.href = `/admin/foto/${item.nr_cp}`}
+                      onClick={() => window.location.href = `/gerenciarFotoMilitar/?cp=${item.nr_cp}`}
                       style={{ 
                         display: 'block', 
                         clear: 'both', 

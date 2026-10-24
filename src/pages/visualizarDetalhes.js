@@ -75,7 +75,7 @@ export default function VisualizarDetalhes() {
   }
 
   return (
-    <Container className="mt-4 mb-4">
+    <Container className="mt-4 mb-4" style={{ maxWidth: '650px' }}>
       {/* Cabeçalho */}
       <div className="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
         <div>
@@ -94,7 +94,7 @@ export default function VisualizarDetalhes() {
       <CardAcademico infoAdicionais={infoAdicionais} />
 
       {/* Rodapé */}
-      <div className="text-end text-muted small px-2">
+      <div className="text-start text-muted small px-2" >
         Sincronização: {infoAdicionais?.atualizado_em 
           ? new Date(infoAdicionais.atualizado_em).toLocaleString('pt-BR') 
           : 'Nenhum log encontrado'}

@@ -36,7 +36,7 @@ export function CardIdentificacao({ militar, infoAdicionais }) {
 
 export function CardContato({ militar, infoAdicionais }) {
   return (
-    <Card className="shadow-sm border-0 mb-4">
+    <Card className="shadow-sm border-0 mb-3 mx-auto" style={{ maxWidth: '650px' }}>
       <Card.Header className="bg-secondary text-white text-uppercase py-2 small font-weight-bold">
         📞 Informações de Contato
       </Card.Header>
@@ -66,7 +66,7 @@ export function CardContato({ militar, infoAdicionais }) {
 
 export function CardEndereco({ infoAdicionais }) {
   return (
-    <Card className="shadow-sm border-0 mb-4">
+    <Card className="shadow-sm border-0 mb-3 mx-auto" style={{ maxWidth: '650px' }}>
       <Card.Header className="bg-secondary text-white text-uppercase py-2 small font-weight-bold">
         📍 Endereço Residencial
       </Card.Header>
@@ -110,7 +110,7 @@ export function CardEndereco({ infoAdicionais }) {
 
 export function CardAcademico({ infoAdicionais }) {
   return (
-    <Card className="shadow-sm border-0 mb-4">
+    <Card className="shadow-sm border-0 mb-3 mx-auto" style={{ maxWidth: '650px' }}>
       <Card.Header className="bg-secondary text-white text-uppercase p-2 small font-weight-bold">
         🎓 Dados de Formação e Histórico
       </Card.Header>
