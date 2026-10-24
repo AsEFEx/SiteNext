@@ -166,7 +166,7 @@ export default function gerenciarPagamentoMilitar() {
 
     } catch (error) {
       console.error('Erro ao persistir informações financeiras:', error.message);
-      setMensagem({ tipo: 'danger', texto: 'Erro técnico ao gravar dados de pagamento.' });
+      setMensagem({ tipo: 'danger', texto: 'Erro técnico ao gravar dados de pagamento!' });
     } finally {
       setSalvando(false);
     }
