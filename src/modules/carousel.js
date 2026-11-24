@@ -15,7 +15,7 @@ const BANNERS_CONFIG = [
     href: '#',
     description: 'Diferenciados pelo Calção Branco, unidos pela missão de preparar o corpo e o espírito da nossa tropa.',
     // Formato: AAAA-MM-DDTHH:MM:SS (Altere para testar, ex: '2026-10-15T23:59:59')
-    dataExpiracao: '2030-12-31T23:59:59' 
+    dataExpiracao: '2026-11-27T23:59:59' 
   },
   {
     id: 'diretoria-AsEFEx-2026',
