@@ -127,7 +127,7 @@ export default function EditarDetalhes() {
       {/* Cabeçalho do Editor */}
       <div className="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
         <div>
-          <h2 className="text-uppercase tracking-wide h4 mb-1">✏️ Editar Ficha do Militar</h2>
+          <h2 className="text-uppercase tracking-wide h4 mb-1">✏️ Editar Ficha do Associado</h2>
           <p className="text-muted small mb-0">Alteração cadastral com persistência em lote</p>
         </div>
         <Button variant="outline-secondary" size="sm" onClick={() => window.location.href = '/painelAdministrativo'}>

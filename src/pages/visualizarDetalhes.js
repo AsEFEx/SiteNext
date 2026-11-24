@@ -79,8 +79,8 @@ export default function VisualizarDetalhes() {
       {/* Cabeçalho */}
       <div className="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
         <div>
-          <h2 className="text-uppercase tracking-wide h4 mb-1">Ficha Cadastral Individual</h2>
-          <p className="text-muted small mb-0">Visualização limpa e segmentada do militar</p>
+          <h2 className="text-uppercase tracking-wide h4 mb-1">Ficha Cadastral do Associado</h2>
+          <p className="text-muted small mb-0">Visualização limpa e segmentada</p>
         </div>
         <Button variant="outline-secondary" size="sm" onClick={() => router.push('/painelAdministrativo')}>
           ⬅️ Voltar ao Painel

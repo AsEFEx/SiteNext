@@ -96,8 +96,8 @@ function Menu() {
                            <Link href="/galeria-as" title="Galeria de Associados">»Galeria de Associados</Link>
                         </li>
                         <li>
-                           {/* <Link href="/cadastro" title="Atualize seu Cadastro">»Atualize seu Cadastro</Link>*/}
-                           <Link href="/login" title="Atualize seu Cadastro" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                           <Link href="/cadastro" title="Atualize seu Cadastro">»Atualize seu Cadastro</Link>
+                           {/* <Link href="/login" title="Atualize seu Cadastro" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
                                <img 
                                  src="/images/file-pen-solid-full.svg" 
                                  alt="Serviço Novo" 
@@ -105,7 +105,7 @@ function Menu() {
                               />
                               »Atualize seu Cadastro                            
                               
-                           </Link> 
+                           </Link> */} 
                         </li>
                         <li>
                            <Link href="/seja-associado" title="Seja um Associado">»Seja um Associado</Link>
@@ -222,7 +222,7 @@ function Menu() {
                      </ul>
                   </nav>
                   {/* Seção adicionada de forma fixa no seu Menu */}
-                  <nav className="span9 sobre" style={{ marginTop: '20px' }}>
+                  {/* <nav className="span9 sobre" style={{ marginTop: '20px' }}>
                   <h2 className={styles.title} style={{ color: '#d9534f', borderColor: '#d9534f' }}>
                      🛡️ Área Restrita <i className="icon-chevron-down visible-phone visible-tablet pull-right" />
                   </h2>
@@ -233,7 +233,7 @@ function Menu() {
                         </Link>
                      </li>
                   </ul>
-                  </nav>
+                  </nav> */}
 
                   <nav className="span9 contato">
                      <h2 className={styles.title}>Fale Conosco <i className="icon-chevron-down visible-phone visible-tablet pull-right" /></h2>

@@ -13,40 +13,41 @@ export default function Home() {
 
       <p><strong>Presidente:</strong></p>
       <ul className="lista">
-        <li><b>Cel</b> Rogerio Rodrigues Dias</li>
+        <li><b>Cel</b>Josué Morisson de Moraes</li>
       </ul>
 
       <p><strong>Membros Efetivos:</strong> </p>
       <ul className="lista">
-        <li><b>Cel</b> Paulo Roberto de Miranda Barros</li>
-        <li><b>Cel</b> Jorge Luiz Soares Ribeiro</li>
-        <li><b>Cel</b> Marco Aurelio Souto de Araújo</li>
+        <li><b>Cel</b> Marco Aurélio Souto de Araújo</li>
         <li><b>Cel</b> Carlos Eduardo Ilha dos Santos</li>
-        <li><b>Cel</b> Luiz Fernando Medeiros Nóbrega</li>
-        <li><b>Cel</b> Alexandre Tempesta Lincoln</li>
+        <li><b>Cel</b> Marco Aurélio Baptista</li>
+        <li><b>Cel</b> Eduardo Camilo Martinez</li>
+        <li><b>Cel</b> Luiz Claudio Romaguera Pontes</li>
+        <li><b>Cel</b> José Carlos Pinheiro</li>
       </ul>
 
       <p><strong>Suplentes:</strong> </p>
       <ul className="lista">
-        <li><b>Cel</b> Marco Aurélio Baptista</li>
+        <li><b>Cel</b> Flavio Guedes</li>
         <li><b>Cel</b> PM Carlos Eduardo Hespanha Matt</li>
+        <li><b>Cap</b> Ricardo Correa Neves</li>
       </ul>
 
       <h2>CONSELHO FISCAL</h2>
       <p><strong>Presidente:</strong></p>
       <ul className="lista">
-        <li><b>Cel</b>  Alberto César Álvares Fernandes</li>
+        <li><b>Cel</b>  Ricardo Calixto</li>
       </ul>
 
       <p><strong>Membros Efetivos:</strong> </p>
       <ul className="lista">
-        <li><b>Ten</b> Vicente Pawelec</li>
+        <li><b>Ten Cel</b>André Valentim Siqueira Rodrigues</li>
         <li><b>Sr.</b> Adilson Soares Barbosa</li>
       </ul>
 
-      <p><strong>Suplentes:</strong> </p>
+      <p><strong>Suplente:</strong> </p>
       <ul className="lista">
-        <li><b>Sr.</b> Francisco Henrique Fauth</li>
+        <li><b>1º Ten</b> Cleber das Neves Tourinho</li>
       </ul>
       <span className="hide">Fim do conteúdo da página</span>
     </section>

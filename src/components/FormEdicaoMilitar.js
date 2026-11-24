@@ -36,9 +36,10 @@ export function FormIdentificacao({ dadosForm, setDadosForm }) {
 
   return (
     <Card className="shadow-sm border-0 mb-3 mx-auto" style={{ maxWidth: '850px', marginLeft: 'auto', marginRight: 'auto', float: 'none', clear: 'both' }}>
-      <Card.Header className="bg-dark text-white text-uppercase py-1 px-3 small font-weight-bold" style={{ fontSize: '12px' }}>
-        Identificação Militar
+      <Card.Header className="bg-dark text-white text-uppercase py-1 px-3 small font-weight-bold" style={{ fontSize: '16px', color: '#0056b3', fontWeight: 'bold'  }}>
+        Identificação
       </Card.Header>
+      <p></p>
       <Card.Body className="bg-light py-2 px-3 small">
         {/* Substituído a tag Row nativa por uma Div Flex controlada para não herdar as margens negativas do CSS velho */}
         <div style={estiloContainerBloco}>
@@ -99,9 +100,10 @@ export function FormContato({ dadosForm, setDadosForm }) {
 
   return (
     <Card className="shadow-sm border-0 mb-3 mx-auto" style={{ maxWidth: '850px', marginLeft: 'auto', marginRight: 'auto', float: 'none', clear: 'both' }}>
-      <Card.Header className="bg-secondary text-white text-uppercase py-1 px-3 small font-weight-bold" style={{ fontSize: '12px' }}>
-        Canais de Contato
+      <Card.Header className="bg-secondary text-white text-uppercase py-1 px-3 small font-weight-bold" style={{ fontSize: '16px', color: '#0056b3', fontWeight: 'bold'  }}>
+        Informações de Contato
       </Card.Header>
+      <p></p>
       <Card.Body className="py-2 px-3 small">
         <div style={estiloContainerBloco}>
           <div style={{ flex: '1 1 250px', maxWidth: '100%' }}>
@@ -157,9 +159,10 @@ export function FormEndereco({ dadosForm, setDadosForm }) {
 
   return (
     <Card className="shadow-sm border-0 mb-3 mx-auto" style={{ maxWidth: '850px', marginLeft: 'auto', marginRight: 'auto', float: 'none', clear: 'both' }}>
-      <Card.Header className="bg-secondary text-white text-uppercase py-1 px-3 small font-weight-bold" style={{ fontSize: '12px' }}>
+      <Card.Header className="bg-secondary text-white text-uppercase py-1 px-3 small font-weight-bold" style={{ fontSize: '16px', color: '#0056b3', fontWeight: 'bold'  }}>
         Endereço Residencial
       </Card.Header>
+      <p></p>
       <Card.Body className="py-2 px-3 small">
         
         {/* Linha 1 do Endereço */}
@@ -263,9 +266,10 @@ export function FormAcademico({ dadosForm, setDadosForm }) {
 
   return (
     <Card className="shadow-sm border-0 mb-3 mx-auto" style={{ maxWidth: '850px', marginLeft: 'auto', marginRight: 'auto', float: 'none', clear: 'both' }}>
-      <Card.Header className="bg-secondary text-white text-uppercase py-1 px-3 small font-weight-bold" style={{ fontSize: '12px' }}>
+      <Card.Header className="bg-secondary text-white text-uppercase py-1 px-3 small font-weight-bold" style={{ fontSize: '16px', color: '#0056b3', fontWeight: 'bold'  }}>
         Histórico e Formação Acadêmica
       </Card.Header>
+      <p></p>
       <Card.Body className="py-2 px-3 small">
         
         {/* Linha Única de Dados Acadêmicos em Flexbox */}
@@ -335,7 +339,7 @@ export function FormAcademico({ dadosForm, setDadosForm }) {
 
           <div style={{ flex: '1 1 100px', maxWidth: '100%' }}>
             <Form.Group>
-              <Form.Label className="text-muted mb-1" style={{ fontSize: '11px', display: 'block', textAlign: 'left' }}>Ex-CCFEx:</Form.Label>
+              <Form.Label className="text-muted mb-1" style={{ fontSize: '11px', display: 'block', textAlign: 'left' }}>Ex-CCFEx:  </Form.Label>
               <Form.Select 
                 name="integrante_ex_ccfex" 
                 size="sm" 
