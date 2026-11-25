@@ -36,7 +36,7 @@ export default function Home() {
       <h2>CONSELHO FISCAL</h2>
       <p><strong>Presidente:</strong></p>
       <ul className="lista">
-        <li><b>Cel</b>  Ricardo Calixto</li>
+        <li><b>Cel</b> Ricardo Calixto</li>
       </ul>
 
       <p><strong>Membros Efetivos:</strong> </p>
