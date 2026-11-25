@@ -13,7 +13,7 @@ export default function Home() {
 
       <p><strong>Presidente:</strong></p>
       <ul className="lista">
-        <li><b>Cel</b>Josué Morisson de Moraes</li>
+        <li><b>Cel</b> Josué Morisson de Moraes</li>
       </ul>
 
       <p><strong>Membros Efetivos:</strong> </p>
@@ -36,12 +36,12 @@ export default function Home() {
       <h2>CONSELHO FISCAL</h2>
       <p><strong>Presidente:</strong></p>
       <ul className="lista">
-        <li><b>Cel</b>  Ricardo Calixto</li>
+        <li><b>Cel</b> Ricardo Calixto</li>
       </ul>
 
       <p><strong>Membros Efetivos:</strong> </p>
       <ul className="lista">
-        <li><b>Ten Cel</b>André Valentim Siqueira Rodrigues</li>
+        <li><b>Ten Cel</b> André Valentim Siqueira Rodrigues</li>
         <li><b>Sr.</b> Adilson Soares Barbosa</li>
       </ul>
 
